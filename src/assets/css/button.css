@@ -1,0 +1,176 @@
+.button-regis {
+    word-break: break-word;
+    display: flex;
+   align-items: center;
+   justify-content: center;
+   color: #FFFFFF !important;
+   background-color: #63c0ba;
+   border-radius: 35px;
+   font-size: 20px;
+   font-weight: bold;
+   margin-top: 37px;
+   margin-bottom: 15px;
+ border: none;
+ text-align: center;
+ text-decoration: none;
+ /* display: inline-block; */
+ cursor: pointer;
+ width: 340px;
+   height: 70px;
+   position:relative;
+   box-shadow: 0px 9px 2px -4px rgb(190,190,190) !important;
+}
+.main-regis-button{
+    word-break: break-word;
+    margin: 0 15px;
+    display: flex;
+   align-items: center;
+   justify-content: center;
+   color: #63c0ba!important;
+   background-color: #FFFFFF ;
+   border-radius: 35px;
+   font-size: 20px;
+   font-weight: bold;
+ border: none;
+ text-align: center;
+ text-decoration: none;
+ display: inline-block;
+ cursor: pointer;
+ width: 300px;
+   height: 70px;
+   float: left;
+}
+.main-regis-button .fa{
+    color: #63c0ba;
+    margin-left: 15px;
+}
+.button-regis-cont .button-regis{
+    margin: 0;
+}
+.button-regis-cont{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0;
+}
+.button-regis-text{
+    width: 265px;
+    float: left;
+}
+.button-regis:hover{
+    box-shadow: 0px 9px 2px -4px rgb(190,190,190) !important;
+}
+.button-icon .fa{
+    margin: auto;
+    color: #63c0ba;
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.button-icon{
+    height: 84px;
+    position:absolute;
+    background-color: white;
+   width: 50px;
+   right:15px;
+   top:-6px;
+}
+.triangle1{
+    height: 7px;
+    width: 7px;
+    background-color: #c7c6c6;
+    clip-path: polygon(50% 0, 3% 100%, 50% 100%);
+    margin-left: -4px;   
+}
+.triangle2{
+   height: 9px;
+    width: 7px;
+    background-color: #c7c6c6;
+    clip-path: polygon(51% 100%, 50% 0, 0 0);
+
+    margin-left: -3px;
+    margin-top: 69px;
+}
+.tasks-button{
+    display: flex;
+}
+.little-button{
+    width: 100px;
+    height: 50px;
+    background-color: #07608d;
+    color: white;
+    border: none;
+    margin-bottom: 20px;
+}
+.task-button{
+    flex:1;
+    height: 50px;
+}
+.task-button:hover, .task-button:active, .task-button:focus{
+    color:white ;
+    background-color: #63c0ba;
+}
+.blue-button-disabled{
+    background-color: #07608d !important;
+}
+.middle-button{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #63c0ba;
+    background-color: white;
+    border: 1px solid #63c0ba;
+    font-weight: bold;
+    outline: none !important;
+}
+.delete-commpany-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.delete-commpany-button .blue-button{
+    height: 50px !important;
+    width: 100px !important;
+    padding: 0 !important;
+    margin: 0 ;
+    margin-right: 10px;
+}
+.blue-button{
+    /* background-color: #07608d; */
+    background: linear-gradient(0.25turn,#07608d, #63c0ba);
+    border: 0;
+    outline: none !important;
+    cursor: pointer;
+    font-size: 18px;    /* margin:120px 92px 0  0; */
+    font-weight: bold;
+    width: 240px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.manager-login  .blue-button{
+    margin:65px 92px 0  0; 
+}
+.blue-button {
+    /* padding: 24px 75px; */
+    background-color: #07608d;
+    color: white;
+    border-radius: 0;
+    margin-bottom: 27px;
+}
+@media only screen and (max-width: 1280px){
+    .blue-button{
+        width: 266px;
+        font-size: 16px;
+    }
+}
+@media only screen and (max-width: 1024px){
+.manager-login-input .blue-button {
+    margin: 20px 0 0 0 !important;
+}
+}

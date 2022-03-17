@@ -1,0 +1,130 @@
+.App {
+  position: relative;
+  font-family: "Segoe UI";
+  word-break: break-word;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+.repeat-text{
+  color: #07608d;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+}
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@font-face {
+  font-family: 'icomoon';
+  src:  url('assets/fonts/icomoon.eot?fk90ac');
+  src:  url('assets/fonts/icomoon.eot?fk90ac#iefix') format('embedded-opentype'),
+    url('assets/fonts/icomoon.ttf?fk90ac') format('truetype'),
+    url('assets/fonts/icomoon.woff?fk90ac') format('woff'),
+    url('assets/fonts/icomoon.svg?fk90ac#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+ .MuiOutlinedInput-notchedOutline .Mui-focused {
+  border-color: #63c0ba !important;
+}
+.change-status-popup{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255,255,255,0.97);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+}
+.icon-Attachment:before {
+  content: "\e900";
+}
+.icon-Backward-arrow:before {
+  content: "\e901";
+}
+.icon-Calendar:before {
+  content: "\e902";
+}
+.icon-Component-21--1:before {
+  content: "\e903";
+}
+.icon-Compose:before {
+  content: "\e904";
+}
+.icon-dram:before {
+  content: "\e905";
+}
+.icon-Facebook:before {
+  content: "\e906";
+}
+.icon-Google-plus:before {
+  content: "\e907";
+}
+.icon-Menu:before {
+  content: "\e908";
+}
+.icon-Options:before {
+  content: "\e909";
+}
+.icon-Photos:before {
+  content: "\e90a";
+}
+.icon-Repeat-Grid-17:before {
+  content: "\e90b";
+  color: #707070;
+}
+.icon-Search:before {
+  content: "\e90c";
+}
+.icon-Twitter:before {
+  content: "\e90d";
+}
+.icon-Union-1:before {
+  content: "\e90e";
+}
+.icon-Union-4:before {
+  content: "\e90f";
+}
+.icon-Yes:before {
+  content: "\e910";
+}
+img{
+  font-size: 10px;
+  white-space: nowrap;
+}
+@media (max-width: 320px){
+  .App{
+    min-width: 320px !important;
+  }
+}

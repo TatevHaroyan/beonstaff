@@ -1,0 +1,285 @@
+.green-line{
+    width: 10px;
+    height: 680px;
+    border: 0.5px solid #63c0ba;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 40px; 
+}
+.user-task-cont .tool-tip-cont, .file-item .tool-tip-cont{
+   position: absolute;
+   top: 8px;
+   right: 5px;
+}
+.timePicker-cont-change{
+    display: flex;
+    flex: 1;
+    margin-left: 20px;
+    justify-content: space-between;
+    margin-left: 95px;
+}
+.my-user-org-page .employee-name{
+    margin:0;
+    margin-top:5px !important;
+    padding-left: 5px !important;
+}
+.my-user-org-page .blue-button{
+    width: 165px;
+    height: 50px;
+    margin-top:30px;
+}
+.employee-name span{
+    flex: 1;
+}
+/* .title-rate{
+    display: flex;
+} */
+.title-rate .title{
+    font-size: 12px;
+    font-weight: 700;
+    color: #07608d;
+}
+.recommendation-page{
+    flex: 1;
+    /* color: #07608d; */
+}
+.employee-name-button{
+    display: flex;
+    justify-content: space-between;
+    margin: 19px 0 24px 38px;
+}
+.employee-name-button .blue-button{
+    margin-bottom: 0 ;
+    width: 150px;
+    font-size: 16px;
+}
+.recommendation-page h1{
+    font-size: 40px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+.timePicker-cont {
+    margin-right: 5px;
+}
+.recommendation-page p{
+    font-size: 20px;
+    font-family: "Segoe UI";
+   font-weight: 300;
+   /* word-break: break-all; */
+}
+.icon-point{
+    width: 30px;
+    height: 30px;
+    background-color: #63c0ba;
+    border: 4px solid white;
+    border-radius: 50%;
+    position: absolute;
+    right: 7px;
+    top:27px;
+}
+.inside-green{
+    width: 100%;
+    transition: all;
+    transition-duration: 3s;
+    background-color: #63c0ba;
+    position: absolute;
+    top:0;
+}
+.icon-Backward-arrow{
+    font-size: 25px !important;
+    color: #63c0ba !important;
+   cursor: pointer;
+}
+.link-Backward-arrow{
+    margin:20px 0;
+    display: flex;
+}
+.icon-Yes{
+    color: #ffffff;
+}
+.rounds{
+    
+}
+.add .dropdown {
+    border-bottom: 2px solid #F4F4F4;
+}
+.task-dropdown .dropdown .btn-primary{
+    width: 100%;
+    height: 55px;
+    border: 1px solid #63c0ba;
+    border-radius: 6px;
+    align-items: center;
+    background: none ;
+    color: #07608d;
+    outline: none !important;
+    margin-top:14px ;
+    justify-content: space-between !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 20px;
+}
+.task-dropdown .dropdown .btn-primary:active{
+    outline: none !important;
+    background: none;
+    border: 1px solid #63c0ba !important;
+    color: #07608d;
+}
+.btn-primary:focus {
+    box-shadow: none !important;
+}
+.task-dropdown .dropdown  .dropdown-toggle::after{
+    /* margin-left: 28.255em; */
+}
+.task-dropdown .dropdown-menu.show {
+    display: block;
+    width: 100%;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}
+.end-date-add{
+    display: flex;
+    flex-direction: column;
+    margin-top: 31px;
+}
+.copy-accountant-tasks{
+    position: absolute;
+    right: 0;
+    display: flex;
+    margin-right: 15px;
+}
+.recommendations-item-text .fa-envelope{
+    color: #07608d !important; 
+    font-size: 25px;
+    /* position: absolute;
+    right: 50px;
+    bottom: 67px; */
+  }
+.employee-name{
+    color: #63c0ba;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    /* align-items: center; */
+    margin: 0px 0 24px 38px;
+   cursor: pointer;
+   width: fit-content;
+}
+.employee-name-button .employee-name{
+    margin: 0;
+}
+.employee-name .my-img-round{
+    margin:0 29px 0 0;
+}
+.point{
+    width: 4px;
+    height: 4px;
+    background-color: #63c0ba;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top:41px;
+}
+.task-rounds{
+    position: absolute;
+    right: -17px;
+    
+}
+.tasks-date{
+    margin:0 70px 0 0;
+   font-size:1rem ;
+   font-weight: bold ;
+   color: #707070;
+   width: 126px;
+}
+.green-line .task-rounds1{
+   top: 112px;
+}
+.green-line .task-rounds2{
+    top: 360px;
+}
+/* .green-line .task-rounds2 .icon-point, .task-rounds3 .icon-point{
+    display: none;
+} */
+.icon-point{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon-Yes{
+    font-size: 16px;
+}
+.task-rounds3{
+   top:620px;
+}
+@media only screen and (max-width: 1200px){
+    .manager-main .recommendation-page .col-sm-4{
+        display: none !important;
+    }
+    .manager-main .recommendation-page .col-sm-8{
+        flex: 0 0 100% !important;
+    max-width: 100% !important;
+    }
+}
+@media only screen and (max-width: 1126px){
+    .manager-main .recommendation-page .col-sm-5{
+        display: none;
+    }
+    .manager-main .recommendation-page .col-sm-7{
+        flex: 0 0 100% !important;
+    max-width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    .img{
+        width: 132px;
+        margin-right: 16px;
+    }
+}
+@media only screen and (max-width: 990px){
+    .timePicker-cont-change{
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+}
+@media only screen and (max-width: 768px){
+    .recommendation-page h1{
+        font-size: 30px;
+    }
+    .recommendation-page p{
+        font-size: 14px;
+    }
+    .img{
+        width: 106px;
+        height: 38px;
+        margin-right: 16px;
+    }
+    .plus-employee{
+        width: 48px;
+        height: 48px;
+    }
+}
+@media only screen and (max-width: 576px){
+    .recommendation-page{
+        margin-right: 15px;
+    margin-left: 15px;
+    }
+}
+@media only screen and (max-width: 380px){
+    .add-employee-list{
+        width: 95 vw !important;
+    }
+}
+@media only screen and (max-width: 375px){
+    .img{
+        height: 33px;
+    }
+    .employee-name-button{
+        margin: 0px;
+    }
+    
+}
+

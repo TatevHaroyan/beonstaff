@@ -1,0 +1,2312 @@
+openapi: 3.0.2
+info:
+  title: IntelligenceCalculator
+  version: 0.1.0
+paths:
+  /api/v1/login:
+    post:
+      tags:
+        - login
+        - login
+      summary: Login
+      operationId: login_api_v1_login_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLoginSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthData'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks:
+    get:
+      tags:
+        - tasks
+        - tasks
+      summary: Get All Tasks
+      operationId: get_all_tasks_api_v1_tasks_get
+      parameters:
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get All Tasks Api V1 Tasks Get
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Task
+      operationId: create_task_api_v1_tasks_post
+      parameters:
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTaskSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/characteristics:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Characteristics
+      operationId: create_characteristics_api_v1_tasks__uuid__characteristics_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProjectCharacteristics'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/idc-one:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Idc One
+      operationId: create_idc_one_api_v1_tasks__uuid__idc_one_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateIDCOneSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/idc-two:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Idc Two
+      operationId: create_idc_two_api_v1_tasks__uuid__idc_two_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateIDCTwoSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/idc-two-logistics:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Idc Two Logistics
+      operationId: create_idc_two_logistics_api_v1_tasks__uuid__idc_two_logistics_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBaseIDCSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/idc-three:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Idc Three
+      operationId: create_idc_three_api_v1_tasks__uuid__idc_three_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateIDCTwoSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/land-rights:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Land Rights
+      operationId: create_land_rights_api_v1_tasks__uuid__land_rights_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLandRightsSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/archaeological:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Archaeological
+      operationId: create_archaeological_api_v1_tasks__uuid__archaeological_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateArchaeologicalSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/geodetic:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Geodetic
+      operationId: create_geodetic_api_v1_tasks__uuid__geodetic_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGeodeticSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/geological:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Geological
+      operationId: create_geological_api_v1_tasks__uuid__geological_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGeologicalSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/geophysical:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Geophysical
+      operationId: create_geophysical_api_v1_tasks__uuid__geophysical_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGeophysicalSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/ecological:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Ecological
+      operationId: create_ecological_api_v1_tasks__uuid__ecological_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEcologicalSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/hydrometeorological:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Hydrometeorological
+      operationId: create_hydrometeorological_api_v1_tasks__uuid__hydrometeorological_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateHydrometeorologicalSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/explosive_objects_presence:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Eop
+      operationId: create_eop_api_v1_tasks__uuid__explosive_objects_presence_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateExplosiveObjectsPresenceSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}:
+    get:
+      tags:
+        - tasks
+        - tasks
+      summary: Get Task
+      operationId: get_task_api_v1_tasks__uuid__get
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/calculation:
+    get:
+      tags:
+        - tasks
+        - tasks
+      summary: Get Calculation
+      operationId: get_calculation_api_v1_tasks__uuid__calculation_get
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get Calculation Api V1 Tasks  Uuid  Calculation Get
+                type: object
+                additionalProperties:
+                  type: number
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/coefficients:
+    post:
+      tags:
+        - tasks
+        - tasks
+      summary: Create Coefficient
+      operationId: create_coefficient_api_v1_tasks__uuid__coefficients_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCoefficientsSchema'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSchema'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/collections/construction-types:
+    get:
+      tags:
+        - collections
+        - collections
+      summary: Get Construction Types
+      operationId: get_construction_types_api_v1_collections_construction_types_get
+      parameters:
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConstructionType'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/collections/development-types:
+    get:
+      tags:
+        - collections
+        - collections
+      summary: Get Development Types
+      operationId: get_development_types_api_v1_collections_development_types_get
+      parameters:
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DevelopmentType'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/collections/design-directions:
+    get:
+      tags:
+        - collections
+        - collections
+      summary: Get Design Directions
+      operationId: get_design_directions_api_v1_collections_design_directions_get
+      parameters:
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DesignDirection'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/collections/object-types:
+    get:
+      tags:
+        - collections
+        - collections
+      summary: Get Object Types
+      operationId: get_object_types_api_v1_collections_object_types_get
+      parameters:
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ObjectType'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/collections/cs-station-techs:
+    get:
+      tags:
+        - collections
+        - collections
+      summary: Get Cs Station Techs
+      operationId: get_cs_station_techs_api_v1_collections_cs_station_techs_get
+      parameters:
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CompressionStationTechs'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/collections/booster-cs-station-techs/characteristics:
+    get:
+      tags:
+        - collections
+        - collections
+      summary: Get Aggregators
+      operationId: get_aggregators_api_v1_collections_booster_cs_station_techs_characteristics_get
+      parameters:
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Aggregators'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{uuid}/objects:
+    post:
+      tags:
+        - objects
+        - objects
+      summary: Create Construction Object
+      operationId: create_construction_object_api_v1_tasks__uuid__objects_post
+      parameters:
+        - required: true
+          schema:
+            title: Uuid
+            type: string
+          name: uuid
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConstructionObject'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConstructionObjectFull'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{task_id}/objects/{object_id}:
+    get:
+      tags:
+        - objects
+        - objects
+      summary: Get Object
+      operationId: get_object_api_v1_tasks__task_id__objects__object_id__get
+      parameters:
+        - required: true
+          schema:
+            title: Task Id
+            type: string
+          name: task_id
+          in: path
+        - required: true
+          schema:
+            title: Object Id
+            type: string
+          name: object_id
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConstructionObjectFull'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/tasks/{task_id}/objects/{object_id}/tech_chars:
+    post:
+      tags:
+        - objects
+        - objects
+      summary: Create Technical Characteristics
+      operationId: create_technical_characteristics_api_v1_tasks__task_id__objects__object_id__tech_chars_post
+      parameters:
+        - required: true
+          schema:
+            title: Task Id
+            type: string
+          name: task_id
+          in: path
+        - required: true
+          schema:
+            title: Object Id
+            type: string
+          name: object_id
+          in: path
+        - required: false
+          schema:
+            title: Authorization
+            type: string
+          name: authorization
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Item
+              anyOf:
+                - $ref: '#/components/schemas/BoosterStationChars'
+                - $ref: '#/components/schemas/CSStationChars'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConstructionObjectFull'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    Aggregators:
+      title: Aggregators
+      enum:
+        - 1 агрегат
+        - 2 агрегата
+        - 3 агрегата
+        - 4 агрегата
+        - 5 агрегатов
+        - 6 агрегатов
+        - 7 агрегатов
+        - 8 агрегатов
+      type: string
+      description: An enumeration.
+    ArchaeologicalSchema:
+      title: ArchaeologicalSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - reconnaissance_survey
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        reconnaissance_survey:
+          title: Reconnaissance Survey
+          type: integer
+    AuthData:
+      title: AuthData
+      required:
+        - access_token
+      type: object
+      properties:
+        access_token:
+          title: Access Token
+          type: string
+    BaseIDCSchema:
+      title: BaseIDCSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - is_southern_federal_district
+        - federal_entities
+        - federal_subjects
+        - municipalities
+        - settlements
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        is_southern_federal_district:
+          title: Is Southern Federal District
+          type: boolean
+        federal_entities:
+          title: Federal Entities
+          type: integer
+        federal_subjects:
+          title: Federal Subjects
+          type: integer
+        municipalities:
+          title: Municipalities
+          type: integer
+        settlements:
+          title: Settlements
+          type: integer
+    BoosterCompressionStationTechs:
+      title: BoosterCompressionStationTechs
+      enum:
+        - Ремонтно-механическая мастерская, Административно-бытовой корпус, Служебно-эксплуатационный блок, Производственно-эксплуатационный блок
+        - Котельная
+        - Механизированная мойка
+        - Канализационные очистные сооружения, Водоочистные сооружения
+        - Закрытые одноэтажные стоянки автотранспорта площадью до 1500 м2
+      type: string
+      description: An enumeration.
+    BoosterStationChars:
+      title: BoosterStationChars
+      required:
+        - aggregators
+        - techs
+      type: object
+      properties:
+        object_id:
+          title: Object Id
+          anyOf:
+            - type: string
+            - type: string
+              format: uuid
+        aggregators:
+          title: Aggregators
+          anyOf:
+            - type: string
+            - $ref: '#/components/schemas/Aggregators'
+        techs:
+          title: Techs
+          type: array
+          items:
+            anyOf:
+              - type: string
+              - $ref: '#/components/schemas/BoosterCompressionStationTechs'
+              - $ref: '#/components/schemas/Enum'
+              - {}
+    CSStationChars:
+      title: CSStationChars
+      required:
+        - tech_chars
+      type: object
+      properties:
+        object_id:
+          title: Object Id
+          anyOf:
+            - type: string
+            - type: string
+              format: uuid
+        tech_chars:
+          title: Tech Chars
+          anyOf:
+            - type: string
+            - $ref: '#/components/schemas/CompressionStationTechs'
+    Coefficients:
+      title: Coefficients
+      required:
+        - PD_RD_adjustment_OKS
+        - design_region
+        - complicating_factors
+        - subcontract
+      type: object
+      properties:
+        PD_RD_adjustment_OKS:
+          title: Pd Rd Adjustment Oks
+          type: number
+        design_region:
+          title: Design Region
+          type: number
+        complicating_factors:
+          title: Complicating Factors
+          type: number
+        subcontract:
+          title: Subcontract
+          type: number
+    CompressionStationTechs:
+      title: CompressionStationTechs
+      enum:
+        - 4х16 установленной мощностью, МВт и газотурбинным приводом
+        - 4х25 установленной мощностью, МВт и газотурбинным приводом
+        - 4х32 установленной мощностью, МВт и газотурбинным приводом
+      type: string
+      description: An enumeration.
+    ConstructionObject:
+      title: ConstructionObject
+      required:
+        - object_type
+        - name
+      type: object
+      properties:
+        id:
+          title: Id
+          anyOf:
+            - type: string
+            - type: string
+              format: uuid
+        object_type:
+          $ref: '#/components/schemas/ObjectType'
+        name:
+          title: Name
+          type: string
+    ConstructionObjectFull:
+      title: ConstructionObjectFull
+      required:
+        - object_type
+        - name
+      type: object
+      properties:
+        id:
+          title: Id
+          anyOf:
+            - type: string
+            - type: string
+              format: uuid
+        object_type:
+          $ref: '#/components/schemas/ObjectType'
+        name:
+          title: Name
+          type: string
+        tech_chars:
+          title: Tech Chars
+          anyOf:
+            - $ref: '#/components/schemas/BoosterStationChars'
+            - $ref: '#/components/schemas/CSStationChars'
+    ConstructionType:
+      title: ConstructionType
+      enum:
+        - Новое строительство
+        - Техническое перевооружение
+        - Реконструкция
+        - Прочее
+      type: string
+      description: An enumeration.
+    CreateArchaeologicalSchema:
+      title: CreateArchaeologicalSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - reconnaissance_survey
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        reconnaissance_survey:
+          title: Reconnaissance Survey
+          type: integer
+        task_id:
+          title: Task Id
+          type: string
+    CreateBaseIDCSchema:
+      title: CreateBaseIDCSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - is_southern_federal_district
+        - federal_entities
+        - federal_subjects
+        - municipalities
+        - settlements
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        is_southern_federal_district:
+          title: Is Southern Federal District
+          type: boolean
+        federal_entities:
+          title: Federal Entities
+          type: integer
+        federal_subjects:
+          title: Federal Subjects
+          type: integer
+        municipalities:
+          title: Municipalities
+          type: integer
+        settlements:
+          title: Settlements
+          type: integer
+        task_id:
+          title: Task Id
+          type: string
+    CreateCoefficientsSchema:
+      title: CreateCoefficientsSchema
+      required:
+        - PD_RD_adjustment_OKS
+        - design_region
+        - complicating_factors
+        - subcontract
+      type: object
+      properties:
+        PD_RD_adjustment_OKS:
+          title: Pd Rd Adjustment Oks
+          type: number
+        design_region:
+          title: Design Region
+          type: number
+        complicating_factors:
+          title: Complicating Factors
+          type: number
+        subcontract:
+          title: Subcontract
+          type: number
+        task_id:
+          title: Task Id
+          type: string
+    CreateConstructionObject:
+      title: CreateConstructionObject
+      required:
+        - object_type
+        - name
+      type: object
+      properties:
+        id:
+          title: Id
+          anyOf:
+            - type: string
+            - type: string
+              format: uuid
+        object_type:
+          $ref: '#/components/schemas/ObjectType'
+        name:
+          title: Name
+          type: string
+        task_id:
+          title: Task Id
+          type: string
+    CreateEcologicalSchema:
+      title: CreateEcologicalSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - survey_lines_length
+        - laboratories
+        - linear_facilities_inspection
+        - site_facilities_inspection
+        - pkol_observations
+        - radon_flux_density
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        survey_lines_length:
+          title: Survey Lines Length
+          type: integer
+        laboratories:
+          title: Laboratories
+          type: integer
+        linear_facilities_inspection:
+          title: Linear Facilities Inspection
+          type: integer
+        site_facilities_inspection:
+          title: Site Facilities Inspection
+          type: integer
+        pkol_observations:
+          title: Pkol Observations
+          type: integer
+        radon_flux_density:
+          title: Radon Flux Density
+          type: integer
+        task_id:
+          title: Task Id
+          type: string
+    CreateExplosiveObjectsPresenceSchema:
+      title: CreateExplosiveObjectsPresenceSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - reconnaissance_survey
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        reconnaissance_survey:
+          title: Reconnaissance Survey
+          type: integer
+        task_id:
+          title: Task Id
+          type: string
+    CreateGeodeticSchema:
+      title: CreateGeodeticSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - survey_lines_length
+        - pogc_laying
+        - pogc_definition
+        - tracing
+        - ets_m_500
+        - ets_m_1000
+        - ets_m_2000
+        - ets_m_5000
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        survey_lines_length:
+          title: Survey Lines Length
+          type: integer
+        pogc_laying:
+          title: Pogc Laying
+          type: integer
+        pogc_definition:
+          title: Pogc Definition
+          type: integer
+        tracing:
+          title: Tracing
+          type: integer
+        ets_m_500:
+          title: Ets M 500
+          type: integer
+        ets_m_1000:
+          title: Ets M 1000
+          type: integer
+        ets_m_2000:
+          title: Ets M 2000
+          type: integer
+        ets_m_5000:
+          title: Ets M 5000
+          type: integer
+        task_id:
+          title: Task Id
+          type: string
+    CreateGeologicalSchema:
+      title: CreateGeologicalSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - survey_lines_length
+        - eg_reconnaissance
+        - mining
+        - shear_testing_of_soils
+        - vertical_static_load_tests
+        - vane_shear_gauge_testing
+        - static_sounding
+        - dynamic_sounding
+        - laboratory
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        survey_lines_length:
+          title: Survey Lines Length
+          type: integer
+        eg_reconnaissance:
+          title: Eg Reconnaissance
+          type: integer
+        mining:
+          title: Mining
+          type: integer
+        shear_testing_of_soils:
+          title: Shear Testing Of Soils
+          type: integer
+        vertical_static_load_tests:
+          title: Vertical Static Load Tests
+          type: integer
+        vane_shear_gauge_testing:
+          title: Vane Shear Gauge Testing
+          type: integer
+        static_sounding:
+          title: Static Sounding
+          type: integer
+        dynamic_sounding:
+          title: Dynamic Sounding
+          type: integer
+        laboratory:
+          title: Laboratory
+          type: integer
+        task_id:
+          title: Task Id
+          type: string
+    CreateGeophysicalSchema:
+      title: CreateGeophysicalSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - survey_lines_length
+        - resistivity_and_ka
+        - seismic_exploration
+        - ves_exploration
+        - ves_exploration_lt_200
+        - electrical_prospecting_ep
+        - hf_microseisms_registration
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        survey_lines_length:
+          title: Survey Lines Length
+          type: integer
+        resistivity_and_ka:
+          title: Resistivity And Ka
+          type: integer
+        seismic_exploration:
+          title: Seismic Exploration
+          type: integer
+        ves_exploration:
+          title: Ves Exploration
+          type: integer
+        ves_exploration_lt_200:
+          title: Ves Exploration Lt 200
+          type: integer
+        electrical_prospecting_ep:
+          title: Electrical Prospecting Ep
+          type: integer
+        hf_microseisms_registration:
+          title: Hf Microseisms Registration
+          type: integer
+        task_id:
+          title: Task Id
+          type: string
+    CreateHydrometeorologicalSchema:
+      title: CreateHydrometeorologicalSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - survey_lines_length
+        - reconnaissance_survey
+        - temporary_stream_transition
+        - permanent_stream_transition
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        survey_lines_length:
+          title: Survey Lines Length
+          type: integer
+        reconnaissance_survey:
+          title: Reconnaissance Survey
+          type: integer
+        temporary_stream_transition:
+          title: Temporary Stream Transition
+          type: integer
+        permanent_stream_transition:
+          title: Permanent Stream Transition
+          type: integer
+        task_id:
+          title: Task Id
+          type: string
+    CreateIDCOneSchema:
+      title: CreateIDCOneSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - is_southern_federal_district
+        - federal_entities
+        - federal_subjects
+        - municipalities
+        - settlements
+        - cadastral_plan
+        - connections
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        is_southern_federal_district:
+          title: Is Southern Federal District
+          type: boolean
+        federal_entities:
+          title: Federal Entities
+          type: integer
+        federal_subjects:
+          title: Federal Subjects
+          type: integer
+        municipalities:
+          title: Municipalities
+          type: integer
+        settlements:
+          title: Settlements
+          type: integer
+        cadastral_plan:
+          title: Cadastral Plan
+          type: integer
+        connections:
+          title: Connections
+          type: integer
+        task_id:
+          title: Task Id
+          type: string
+    CreateIDCTwoSchema:
+      title: CreateIDCTwoSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - is_southern_federal_district
+        - federal_entities
+        - federal_subjects
+        - municipalities
+        - settlements
+        - cadastral_plan
+        - connections
+        - special_condition_zones
+        - plot_volume_two
+        - plot_volume_four
+        - plot_volume_six
+        - plot_volume_seven
+        - territory_projects
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        is_southern_federal_district:
+          title: Is Southern Federal District
+          type: boolean
+        federal_entities:
+          title: Federal Entities
+          type: integer
+        federal_subjects:
+          title: Federal Subjects
+          type: integer
+        municipalities:
+          title: Municipalities
+          type: integer
+        settlements:
+          title: Settlements
+          type: integer
+        cadastral_plan:
+          title: Cadastral Plan
+          type: integer
+        connections:
+          title: Connections
+          type: integer
+        special_condition_zones:
+          title: Special Condition Zones
+          type: integer
+        plot_volume_two:
+          title: Plot Volume Two
+          type: integer
+        plot_volume_four:
+          title: Plot Volume Four
+          type: integer
+        plot_volume_six:
+          title: Plot Volume Six
+          type: integer
+        plot_volume_seven:
+          title: Plot Volume Seven
+          type: integer
+        territory_projects:
+          title: Territory Projects
+          type: integer
+        task_id:
+          title: Task Id
+          type: string
+    CreateLandRightsSchema:
+      title: CreateLandRightsSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - federal_subjects
+        - municipalities
+        - area
+        - land_plots_count
+        - sff_land_plots_count
+        - land_users
+        - sff_lands_area
+        - length
+        - sff_lands_length
+        - variants_per_task
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        federal_subjects:
+          title: Federal Subjects
+          type: integer
+        municipalities:
+          title: Municipalities
+          type: integer
+        area:
+          title: Area
+          type: integer
+        land_plots_count:
+          title: Land Plots Count
+          type: integer
+        sff_land_plots_count:
+          title: Sff Land Plots Count
+          type: integer
+        land_users:
+          title: Land Users
+          type: integer
+        sff_lands_area:
+          title: Sff Lands Area
+          type: integer
+        length:
+          title: Length
+          type: integer
+        sff_lands_length:
+          title: Sff Lands Length
+          type: integer
+        variants_per_task:
+          title: Variants Per Task
+          type: integer
+        task_id:
+          title: Task Id
+          type: string
+    CreateLoginSchema:
+      title: CreateLoginSchema
+      required:
+        - login
+        - password
+      type: object
+      properties:
+        login:
+          title: Login
+          type: string
+        password:
+          title: Password
+          type: string
+    CreateProjectCharacteristics:
+      title: CreateProjectCharacteristics
+      required:
+        - construction_type
+        - development_type
+        - design_direction
+      type: object
+      properties:
+        construction_type:
+          title: Construction Type
+          type: string
+        development_type:
+          title: Development Type
+          type: string
+        design_direction:
+          title: Design Direction
+          type: string
+        task_id:
+          title: Task Id
+          anyOf:
+            - type: string
+            - type: string
+              format: uuid
+    CreateTaskSchema:
+      title: CreateTaskSchema
+      required:
+        - task_id
+        - task_category
+        - task_name
+        - editor
+      type: object
+      properties:
+        task_id:
+          title: Task Id
+          type: string
+        task_category:
+          title: Task Category
+          type: string
+        task_name:
+          title: Task Name
+          type: string
+        editor:
+          title: Editor
+          type: string
+    DesignDirection:
+      title: DesignDirection
+      enum:
+        - Транспорт
+        - Добыча
+        - Переработка
+        - Хранение
+        - Сжижение
+        - Газораспределение
+        - Объекты Инфраструктуры
+      type: string
+      description: An enumeration.
+    DevelopmentType:
+      title: DevelopmentType
+      enum:
+        - Вновь проектируемый объект
+        - Корректировка объекта
+      type: string
+      description: An enumeration.
+    EcologicalSchema:
+      title: EcologicalSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - survey_lines_length
+        - laboratories
+        - linear_facilities_inspection
+        - site_facilities_inspection
+        - pkol_observations
+        - radon_flux_density
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        survey_lines_length:
+          title: Survey Lines Length
+          type: integer
+        laboratories:
+          title: Laboratories
+          type: integer
+        linear_facilities_inspection:
+          title: Linear Facilities Inspection
+          type: integer
+        site_facilities_inspection:
+          title: Site Facilities Inspection
+          type: integer
+        pkol_observations:
+          title: Pkol Observations
+          type: integer
+        radon_flux_density:
+          title: Radon Flux Density
+          type: integer
+    Enum:
+      title: Enum
+      enum: []
+      description: |-
+        Generic enumeration.
+
+        Derive from this class to define new enumerations.
+    ExplosiveObjectsPresenceSchema:
+      title: ExplosiveObjectsPresenceSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - reconnaissance_survey
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        reconnaissance_survey:
+          title: Reconnaissance Survey
+          type: integer
+    GeodeticSchema:
+      title: GeodeticSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - survey_lines_length
+        - pogc_laying
+        - pogc_definition
+        - tracing
+        - ets_m_500
+        - ets_m_1000
+        - ets_m_2000
+        - ets_m_5000
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        survey_lines_length:
+          title: Survey Lines Length
+          type: integer
+        pogc_laying:
+          title: Pogc Laying
+          type: integer
+        pogc_definition:
+          title: Pogc Definition
+          type: integer
+        tracing:
+          title: Tracing
+          type: integer
+        ets_m_500:
+          title: Ets M 500
+          type: integer
+        ets_m_1000:
+          title: Ets M 1000
+          type: integer
+        ets_m_2000:
+          title: Ets M 2000
+          type: integer
+        ets_m_5000:
+          title: Ets M 5000
+          type: integer
+    GeologicalSchema:
+      title: GeologicalSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - survey_lines_length
+        - eg_reconnaissance
+        - mining
+        - shear_testing_of_soils
+        - vertical_static_load_tests
+        - vane_shear_gauge_testing
+        - static_sounding
+        - dynamic_sounding
+        - laboratory
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        survey_lines_length:
+          title: Survey Lines Length
+          type: integer
+        eg_reconnaissance:
+          title: Eg Reconnaissance
+          type: integer
+        mining:
+          title: Mining
+          type: integer
+        shear_testing_of_soils:
+          title: Shear Testing Of Soils
+          type: integer
+        vertical_static_load_tests:
+          title: Vertical Static Load Tests
+          type: integer
+        vane_shear_gauge_testing:
+          title: Vane Shear Gauge Testing
+          type: integer
+        static_sounding:
+          title: Static Sounding
+          type: integer
+        dynamic_sounding:
+          title: Dynamic Sounding
+          type: integer
+        laboratory:
+          title: Laboratory
+          type: integer
+    GeophysicalSchema:
+      title: GeophysicalSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - survey_lines_length
+        - resistivity_and_ka
+        - seismic_exploration
+        - ves_exploration
+        - ves_exploration_lt_200
+        - electrical_prospecting_ep
+        - hf_microseisms_registration
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        survey_lines_length:
+          title: Survey Lines Length
+          type: integer
+        resistivity_and_ka:
+          title: Resistivity And Ka
+          type: integer
+        seismic_exploration:
+          title: Seismic Exploration
+          type: integer
+        ves_exploration:
+          title: Ves Exploration
+          type: integer
+        ves_exploration_lt_200:
+          title: Ves Exploration Lt 200
+          type: integer
+        electrical_prospecting_ep:
+          title: Electrical Prospecting Ep
+          type: integer
+        hf_microseisms_registration:
+          title: Hf Microseisms Registration
+          type: integer
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    HydrometeorologicalSchema:
+      title: HydrometeorologicalSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - survey_lines_length
+        - reconnaissance_survey
+        - temporary_stream_transition
+        - permanent_stream_transition
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        survey_lines_length:
+          title: Survey Lines Length
+          type: integer
+        reconnaissance_survey:
+          title: Reconnaissance Survey
+          type: integer
+        temporary_stream_transition:
+          title: Temporary Stream Transition
+          type: integer
+        permanent_stream_transition:
+          title: Permanent Stream Transition
+          type: integer
+    IDCOneSchema:
+      title: IDCOneSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - is_southern_federal_district
+        - federal_entities
+        - federal_subjects
+        - municipalities
+        - settlements
+        - cadastral_plan
+        - connections
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        is_southern_federal_district:
+          title: Is Southern Federal District
+          type: boolean
+        federal_entities:
+          title: Federal Entities
+          type: integer
+        federal_subjects:
+          title: Federal Subjects
+          type: integer
+        municipalities:
+          title: Municipalities
+          type: integer
+        settlements:
+          title: Settlements
+          type: integer
+        cadastral_plan:
+          title: Cadastral Plan
+          type: integer
+        connections:
+          title: Connections
+          type: integer
+    IDCTwoSchema:
+      title: IDCTwoSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - is_southern_federal_district
+        - federal_entities
+        - federal_subjects
+        - municipalities
+        - settlements
+        - cadastral_plan
+        - connections
+        - special_condition_zones
+        - plot_volume_two
+        - plot_volume_four
+        - plot_volume_six
+        - plot_volume_seven
+        - territory_projects
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        is_southern_federal_district:
+          title: Is Southern Federal District
+          type: boolean
+        federal_entities:
+          title: Federal Entities
+          type: integer
+        federal_subjects:
+          title: Federal Subjects
+          type: integer
+        municipalities:
+          title: Municipalities
+          type: integer
+        settlements:
+          title: Settlements
+          type: integer
+        cadastral_plan:
+          title: Cadastral Plan
+          type: integer
+        connections:
+          title: Connections
+          type: integer
+        special_condition_zones:
+          title: Special Condition Zones
+          type: integer
+        plot_volume_two:
+          title: Plot Volume Two
+          type: integer
+        plot_volume_four:
+          title: Plot Volume Four
+          type: integer
+        plot_volume_six:
+          title: Plot Volume Six
+          type: integer
+        plot_volume_seven:
+          title: Plot Volume Seven
+          type: integer
+        territory_projects:
+          title: Territory Projects
+          type: integer
+    LandRightsSchema:
+      title: LandRightsSchema
+      required:
+        - in_house_percentage
+        - subcontracting_percentage
+        - federal_subjects
+        - municipalities
+        - area
+        - land_plots_count
+        - sff_land_plots_count
+        - land_users
+        - sff_lands_area
+        - length
+        - sff_lands_length
+        - variants_per_task
+      type: object
+      properties:
+        in_house_percentage:
+          title: In House Percentage
+          type: integer
+        subcontracting_percentage:
+          title: Subcontracting Percentage
+          type: integer
+        federal_subjects:
+          title: Federal Subjects
+          type: integer
+        municipalities:
+          title: Municipalities
+          type: integer
+        area:
+          title: Area
+          type: integer
+        land_plots_count:
+          title: Land Plots Count
+          type: integer
+        sff_land_plots_count:
+          title: Sff Land Plots Count
+          type: integer
+        land_users:
+          title: Land Users
+          type: integer
+        sff_lands_area:
+          title: Sff Lands Area
+          type: integer
+        length:
+          title: Length
+          type: integer
+        sff_lands_length:
+          title: Sff Lands Length
+          type: integer
+        variants_per_task:
+          title: Variants Per Task
+          type: integer
+    ObjectType:
+      title: ObjectType
+      enum:
+        - Дожимная компрессорная станция (ДКС)
+        - Компрессорная станция (КС)
+        - Газораспределительная станция (ГРС)
+        - Волоконно-оптическая линия связи (ВОЛС)
+        - Воздушная линия электропередачи (ВЛ)
+        - Подъездная автодорога (ПАД)
+        - Линейно-производственное управление магистральных газопроводов
+      type: string
+      description: An enumeration.
+    ProjectCharacteristics:
+      title: ProjectCharacteristics
+      required:
+        - construction_type
+        - development_type
+        - design_direction
+      type: object
+      properties:
+        construction_type:
+          title: Construction Type
+          anyOf:
+            - type: string
+            - $ref: '#/components/schemas/ConstructionType'
+        development_type:
+          title: Development Type
+          anyOf:
+            - type: string
+            - $ref: '#/components/schemas/DevelopmentType'
+        design_direction:
+          title: Design Direction
+          anyOf:
+            - type: string
+            - $ref: '#/components/schemas/DesignDirection'
+    TaskSchema:
+      title: TaskSchema
+      required:
+        - id
+        - task_id
+        - task_category
+        - task_name
+        - editor
+        - created_at
+        - objects
+      type: object
+      properties:
+        id:
+          title: Id
+          anyOf:
+            - type: string
+            - type: string
+              format: uuid
+        task_id:
+          title: Task Id
+          type: string
+        task_category:
+          title: Task Category
+          type: string
+        task_name:
+          title: Task Name
+          type: string
+        editor:
+          title: Editor
+          type: string
+        created_at:
+          title: Created At
+          anyOf:
+            - type: string
+            - type: string
+              format: date-time
+        project_characteristics:
+          $ref: '#/components/schemas/ProjectCharacteristics'
+        idc_one:
+          $ref: '#/components/schemas/IDCOneSchema'
+        idc_two:
+          $ref: '#/components/schemas/IDCTwoSchema'
+        idc_two_logistics:
+          $ref: '#/components/schemas/BaseIDCSchema'
+        idc_three:
+          $ref: '#/components/schemas/IDCTwoSchema'
+        land_rights_registration:
+          $ref: '#/components/schemas/LandRightsSchema'
+        hydrometeorological:
+          $ref: '#/components/schemas/HydrometeorologicalSchema'
+        ecological:
+          $ref: '#/components/schemas/EcologicalSchema'
+        geodetic:
+          $ref: '#/components/schemas/GeodeticSchema'
+        geological:
+          $ref: '#/components/schemas/GeologicalSchema'
+        geophysical:
+          $ref: '#/components/schemas/GeophysicalSchema'
+        archaeological:
+          $ref: '#/components/schemas/ArchaeologicalSchema'
+        explosive_objects_presence:
+          $ref: '#/components/schemas/ExplosiveObjectsPresenceSchema'
+        objects:
+          title: Objects
+          type: array
+          items:
+            $ref: '#/components/schemas/ConstructionObject'
+        coefficients:
+          $ref: '#/components/schemas/Coefficients'
+    ValidationError:
+      title: ValidationError
+      required:
+        - loc
+        - msg
+        - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            type: string
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string

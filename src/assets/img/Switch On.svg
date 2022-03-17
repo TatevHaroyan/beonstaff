@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="24" viewBox="0 0 40 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="40" height="24" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Switch_On" data-name="Switch On" clip-path="url(#clip-path)">
+    <rect id="Rectangle_1001" data-name="Rectangle 1001" width="40" height="24" rx="12" fill="#9acd2d"/>
+    <g id="Rectangle_1002" data-name="Rectangle 1002" transform="translate(16)" fill="#14212f" stroke="#9acd2d" stroke-width="1">
+      <rect width="24" height="24" rx="12" stroke="none"/>
+      <rect x="0.5" y="0.5" width="23" height="23" rx="11.5" fill="none"/>
+    </g>
+  </g>
+</svg>

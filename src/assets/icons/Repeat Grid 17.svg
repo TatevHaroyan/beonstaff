@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="16" height="16" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Repeat_Grid_17" data-name="Repeat Grid 17" clip-path="url(#clip-path)">
+    <g id="Group_288" data-name="Group 288">
+      <rect id="Rectangle_1571" data-name="Rectangle 1571" width="16" height="16" fill="#707070" opacity="0"/>
+      <path id="ic_bookmark_24px" d="M15.667,3H6.778A1.775,1.775,0,0,0,5.009,4.778L5,19l6.222-2.667L17.444,19V4.778A1.783,1.783,0,0,0,15.667,3Z" transform="translate(-3 -3)" fill="#707070"/>
+    </g>
+  </g>
+</svg>

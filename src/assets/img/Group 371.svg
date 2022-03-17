@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132" height="132" viewBox="0 0 132 132">
+  <g id="Group_371" data-name="Group 371" transform="translate(-894 -2129)">
+    <circle id="Ellipse_4" data-name="Ellipse 4" cx="46" cy="46" r="46" transform="translate(914 2149)" fill="#9acd2d"/>
+    <path id="ic_arrow_drop_down_24px" d="M7,10,25.406,28.406,43.812,10Z" transform="translate(941.297 2220.906) rotate(-90)" fill="#fff"/>
+    <g id="Ellipse_5" data-name="Ellipse 5" transform="translate(903 2138)" fill="none" stroke="#9acd2d" stroke-width="3" opacity="0.8">
+      <circle cx="57" cy="57" r="57" stroke="none"/>
+      <circle cx="57" cy="57" r="55.5" fill="none"/>
+    </g>
+    <g id="Ellipse_6" data-name="Ellipse 6" transform="translate(894 2129)" fill="none" stroke="#9acd2d" stroke-width="2" opacity="0.5">
+      <circle cx="66" cy="66" r="66" stroke="none"/>
+      <circle cx="66" cy="66" r="65" fill="none"/>
+    </g>
+  </g>
+</svg>

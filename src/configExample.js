@@ -1,0 +1,1 @@
+SERVER ="http://annaniks.com:11994/api/" //serverLink

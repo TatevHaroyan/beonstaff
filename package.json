@@ -1,0 +1,50 @@
+{
+  "name": "employee",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@date-io/date-fns": "^1.3.13",
+    "@material-ui/core": "^4.9.1",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.41",
+    "@material-ui/pickers": "^3.2.10",
+    "@material/textfield": "^4.0.0",
+    "bootstrap": "^4.3.1",
+    "input-moment": "^0.4.0",
+    "material-ui-search-bar": "^0.4.2",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.31",
+    "muicss": "^0.10.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.9",
+    "react-compound-timer": "^1.2.0",
+    "react-datepicker": "^2.9.6",
+    "react-datetime": "^3.0.4",
+    "react-datetime-picker": "^2.7.1",
+    "react-dom": "^16.8.6",
+    "react-js-pagination": "^3.0.2",
+    "react-loader-spinner": "^3.1.4",
+    "react-marquee-slider": "^1.0.16",
+    "react-modern-calendar-datepicker": "^3.1.6",
+    "react-rating": "^2.0.5",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "0.9.5",
+    "react-select": "^3.0.8",
+    "react-simple-datepicker": "^0.1.4",
+    "react-toastify": "^5.5.0",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "redux-devtools": "^3.5.0",
+    "uglifyjs-webpack-plugin": "^1.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
