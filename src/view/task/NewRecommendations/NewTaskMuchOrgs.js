@@ -239,6 +239,11 @@ class NewTaskMuchOrgs extends Component {
             {(!item.valid && this.state.submited) ? <div className='validation valid-center'>{this.props.word[item.errorMessage]}</div> : null}
         </div>
     }
+    _delete_photos(item) {
+        this.setState(prevState => ({
+            images: prevState.images.filter(el => el.name !== item.name)
+        }));
+    }
     render() {
         const { word } = this.props
         return (
@@ -288,7 +293,8 @@ class NewTaskMuchOrgs extends Component {
                             <div className='img-icon-cont'>
                                 <div className='img-cont'>
                                     {this.state.images.map((item, index) => {
-                                        return index < 4 ? <div className='img' key={index}><span className='icon-Photos'></span><span className='images-name'>{item.name}</span></div> : "..."
+                                        return index < 4 ? <div className='img' key={index}><span className={item.type !== "video/mp4" ? 'icon-Photos' : "icon-film"}/><span className='images-name'>{item.name}</span>
+                                        <i className="fas fa-times" onClick={() => this._delete_photos(item)}></i></div> : "..."
                                     })}
                                 </div>
                                 <label>

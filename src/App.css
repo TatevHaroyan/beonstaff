@@ -55,6 +55,38 @@
  .MuiOutlinedInput-notchedOutline .Mui-focused {
   border-color: #63c0ba !important;
 }
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('assets/fonts/icomoo.eot?hhpnqg');
+  src:  url('assets/fonts/icomoo.eot?hhpnqg#iefix') format('embedded-opentype'),
+    url('assets/fonts/icomoo.ttf?hhpnqg') format('truetype'),
+    url('assets/fonts/icomoo.woff?hhpnqg') format('woff'),
+    url('assets/fonts/icomoo.svg?hhpnqg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-film:before {
+  content: "\e913";
+}
+
 .change-status-popup{
   display: flex;
   justify-content: center;
@@ -99,6 +131,9 @@
 }
 .icon-Photos:before {
   content: "\e90a";
+}
+.icon-film:before {
+  content: "\e913";
 }
 .icon-Repeat-Grid-17:before {
   content: "\e90b";

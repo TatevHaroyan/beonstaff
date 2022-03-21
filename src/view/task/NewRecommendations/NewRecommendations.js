@@ -438,7 +438,7 @@ class NewRecommendation extends Component {
                                 <div className='img-cont'>
                                     {this.state.images.map((item, index) => {
                                         return <div className='img' key={index}>
-                                            <span className='icon-Photos'></span><span className='images-name'>{item.name}</span>
+                                            <span className={item.type !== "video/mp4" ? 'icon-Photos' : "icon-film"}></span><span className='images-name'>{item.name}</span>
                                             <i className="fas fa-times" onClick={() => this._delete_photos(item)}></i>
                                         </div>
                                     })}

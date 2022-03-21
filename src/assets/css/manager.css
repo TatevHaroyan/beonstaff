@@ -312,7 +312,6 @@
 .contDatePicker{
     display: flex;
     align-items: center;
-    margin-left: 20px;
     flex: 1;
 }
 .react-datepicker-wrapper{
@@ -407,6 +406,7 @@
 }
 .left-green-button {
     min-width: 100px;
+    margin-right: 21px ;
 }
 .left-green-button span{
     margin-left: 15px;
