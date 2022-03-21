@@ -23,7 +23,6 @@ class ChangeMyData extends Component {
                     type: "text",
                     label: "",
                     valid: true
-
                 },
                 {
                     key: 'user.last_name',

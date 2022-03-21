@@ -32,6 +32,10 @@ import send from "../../../assets/img/send.png";
 import image from "../../../assets/img/image.png"
 import "../../../assets/css/managerrecommendation.css";
 import { SignalCellularNull } from '@material-ui/icons';
+const date_now = new Date();
+const year = date_now.getFullYear();
+const month = date_now.getMonth() + 1;
+const day = date_now.getDate();
 class ManagerRecommendations extends Component {
     constructor(props) {
         super(props);
@@ -75,12 +79,21 @@ class ManagerRecommendations extends Component {
         }
     }
     handleChangeEndDate = (date) => {
-        this.setState({ showPicker: true })
-        let data = {
-            ...this.props.task,
-            end_date: date
+        let new_date = new Date(date);
+        console.log(new_date.getFullYear(), "new_date.getFullYear()");
+        console.log(year + 2, "year + 2");
+        if (new_date.getFullYear() < year + 2) {
+            this.setState({ showPicker: true })
+            let data = {
+                ...this.props.task,
+                end_date: date
+            }
+            this.props.task_data(data)
+        } else {
+            alert("Չի թույլատրվում")
+            return
         }
-        this.props.task_data(data)
+
     }
     componentDidMount() {
         this.getTaskById()
@@ -519,6 +532,8 @@ class ManagerRecommendations extends Component {
                                         >
                                             <p className="end-date">{word.end_date}</p>
                                             <DateTimePicker
+                                                minDate={new Date()}
+                                                maxDate={new Date(9999, 12, 31)}
                                                 onChange={data.status !== "end" ? this.handleChangeEndDate : console.log()
                                                 }
                                                 value={data.end_date ? new Date(data.end_date) : null}
@@ -633,9 +648,7 @@ class ManagerRecommendations extends Component {
                                         this.checked()
                                     }} /> : null}
                             <CheckboxFilter title="Տեսանելի է բոլորի համար" my_task={data.visible_for_client}
-                                onChange={() => {
-                                    this.checked()
-                                }} />
+                            />
                             {data.status === "end" ? <div className="title-rate">
                                 <div className="title">Մենեջեր</div>
                                 <CustomizedRatings

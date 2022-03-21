@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Form } from 'react-bootstrap';
 import Button from "../../components/Button/Button";
 import Loader from 'react-loader-spinner';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
@@ -22,7 +22,7 @@ class ChangeStuffData extends Component {
                     errorMessage: "name_error",
                     type: "text",
                     label: "",
-                    valid: true
+                    valid: this._getValue(props.information, 'user.first_name').length > 0
                 },
                 {
                     key: 'user.last_name',
@@ -30,7 +30,7 @@ class ChangeStuffData extends Component {
                     errorMessage: "name_error",
                     type: "text",
                     label: "",
-                    valid: true
+                    valid: this._getValue(props.information, 'user.last_name').length > 0
                 },
                 {
                     key: 'profession',
@@ -38,7 +38,7 @@ class ChangeStuffData extends Component {
                     errorMessage: "name_error",
                     type: "text",
                     label: "",
-                    valid: true
+                    valid: this._getValue(props.information, 'profession').length > 0
                 },
                 {
                     key: 'phone',
@@ -46,7 +46,7 @@ class ChangeStuffData extends Component {
                     errorMessage: "phone_error",
                     type: "phone",
                     label: "",
-                    valid: true
+                    valid: this._getValue(props.information, 'phone').length > 0
                 },
                 // {
                 //     key: 'user.email',
@@ -62,7 +62,11 @@ class ChangeStuffData extends Component {
         }
     }
     changeEmployeeData() {
-        // let profession = localStorage.getItem("profession");
+        this.setState({ submited: true })
+        let profession_list = this.props.information.url.split("/");
+        let profession = profession_list[profession_list.length - 3];
+        console.log(profession_list, "profession_list");
+        console.log(profession, 'profession');
         let token = localStorage.getItem("token");
         let id = this.props.information.id;
         let formData = new FormData();
@@ -70,15 +74,17 @@ class ChangeStuffData extends Component {
         if (image) formData.append("image", image, image.name)
         for (let index = 0; index < this.state.form.length; index++) {
             const element = this.state.form[index];
-            if (!element.valid && element.value.length === 0) {
+            console.log(element, "element");
+            if ((!element.valid || element.value.length === 0) && element.key !== "profession") {
                 return
             }
-            formData.append(element.key, element.value)
+            formData.append(element.key, element.value);
         }
-        changeEmployeeData(formData, token, id)
+        formData.append("user.email", this.props.information.user.email);
+        changeEmployeeData(formData, token, id, profession)
             .then(() => this.props.close())
             .then((res) => {
-                getEmployeeData(id, token)
+                getEmployeeData(id, token, profession)
                     .then((res) => {
                         this.props.getEmployeeData(res)
                     })
@@ -94,7 +100,7 @@ class ChangeStuffData extends Component {
     _valid(item) {
         switch (item.type) {
             case "text":
-                item.valid = item.value.length < 3 && item.value.length > 0 ? false : true
+                item.valid = (item.value.length === 0 || (item.value.length < 3 && item.value.length > 0)) ? false : true
                 break;
             case "phone":
                 let re = /^[0-9]/;
@@ -105,10 +111,13 @@ class ChangeStuffData extends Component {
         return item.valid
     }
     _renderInput(item, index) {
+        console.log(item, "itemmmmmm");
+        console.log(!item.valid && this.state.submited, "!item.valid && this.state.submited");
         // console.log(item.value.length ? item.value : "");
-        return <div className='input-validation' key={index}>
-            <input type='text'
-                onKeyDown={(e) => this.keyPress(e)}
+        return <Form.Group className='justify-content-center' controlid="exampleForm.ControlInput1" key={index}>
+            <Form.Control type={item.type} onKeyDown={(e) => this.keyPress(e)}
+                className={(!item.valid && this.state.submited) ? "form-control is-invalid" : "form-control"}
+                autoComplete="off"
                 onChange={(e) => {
                     item.value = e.target.value
                     // item.valid = item.value.length > 0
@@ -127,9 +136,10 @@ class ChangeStuffData extends Component {
                 name={item.key}
                 value={item.value && item.value !== "null" ? item.value : ""}
             />
-            {(!item.valid && (this.state.submited || item.active)) ? <div className='validation'>{this.props.word[item.errorMessage]}</div> : null}
-
-        </div>
+            {(!item.valid && this.state.submited)
+                ? <div className='validation'>{this.props.word[item.errorMessage]}</div>
+                : null}
+        </Form.Group>
     }
 
     _getValue(data, key) {
@@ -142,6 +152,7 @@ class ChangeStuffData extends Component {
         return result === data ? null : result;
     }
     render() {
+        console.log(this.state.submited, "this.state.submited");
         let { imagePreviewUrl } = this.state;
         let $imagePreview = null;
         const { word, } = this.props

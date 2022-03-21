@@ -258,7 +258,7 @@ table {
     bottom: 0;
     vertical-align: center;
     margin-bottom: 10px;
-    height: 70px;
+    /* height: 70px; */
 }
 /* .recommendations-item-bottom hr{
     margin-bottom: 0px;

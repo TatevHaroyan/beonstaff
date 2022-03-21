@@ -52,7 +52,7 @@ class Organizations extends Component {
         const tmp = newFilter ? {
             ...params,
             ...newFilter,
-        } : { ...params }
+        } : {}
         this.setState({
             filter: {
                 ...this.state.filter,
@@ -119,6 +119,7 @@ class Organizations extends Component {
                     components={animatedComponents}
                     options={this._return_multiselect_list()}
                     onChange={(data) => {
+                        console.log(data, "dataaaaaaaaaaa");
                         if (data.value === "") {
                             this.setFilter()
                         } else {

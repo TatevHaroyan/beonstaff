@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import RecommendationsItem from "../../components/RecommendationsItem";
 import { Col, Row } from "react-bootstrap";
 import Button from 'react-bootstrap/Button'
-import Collapse from 'react-bootstrap/Collapse'
+import Collapse from 'react-bootstrap/Collapse';
+
 // import DatePicker from "react-modern-calendar-datepicker";
 // import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import DatePicker from "react-datepicker";
@@ -372,15 +373,16 @@ class Tasks extends Component {
         })
         if (data.length > 0 && this.state.loading === false) {
             return data.map((item, index) => {
-                return <Col sm={6} key={index} ><RecommendationsItem
-                    child_tasks={item.parent_task && item.parent_task.length > 0}
-                    toLink={`/main_employee/tasks/${item.id}`}
-                    item={item}
-                    modalShow={() => this.setState({ deleteVisible: !this.state.deleteVisible, delete_id: item.id })}
-                    getTaskData={() => this.setFilter()}
-                    {...this.props}
-                    color={this.styleByStatus(item.status)}
-                />
+                return <Col sm={6} key={index} >
+                    <RecommendationsItem
+                        child_tasks={item.parent_task && item.parent_task.length > 0}
+                        toLink={`/main_employee/tasks/${item.id}`}
+                        item={item}
+                        modalShow={() => this.setState({ deleteVisible: !this.state.deleteVisible, delete_id: item.id })}
+                        getTaskData={() => this.setFilter()}
+                        {...this.props}
+                        color={this.styleByStatus(item.status)}
+                    />
                 </Col>
             })
         }

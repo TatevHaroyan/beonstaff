@@ -95,10 +95,11 @@ class Add extends Component {
                         disabled: false
                     })
                 } else {
-                    this.success_notify()
-                    this.props.close()
-                    getStuff(token, 1000)
-                        .then((res) => this.props.getStuff(res))
+                    this.success_notify();
+                    this.props.close();
+                    this.props.get_new_info()
+                    // getStuff(token, 1000)
+                    //     .then((res) => this.props.getStuff(res))
                 }
             })
             .catch((error) => {
@@ -117,10 +118,10 @@ class Add extends Component {
                     // item.valid = item.value.length > 0
                     switch (item.key) {
                         case "user.first_name":
-                            item.valid = !item.value.length === 0 && item.value.length < 3 ? false : true
+                            item.valid = (item.value.length === 0 || (item.value.length !== 0 && item.value.length < 4)) ? false : true
                             break;
                         case "user.last_name":
-                            item.valid = !item.value.length === 0 && item.value.length < 3 ? false : true
+                            item.valid = (item.value.length === 0 || (item.value.length !== 0 && item.value.length < 4)) ? false : true
                             break;
                         case "phone":
                             let re = /^[0-9]/;
@@ -130,7 +131,7 @@ class Add extends Component {
                             item.valid = !item.value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) && item.value.length > 0 ? false : true
                             break;
                         case "user.password":
-                            item.valid = !item.value.length === 0 && item.value.length < 6 ? false : true
+                            item.valid = item.value.length !== 0 && item.value.length < 6 ? false : true
                             break;
                         default:
                     }

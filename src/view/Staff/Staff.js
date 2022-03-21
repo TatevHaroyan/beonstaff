@@ -16,9 +16,8 @@ class ManagerStuff extends Component {
             show: false,
         }
     }
-    token = localStorage.getItem("token")
-    componentDidMount() {
-        this.setState({ loader: true })
+    token = localStorage.getItem("token");
+    get_new_info() {
         let type = this.props.match.params.type;
         getStuff(this.token, { accountant_type: type, limit: 1000 })
             .then((res) => {
@@ -28,15 +27,22 @@ class ManagerStuff extends Component {
                     })
             })
     }
+    componentDidMount() {
+        this.setState({ loader: true })
+        this.get_new_info();
+    }
     render() {
         const { word, stuff } = this.props
         return (
             <div className='manager-stuff'>
                 {this.state.show ? <div className='manager-popup'>
                     <div onClick={() => { this.setState({ show: false }) }} className='popup'></div>
-                    <Add type={this.props.match.params.type} create={word.add_new_employee} close={() => {
-                        this.setState({ show: false })
-                    }} />
+                    <Add type={this.props.match.params.type}
+                        get_new_info={() => this.get_new_info()}
+                        create={word.add_new_employee}
+                        close={() => {
+                            this.setState({ show: false })
+                        }} />
                 </div> : null}
                 <div className='plus-cont' onClick={() => {
                     this.setState({ show: true })

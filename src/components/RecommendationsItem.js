@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import LinesEllipsis from 'react-lines-ellipsis';
 import Options from "./Options";
 import user from "../assets/img/userbig.png";
 import { SERVER } from "../config";
-import 'moment-timezone'
+import 'moment-timezone';
 import moment from 'moment';
 import 'moment/locale/hy-am';
 
@@ -47,7 +48,8 @@ class RecommendationsItem extends Component {
                             <div className='company-name'>{item.company_name}</div>
                         </div>
                         <div className='recommendations-item-text'>
-                            <span className='recommendations-item-text-hidden'>{item.text}</span>
+                            <LinesEllipsis text={item.text} maxLine="2" basedOn="words" />
+                            {/* <span className='recommendations-item-text-hidden'>{item.text}</span> */}
                             <div className="process-file-message">
                                 {item.status === "process" ? <div>{item.task_timer && item.task_timer[item.task_timer.length - 1] && item.task_timer[item.task_timer.length - 1].end === null ?
                                     <span className="active">Ակտիվ</span> : <span className="passive">Պասիվ</span>}</div> : null}

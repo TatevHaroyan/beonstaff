@@ -179,9 +179,12 @@ class ManagerOrg extends Component {
                                     close={(res) => { this.setState({ edit_show: false, org: res ? res : data }) }} /> : null}
                                 {this.state.show || this.state.delete_show || this.state.edit_show ?
                                     <div className='popup' onClick={() => { this.setState({ show: false, delete_show: false, edit_show: false }) }}></div> : null}
-                                {this.state.show ? <AddOrgAccountant data={data}
+                                {console.log("in contttttttttttttttt")}
+                                {this.state.show ? <AddOrgAccountant
+                                    data={data}
                                     update={(res) => this.setState({ org: res })}
-                                    close={() => this.setState({ show: false, accountant: this.state.accountant })} /> : null}
+                                    close={() => this.setState({ show: false, accountant: this.state.accountant })}
+                                /> : null}
                                 <div className='container'>
                                     <p className='data-section'>{word.org_name}</p>
                                     <div className="edit-delete-cont">

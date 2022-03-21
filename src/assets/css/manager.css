@@ -1210,6 +1210,9 @@ color: #07608d;
     width: 100%;
     /* position: relative; */
 }
+.LinesEllipsis{
+    margin-bottom: 10px;
+}
 .change-my-img{
     width: 100%;
     height: 100%;
