@@ -293,7 +293,7 @@ class NewTaskMuchOrgs extends Component {
                             <div className='img-icon-cont'>
                                 <div className='img-cont'>
                                     {this.state.images.map((item, index) => {
-                                        return index < 4 ? <div className='img' key={index}><span className={item.type !== "video/mp4" ? 'icon-Photos' : "icon-film"}/><span className='images-name'>{item.name}</span>
+                                        return index < 4 ? <div className='img' key={index}><span className={(item.type === "image/jpeg") || (item.type === "image/png") ? 'icon-Photos' : "icon-files-empty"}/><span className='images-name'>{item.name}</span>
                                         <i className="fas fa-times" onClick={() => this._delete_photos(item)}></i></div> : "..."
                                     })}
                                 </div>

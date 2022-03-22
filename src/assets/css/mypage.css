@@ -730,7 +730,7 @@ flex: 1;
     height: 24px;
     overflow: hidden;
 }
-.icon-Photos, .icon-film{
+.icon-Photos, .icon-film, .icon-files-empty{
     font-size: 14px !important;
     margin: 0 10px;
 }
