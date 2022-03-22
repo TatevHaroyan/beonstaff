@@ -784,7 +784,7 @@ flex: 1;
     color: #f44336 !important;
 }
 .input-validation-valid .note-input{
-    border-bottom: 2px solid #f44336;
+    border: 1px solid #f44336;
 }
 .MuiInputBase-input{
     font-weight: 400 !important;
