@@ -13,7 +13,8 @@ import Loader from 'react-loader-spinner';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import "../../assets/css/managerrecommendation.css";
 import user from "../../assets/img/usermiddle.png";
-var notificationGet = {}
+var notificationGet = {};
+
 class NotificationPage extends Component {
     constructor(props) {
         super(props);
@@ -29,6 +30,17 @@ class NotificationPage extends Component {
             visibleMessage: false
         }
     }
+    chatContainer = React.createRef();
+    scrollToMyRef = () => {
+        console.log(this.chatContainer, "this.chatContainer");
+        if (this.chatContainer.current) {
+            const scroll =
+                this.chatContainer.current.scrollHeight -
+                this.chatContainer.current.clientHeight;
+            this.chatContainer.current.scrollTo(0, scroll);
+        }
+
+    };
     handleChangeEndDate = (date) => {
         let date_get_time = date.getTime()
         let date_now = new Date()
@@ -49,6 +61,7 @@ class NotificationPage extends Component {
     componentDidMount() {
         this.getNotificationById()
         this.notificationGetTime()
+        this.scrollToMyRef()
     }
     getNotificationById() {
         let id = this.props.match.params.id;
@@ -143,19 +156,29 @@ class NotificationPage extends Component {
         }
         // this.notificationGetTime()
         // const { word } = this.props
-        let data = this.state.data
+        let data = this.state.data;
         // setTimeout(() => {
         //     this.getNotificationById()
         // }, 10000)
         if (data.url) {
             return (
                 <div className='recommendation-page'>
-                    {this.state.show && data.status !== "end" ? <div className='popup' onClick={() => this.setState({ show: false })}></div> : null}
-                    {this.state.showPicker && data.status !== "end" ? <div className='transparent' onClick={() => this.setState({ showPicker: false })}></div> : null}
+                    {this.state.show && data.status !== "end"
+                        ? <div className='popup'
+                            onClick={() => this.setState({ show: false })}></div> : null}
+                    {this.state.showPicker && data.status !== "end"
+                        ? <div className='transparent'
+                            onClick={() => this.setState({ showPicker: false })}></div> : null}
                     <Row >
                         <Col xs={12} sm={12}>
-                            <a onClick={() => this.props.history.goBack()} className="link-Backward-arrow"><span className="icon-Backward-arrow" ></span></a>
-                            <div className='company-name' onClick={() => this.props.history.push(`/main_employee/organization/${data.company_id}`)}>{data.company_name}</div>
+                            <a onClick={() => this.props.history.goBack()}
+                                className="link-Backward-arrow">
+                                <span className="icon-Backward-arrow" ></span>
+                            </a>
+                            <div className='company-name'
+                                onClick={() => this.props.history.push(`/main_employee/organization/${data.company_id}`)}>
+                                {data.company_name}
+                            </div>
                             <h1>{data.title}</h1>
                             <p>{data.description}</p>
                             <div>
@@ -166,22 +189,31 @@ class NotificationPage extends Component {
                                 <div className="accountant-name-list">
                                     <span className="accountant-name-list-title">Ուղարկված է</span>
                                     {data.accountant_list.map((item, index) => {
-                                        return <div key={index} className="notification-accountant-name">{item.fullname}
-                                            {(item.fullname.charAt(item.fullname.length - 1) === "ա" || item.fullname.charAt(item.fullname.length - 1) === "ո") ? "յին" : "ին"},</div>
+                                        return <div key={index}
+                                            className="notification-accountant-name">{item.fullname}
+                                            {(item.fullname.charAt(item.fullname.length - 1) === "ա"
+                                                || item.fullname.charAt(item.fullname.length - 1) === "ո")
+                                                ? "յին" : "ին"},</div>
                                     })}
                                 </div>
                                 {/* <p className="end-date">{word.end_date}՝</p> */}
                                 <p className="end-date">{moment(data.date).format('LL')}</p></div>
                             <div className='img-cont'>
                                 {data.notification_file.map((item, index) => {
-                                    return <div className='img' key={index} onClick={() => this.raiseInvoiceClicked(item.file)}>
-                                        <span className='icon-Photos'></span><span className='phoro-name'>{item.file_name}</span></div>
+                                    return <div className='img'
+                                        key={index}
+                                        onClick={() => this.raiseInvoiceClicked(item.file)}>
+                                        <span className='icon-Photos'></span>
+                                        <span className='phoro-name'>{item.file_name}</span>
+                                    </div>
                                 })}
                             </div>
-                            <div className="comment-cont">
+                            <div className="comment-cont" >
                                 <h5 className="comment-heading">Մեկնաբանություն</h5>
                                 <div className="image-input">
-                                    <img className="image" src={this.props.employee.image && this.props.employee.image !== null ? this.props.employee.image : user}
+                                    <img className="image" src={this.props.employee.image && this.props.employee.image !== null
+                                        ? this.props.employee.image
+                                        : user}
                                         alt="img" />
                                     <div className='input-image' >
                                         <div>{$filePreview}</div>
@@ -214,33 +246,51 @@ class NotificationPage extends Component {
                                                 reader.readAsDataURL(file)
                                             }} />
                                         </label>
-                                        <img alt="img" className="send-icon" src={send} onClick={() => {
-                                            if (!this.state.send_message) {
-                                                this.sendCopmment()
-                                            }
-                                        }}></img>
+                                        <img alt="img"
+                                            className="send-icon"
+                                            src={send}
+                                            onClick={() => {
+                                                if (!this.state.send_message) {
+                                                    this.sendCopmment()
+                                                }
+                                            }}></img>
                                     </div>
                                 </div>
-                                <div className="comment-item">{data.notification_comment.map((item, index) => {
-                                    let employee_item = item.comment_accountant ? item.comment_accountant : item.comment_manager;
-                                    let my_comment = (this.props.employee.url === item.accountant || this.props.employee.url === item.manager) ? true : false
-                                    return <div className={my_comment ? "my-comment-image comment-image" : "comment-image"} key={index}>
-                                        <img className="image" src={employee_item.image !== null ? employee_item.image : user}
-                                            alt="img" />
-                                        <div className="comment">
-                                            <span>{`${employee_item.user.first_name} ${employee_item.user.last_name}`}</span>
-                                            <div className='created_date'>{moment(item.created_date).format('lll')}</div>
-                                            <div className="comment-text-image">
-                                                {item.comment ? <div className="comment-text">{item.comment}</div> : null}</div>
-                                            {item.file_url && (item.file_url.includes(".jpg") || item.file_url.includes(".png") || item.file_url.includes(".jpeg")) ?
-                                                <div className='sms-img'
-                                                    onClick={() => this.raiseInvoiceClicked(item.file_url)}
-                                                    style={{ backgroundImage: "url(" + item.file_url + ")" }}></div>
-                                                : <div onClick={() => this.raiseInvoiceClicked(item.file_url)}>
-                                                    {item.file_name !== "undefined" ? item.file_name : ""}</div>}
-                                        </div>
-                                    </div>
-                                })}</div>
+                                <div className="comment-item" ref={this.chatContainer}>
+                                    {data.notification_comment
+                                        .map((item, index) => {
+                                            let employee_item = item.comment_accountant
+                                                ? item.comment_accountant
+                                                : item.comment_manager;
+                                            let my_comment = (this.props.employee.url === item.accountant
+                                                || this.props.employee.url === item.manager)
+                                                ? true : false
+                                            return <div className={my_comment ? "my-comment-image comment-image" : "comment-image"}
+                                                key={index}>
+                                                <img className="image"
+                                                    src={employee_item.image !== null
+                                                        ? employee_item.image
+                                                        : user}
+                                                    alt="img" />
+                                                <div className="comment">
+                                                    <span>{`${employee_item.user.first_name} ${employee_item.user.last_name}`}</span>
+                                                    <div className='created_date'>{moment(item.created_date).format('lll')}</div>
+                                                    <div className="comment-text-image">
+                                                        {item.comment
+                                                            ? <div className="comment-text">{item.comment}</div>
+                                                            : null}</div>
+                                                    {item.file_url &&
+                                                        (item.file_url.includes(".jpg")
+                                                            || item.file_url.includes(".png")
+                                                            || item.file_url.includes(".jpeg"))
+                                                        ? <div className='sms-img'
+                                                            onClick={() => this.raiseInvoiceClicked(item.file_url)}
+                                                            style={{ backgroundImage: "url(" + item.file_url + ")" }}></div>
+                                                        : <div onClick={() => this.raiseInvoiceClicked(item.file_url)}>
+                                                            {item.file_name !== "undefined" ? item.file_name : ""}</div>}
+                                                </div>
+                                            </div>
+                                        })}</div>
                             </div>
                         </Col >
                     </Row>
