@@ -92,7 +92,7 @@ const initialState = {
     task_name: "Առաջադրանքի անվանում",
     name_organization: "Կազմակերպության անվանում",
     performer_name: "Կատարողի անվանում",
-    tasks_date: "Երբ է կատարավել",
+    tasks_date: "Երբ է կատարվել",
     income_calculator: "Եկամտի հաշվիչ",
     org_name: "Կազմակերպության տվյալները",
     employees: "Աշխատակիցներ",

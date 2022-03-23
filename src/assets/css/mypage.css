@@ -39,6 +39,7 @@
 }
 .img-delete .fa-times-circle {
     right: 9px;
+    margin-top: 3%;
 }
 .dropdown-hover-none {
     display: flex !important;
@@ -613,11 +614,12 @@ table {
     margin-top: 10px;
     color: #07608d;
     cursor: pointer;
+    padding: 10px;
 }
 .img .fa-times{
-    font-size: 15px;
-    margin-top: -10px;
+    font-size: 10px;
     margin-right: 7px;
+    margin-left: 20%;
 }
 .images-name{
     white-space: nowrap;
@@ -728,10 +730,11 @@ flex: 1;
     height: 24px;
     overflow: hidden;
 }
-.icon-Photos{
+.icon-Photos, .icon-film, .icon-files-empty{
     font-size: 14px !important;
     margin: 0 10px;
 }
+
 .new-recommendation .row{
     display: flex;
    justify-content: center;
@@ -781,7 +784,7 @@ flex: 1;
     color: #f44336 !important;
 }
 .input-validation-valid .note-input{
-    border-bottom: 2px solid #f44336;
+    border: 1px solid #f44336;
 }
 .MuiInputBase-input{
     font-weight: 400 !important;

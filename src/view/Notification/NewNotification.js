@@ -204,7 +204,7 @@ class NewNotification extends Component {
                                 <div className='img-cont'>
                                     {this.state.images.map((item, index) => {
                                         return index < 4 ? <div className='img-delete' key={index}><div className='img'>
-                                            <span className='icon-Photos'></span><span className='images-name'>{item.name}</span>
+                                           <span className={(item.type === "image/jpeg") || (item.type === "image/png") ? 'icon-Photos' : "icon-files-empty"}/><span className='images-name'>{item.name}</span>
                                         </div><i className="far fa-times-circle" onClick={() => {
                                             this.setState((prevState) => {
                                                 let list = [...prevState.images]
