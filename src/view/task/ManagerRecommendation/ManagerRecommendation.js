@@ -718,8 +718,8 @@ class ManagerRecommendations extends Component {
                                     <div className="icon-button"
                                         onClick={() => this.setState({ visibleMessage: !this.state.visibleMessage })}>
                                         <div className="add-file">
-                                            <i className="fas fa-envelope"></i>
-                                            {data.new_sms_count !== 0 ? <div className="tasks-around">{data.new_sms_count}</div> : null}
+                                            <i className="fas fa-envelope"/>
+                                            {!this.state.visibleMessage && (data.new_sms_count !== 0) ? <div className="tasks-around">{data.new_sms_count}</div> : null}
                                         </div>
                                     </div>
                                 </div>
