@@ -275,7 +275,7 @@ class ChangeRepeatedtask extends Component {
         }
     }
     _renderDropDown(item, index) {
-        let option = this.props[item.option]
+        let option = this.props[item.option].filter((el) => el.user.is_active)
         let object = this.getSelected(this.props[item.option], item.label)
         if (item.key === "repeated_type") {
             return <div key={index} className="input-validation"><Autocomplete

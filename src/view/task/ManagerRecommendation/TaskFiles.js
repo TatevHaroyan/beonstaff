@@ -41,7 +41,6 @@ class TaskFiles extends Component {
                             }
                             )
                     }
-
                 })
         }
     }
@@ -69,7 +68,6 @@ class TaskFiles extends Component {
             .then((res) => {
                 this.create_task_files(res)
             })
-
         seenFiles(token, this.props.task.id)
             .then(() => {
                 this.getTaskById()
@@ -106,13 +104,15 @@ class TaskFiles extends Component {
                     return this.error_notify()
                 } else {
                     getTaskSmsesOnlyFile(token, this.props.task.id)
-                        .then((res) => {
+                        .then((resFile) => {
+                            getTaskById(token, this.props.task.id)
+                                .then((res) => {
+                                    this.props.task_data(res);
+                                    this.create_task_files(resFile);
+                                })
                             // this.props.task_data(res)
-                            this.create_task_files(res)
                             this.success_notify()
-                        }
-                        )
-
+                        })
                 }
             })
     }

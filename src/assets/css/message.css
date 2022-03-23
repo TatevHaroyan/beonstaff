@@ -236,8 +236,8 @@
   margin: 0 10px;
   cursor: pointer;
 }
-.input-image {
-  width: 83%;
+.recommendation-page .input-image {
+  width: 100%;
   background-color: #F4F4F4;
   margin-bottom: 10px;
 }

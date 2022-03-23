@@ -17,7 +17,7 @@ export default (state = { orgs: [], loader_orgs: false, stuff: [], loader_stuff:
                 // { 
                 //  label: "Ընտրել բոլորը",
                 //   value: "*"}
-            ] 
+            ]
             for (let i = 0; i < company.length; i++) {
                 multiSelect.push({ label: company[i].name, value: company[i].id })
             }
@@ -27,7 +27,7 @@ export default (state = { orgs: [], loader_orgs: false, stuff: [], loader_stuff:
                 loader_orgs: false
             }
         case GET_STUFF_LIMIT:
-            let list = action.payload.stuff ? action.payload.stuff : action.payload.manager
+            let list = action.payload.stuff ? action.payload.stuff.filter((el) => el.user.is_active) : action.payload.manager.filter((el) => el.user.is_active)
             // let manager = action.payload.manager?action.payload.manager:[]
             let multiSelectList = [
                 // { 

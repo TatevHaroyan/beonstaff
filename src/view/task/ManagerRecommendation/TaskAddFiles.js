@@ -52,7 +52,8 @@ class TaskFiles extends Component {
     }
     delete_file(name) {
         let list = [...this.state.task_file_list]
-        let new_file_list = list.filter(el => el.name !== name)
+        let new_file_list = list.filter(el => el.name !== name);
+        console.log();
         this.setState({ task_file_list: new_file_list })
     }
     raiseInvoiceClicked(url) {

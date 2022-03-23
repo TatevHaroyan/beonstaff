@@ -276,7 +276,7 @@ class NewRepeatedtask extends Component {
                 {(!item.valid && this.state.submited) ? <div className='validation valid-center'>{this.props.word[item.errorMessage]}</div> : null}
             </div>
         } else if (item.key === "manager" || item.key === "accountant") {
-            let option = this.props[item.option]
+            let option = this.props[item.option].filter((el) => el.user.is_active)
             return <div key={index} className={!item.valid && this.state.submited ? "input-validation input-validation-valid" : "input-validation"}>
                 <Autocomplete
                     id="combo-box-demo"

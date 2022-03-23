@@ -68,12 +68,13 @@ class Reports extends Component {
         }
     };
     selected_list() {
+        console.log(this.props.stuff, "this.props.stuff");
         switch (this.state.active) {
             case "manager":
                 return <Autocomplete
                     key={Math.random().toString()}
                     id="combo-box-demo"
-                    options={this.props.manager}
+                    options={this.props.manager.filter((el) => el.user.is_active)}
                     value={this.state.value}
                     // defaultValue={stuff[0]}
                     onChange={(e, value) => {
@@ -106,7 +107,7 @@ class Reports extends Component {
                 return <Autocomplete
                     id="combo-box-demo"
                     key={Math.random().toString()}
-                    options={this.props.stuff}
+                    options={this.props.stuff ? this.props.stuff.filter((el) => el.user.is_active) : []}
                     value={this.state.value}
                     // defaultValue={stuff[0]}
                     onChange={(e, value) => {

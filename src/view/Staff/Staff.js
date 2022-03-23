@@ -64,11 +64,13 @@ class ManagerStuff extends Component {
                     </div>
                     <hr />
                     <div className='manager-stuff-list'>
-                        {this.state.staff.results.map((item, index) => {
-                            return <Link to={`/main_employee/staff/${this.props.match.params.type}/${item.id}`} key={index}>
-                                <StuffItem
-                                    name={item.user.first_name} surname={item.user.last_name} image={item.image} profession={item.profession !== "null" ? item.profession : ""} /> </Link>
-                        })}
+                        {this.state.staff.results
+                            .filter((el) => el.user.is_active)
+                            .map((item, index) => {
+                                return <Link to={`/main_employee/staff/${this.props.match.params.type}/${item.id}`} key={index}>
+                                    <StuffItem
+                                        name={item.user.first_name} surname={item.user.last_name} image={item.image} profession={item.profession !== "null" ? item.profession : ""} /> </Link>
+                            })}
                     </div>
                 </div>}
                 {/* {this.state.staff && this.state.staff.results && stuff.loader===false ?

@@ -597,6 +597,7 @@ class ManagerRecommendations extends Component {
                                     onChangeValue={() => this.changeStatusPut(this.state.accountant.url, data)}
                                 /> : null}
                             {this.state.visibleFile ? <TaskFiles
+                                getTaskById={() => this.getTaskById()}
                                 show_loading={() => this.setState({ add_new_file: true })}
                                 close={() => this.setState({ visibleFile: !this.state.visibleFile, add_new_file: false })}
                                 show_add_files={() => this.setState({ visibleAddFile: true, visibleFile: false })} /> : null}

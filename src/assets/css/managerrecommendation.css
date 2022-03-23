@@ -166,6 +166,7 @@
     margin: 0px 0 24px 38px;
    cursor: pointer;
    width: fit-content;
+   white-space: nowrap;
 }
 .employee-name-button .employee-name{
     margin: 0;
