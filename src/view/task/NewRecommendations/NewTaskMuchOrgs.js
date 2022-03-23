@@ -118,7 +118,7 @@ class NewTaskMuchOrgs extends Component {
             this.submite()
         }
     }
-    handleChangeDate = date => {
+    handleChangeDate = e => {
         // let date_get_time = date.getTime()
         // let date_now = new Date()
         // let new_date = this.state.new_date
@@ -127,7 +127,7 @@ class NewTaskMuchOrgs extends Component {
         // } else {
         //     new_date = date_now
         // }
-        this.setState({ end_date: date })
+        this.setState({ end_date: e.target.value })
     }
     submite() {
         // if (this.state.end_date < new Date()) {
@@ -267,6 +267,20 @@ class NewTaskMuchOrgs extends Component {
                                 return null
 
                             })}
+                            <div className='input-validation'>
+                                <TextField
+                                    id="datetime-local"
+                                    label="Վերջնաժամկետ"
+                                    type="datetime-local"
+                                    onChange={this.handleChangeDate}
+                                    variant="outlined"
+                                    InputProps={{ inputProps: { min: moment(new Date()).format("YYYY-MM-DDTHH:mm") } }}
+                                    sx={{ width: 250 }}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                />
+                            </div>
                             <CheckboxFilter title="Տեսանելի բոլորի համար"
                                 my_task={this.state.visible_for_client}
                                 onChange={() => {
@@ -277,13 +291,15 @@ class NewTaskMuchOrgs extends Component {
                                 <input value={this.state.select_all} onChange={() => this.setState({ select_all: !this.state.select_all })} type="checkbox" />
                                 <span className="checkmark"></span>
                             </label>
-                            <div>
+                            {/* <div>
                                 Վերջնաժամկետ  <br />
                                 <DateTimePicker
+                                    minDate={new Date()}
+                                    maxDate={new Date(9999, 12, 31)}
                                     onChange={this.handleChangeDate}
                                     value={this.state.end_date}
                                 />
-                            </div>
+                            </div> */}
 
                             <div className='img-icon-cont'>
                                 <div className='img-cont'>

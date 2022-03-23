@@ -452,11 +452,18 @@ class Tasks extends Component {
     render() {
         const animatedComponents = makeAnimated();
         const { word, limit_data, employee, manager, manager_loader } = this.props;
+        console.log("in rendeeeer");
         return (
             <div className='tasks'>
-                {this.state.deleteVisible ? <div className="popup" onClick={() => this.setState({ deleteVisible: false })}>
-                </div> : null}
-                {this.state.show || this.state.showMulti ? <div className='popup' onClick={() => { this.setState({ show: false, showMulti: false }) }}></div> : null}
+                {this.state.deleteVisible
+                    ? <div className="popup" onClick={() => this.setState({ deleteVisible: false })}>
+                    </div>
+                    : null}
+                {this.state.show || this.state.showMulti
+                    ? <div className='popup' onClick={() => {
+                        this.setState({ show: false, showMulti: false })
+                    }}></div>
+                    : null}
                 {this.state.deleteVisible ? <div className="delete-note">
                     <div className="delete-text">Ջնջե՞լ</div>
                     <div className="note-buttons">
@@ -503,8 +510,17 @@ class Tasks extends Component {
                         {profession !== "accountant" ?
                             <CheckboxFilter title="Ինձ կցված առաջադրանքները" my_task={this.state.my_append_task}
                                 onChange={() => {
-                                    this.setState({ my_append_task: !this.state.my_append_task, my_task: false, selected_manager: null, selected_accountant: null })
-                                    this.setFilter({ accountant: "", manager: !this.state.my_append_task ? localStorage.getItem("id") : "" })
+                                    this.setState({
+                                        my_append_task: !this.state.my_append_task,
+                                        my_task: false, selected_manager: null,
+                                        selected_accountant: null
+                                    })
+                                    this.setFilter({
+                                        accountant: "",
+                                        manager: !this.state.my_append_task
+                                            ? localStorage.getItem("id")
+                                            : ""
+                                    })
                                 }} /> : null}
                         <CheckboxFilter title="Ֆայլերով"
                             my_task={this.state.file_exit}
@@ -645,10 +661,12 @@ class Tasks extends Component {
                                 } />
                     })}
                 </div>
-                {this.state.show ? <NewRecommendation close={() => {
-                    this.setState({ show: false, activeId: 2 })
-                    this.filterStatus({ status: "approved" })
-                }} /> : null}
+                {this.state.show ? <NewRecommendation
+                    close={() => {
+                        this.setState({ show: false, activeId: 2 })
+                        this.filterStatus({ status: "approved" })
+                    }}
+                /> : null}
                 {this.state.showMulti ? <NewTaskMuchOrgs close={() => {
                     this.setState({ showMulti: false, activeId: 2 })
                     this.filterStatus({ status: "approved" })

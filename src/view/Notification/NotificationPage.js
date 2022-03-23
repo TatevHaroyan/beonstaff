@@ -26,21 +26,16 @@ class NotificationPage extends Component {
             file: "",
             filePreviewUrl: "",
             text: "",
-            data: {},
+            data: { notification_comment: [] },
             visibleMessage: false
         }
     }
     chatContainer = React.createRef();
-    scrollToMyRef = () => {
-        console.log(this.chatContainer, "this.chatContainer");
-        if (this.chatContainer.current) {
-            const scroll =
-                this.chatContainer.current.scrollHeight -
-                this.chatContainer.current.clientHeight;
-            this.chatContainer.current.scrollTo(0, scroll);
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.data.notification_comment.length !== prevState.data.notification_comment.length) {
+            document.querySelector('.comment-item').scrollTop = document.querySelector('.comment-item').scrollHeight
         }
-
-    };
+    }
     handleChangeEndDate = (date) => {
         let date_get_time = date.getTime()
         let date_now = new Date()
@@ -61,7 +56,6 @@ class NotificationPage extends Component {
     componentDidMount() {
         this.getNotificationById()
         this.notificationGetTime()
-        this.scrollToMyRef()
     }
     getNotificationById() {
         let id = this.props.match.params.id;

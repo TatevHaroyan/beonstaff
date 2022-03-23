@@ -54,6 +54,7 @@
     /* display: flex;
     flex-direction: column;
     margin-top: 10px; */
+    padding-top: 29px;
     height: 395px;
     overflow-y: auto;
 }
@@ -256,6 +257,9 @@
 /* .add-new-file-inside .MuiInput-underline:before{
     border: none !important;
 }*/
+.MuiInputLabel-outlined{
+    z-index: 0;
+}
 .add-new-file-inside .MuiInput-underline:after{
     border-bottom: 2px solid #07608d;
 } 
@@ -268,6 +272,9 @@
     color: #FFFFFF;
     margin-right: 5px;
     
+}
+.MuiInputLabel-outlined{
+    z-index: 0 !important;
 }
 .my-comment-image .image{
     margin-top: 0;
@@ -287,8 +294,8 @@
     color: gray;
 }
 .comment .created_date{
-    right: 0px;
-    top: -25px;
+    right: -20px;
+    top: -30px;
 }
 .my-comment-image{
     justify-content: end;
@@ -1022,6 +1029,9 @@ color: #07608d;
     width: 15px;
     height: 15px;
     margin: auto;
+}
+.react-datetime-picker__inputGroup__input{
+    max-width: 34px !important;
 }
 .icon-round .react-datetime-picker{
     display: flex;

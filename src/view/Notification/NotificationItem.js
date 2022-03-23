@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LinesEllipsis from 'react-lines-ellipsis';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import 'moment/locale/hy-am';
@@ -31,7 +32,8 @@ class NotificationItem extends Component {
                         </div>
                         <div className='company-name'>{this.props.comapanyName}</div>
                         <div className='recommendations-item-text'>
-                            <span className='recommendations-item-text-hidden'>{this.props.teamText}</span>
+                            <LinesEllipsis text={this.props.teamText} maxLine="2" basedOn="words" />
+                            {/* <span className='recommendations-item-text-hidden'>{this.props.teamText}</span> */}
                             <div className='recommendations-item-text-icon'>{(this.props.imgList && this.props.imgList.length > 0) ? <span className='icon-Attachment'></span> : null}</div>
                         </div>
                     </div>
@@ -40,7 +42,7 @@ class NotificationItem extends Component {
                         <div className='image-calendar'>
                             <div className="accountant_image_list">
                                 {this.props.image_list.map((item, index) => {
-                                    return <img key={index} className='accountant_image' src={item.image?item.image:user}></img>
+                                    return <img key={index} className='accountant_image' src={item.image ? item.image : user}></img>
                                 })}
                             </div>
                             <div className='calendar'>

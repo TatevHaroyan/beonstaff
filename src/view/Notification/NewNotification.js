@@ -42,8 +42,8 @@ class NewNotification extends Component {
             this.newNotification()
         }
     }
-    handleChangeDate = date => {
-        this.setState({ date })
+    handleChangeDate = e => {
+        this.setState({ date: e.target.value })
     }
     newNotification() {
         let token = localStorage.getItem("token");
@@ -182,10 +182,24 @@ class NewNotification extends Component {
                                 {(this.state.managers_client.length === 0 && this.state.accountants_client.length === 0 && this.state.submited) ?
                                     <div className='validation valid-center'>Ընտրել տվյալներ</div> : null}
                             </div>
-                            <DateTimePicker
+                            <div className='input-validation'>
+                                <TextField
+                                    id="datetime-local"
+                                    label="Վերջնաժամկետ"
+                                    type="datetime-local"
+                                    onChange={this.handleChangeDate}
+                                    variant="outlined"
+                                    InputProps={{ inputProps: { min: moment(new Date()).format("YYYY-MM-DDTHH:mm") } }}
+                                    sx={{ width: 250 }}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                />
+                            </div>
+                            {/* <DateTimePicker
                                 onChange={this.handleChangeDate}
                                 value={this.state.date}
-                            />
+                            /> */}
                             <div className='img-icon-cont'>
                                 <div className='img-cont'>
                                     {this.state.images.map((item, index) => {

@@ -4,7 +4,7 @@ export default (state = {}, action) => {
         case GET_NOTIFICATION:
             // let task = action.payload.results
             // let count = action.payload.count
-            state=action.payload
+            state = { ...state, ...action.payload }
             return state
         default:
     }

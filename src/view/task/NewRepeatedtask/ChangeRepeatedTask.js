@@ -205,7 +205,7 @@ class ChangeRepeatedtask extends Component {
                     valid = this.set_interval(1, 366, item)
                 }
                 if (item.key === "duration") {
-                    valid = item.value > 0
+                    valid = item.value > 0 && item.value.length < 4
                 }
                 break
             case "text":

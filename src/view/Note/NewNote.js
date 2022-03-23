@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Button from "../../components/Button/Button";
+import { TextField } from '@material-ui/core';
 import '../../assets/css/add.css';
 import DateTimePicker from 'react-datetime-picker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -34,8 +35,8 @@ class NewNote extends Component {
             this.newNote()
         }
     }
-    handleChangeDate = date => {
-        this.setState({ end_date: date })
+    handleChangeDate = e => {
+        this.setState({ end_date: e.target.value })
     }
     newNote() {
         let token = localStorage.getItem("token")
@@ -85,10 +86,26 @@ class NewNote extends Component {
                 <div className='container'>
                     <Row className="d-flex justify-content-around">
                         <Col xs={12} sm={10} className="align-items-sm-center">
-                            <DateTimePicker
+                            <div className='input-validation'>
+                                <TextField
+                                    id="datetime-local"
+                                    label="Վերջնաժամկետ"
+                                    type="datetime-local"
+                                    onChange={this.handleChangeDate}
+                                    variant="outlined"
+                                    InputProps={{ inputProps: { min: moment(new Date()).format("YYYY-MM-DDTHH:mm") } }}
+                                    sx={{ width: 250 }}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                />
+                            </div>
+                            {/* <DateTimePicker
+                                minDate={new Date()}
+                                maxDate={new Date(9999, 12, 31)}
                                 onChange={this.handleChangeDate}
                                 value={this.state.end_date}
-                            />
+                            /> */}
                             <div className={this.state.title.length === 0 && this.state.submited ? "input-validation input-validation-valid" : "input-validation"}>
                                 <textarea className="note-input" type='text' onKeyDown={(e) => this.keyPress(e)}
                                     onChange={(e) => {

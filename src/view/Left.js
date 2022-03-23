@@ -135,27 +135,53 @@ class Left extends Component {
                 <div className='manager-left-menu'>
                     {menu_list.map((item, index) => {
                         if (item.id === 2 && prof === "manager") {
-                            return <NavLink key={index} activeClassName="active" to={item.url}> <div className='left-item' onClick={() => { this.setState({ active: item.url }) }} >
-                                <div className="new-notification"><span>{item.title}</span> {organization.deleted_company_count ? <div className="tasks-around">{organization.deleted_company_count}</div> : null}</div>
-                                {window.location.href.includes(item.url) ? <div className="menu-line"></div> : null}
-                            </div></NavLink>
+                            return <NavLink key={index}
+                                activeClassName="active"
+                                to={item.url}>
+                                <div className='left-item'
+                                    onClick={() => { this.setState({ active: item.url }) }} >
+                                    <div className="new-notification">
+                                        <span>{item.title}</span> {organization.deleted_company_count
+                                            ? <div className="tasks-around">{organization.deleted_company_count}</div>
+                                            : null}</div>
+                                    {window.location.href.includes(item.url)
+                                        ? <div className="menu-line"></div>
+                                        : null}
+                                </div></NavLink>
                         }
                         if ((item.id === 5 && prof === "accountant") || (item.id === 7 && prof === "manager")) {
-                            return <NavLink key={index} activeClassName="active" to={item.url}> <div className='left-item' onClick={() => { this.setState({ active: item.url }) }} >
-                                <div className="new-notification"><span>{item.title}</span> {notification.results && notification.results.length > 0 ? <div className="tasks-around">{notification.count}</div> : null}</div>
-                                {window.location.href.includes(item.url) ? <div className="menu-line"></div> : null}
-                            </div></NavLink>
+                            return <NavLink key={index} activeClassName="active" to={item.url}>
+                                <div className='left-item'
+                                    onClick={() => { this.setState({ active: item.url }) }} >
+                                    {console.log(notification, "notification")}
+                                    <div className="new-notification">
+                                        <span>{item.title}</span> {notification.results && notification.results.length > 0
+                                            ? <div className="tasks-around">{notification.count}</div>
+                                            : null}</div>
+                                    {window.location.href.includes(item.url)
+                                        ? <div className="menu-line"></div>
+                                        : null}
+                                </div></NavLink>
                         }
                         if ((item.id === 1 && prof === "accountant") || (item.id === 4 && prof === "manager")) {
-                            return <NavLink key={index} activeClassName="active" to={item.url}> <div className='left-item' onClick={() => { this.setState({ active: item.url }) }} >
-                                <div className="new-notification new-task-menu"><span>{item.title}</span> {notification.new_task && notification.new_task.count > 0 ? <div className="tasks-around">{notification.new_task.count}</div> : null}</div>
+                            return <NavLink key={index} activeClassName="active" to={item.url}>
+                                <div className='left-item'
+                                    onClick={() => { this.setState({ active: item.url }) }} >
+                                    <div className="new-notification new-task-menu">
+                                        <span>{item.title}</span>
+                                        {notification.new_task && notification.new_task.count > 0
+                                            ? <div className="tasks-around">{notification.new_task.count}</div>
+                                            : null}</div>
+                                    {window.location.href.includes(item.url)
+                                        ? <div className="menu-line"></div>
+                                        : null}
+                                </div></NavLink>
+                        }
+                        return <NavLink key={index} activeClassName="active" to={item.url}>
+                            <div className='left-item' onClick={() => { this.setState({ active: item.url }) }} >
+                                <span>{item.title}</span>
                                 {window.location.href.includes(item.url) ? <div className="menu-line"></div> : null}
                             </div></NavLink>
-                        }
-                        return <NavLink key={index} activeClassName="active" to={item.url}> <div className='left-item' onClick={() => { this.setState({ active: item.url }) }} >
-                            <span>{item.title}</span>
-                            {window.location.href.includes(item.url) ? <div className="menu-line"></div> : null}
-                        </div></NavLink>
                     })}
                 </div>
 

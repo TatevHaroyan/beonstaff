@@ -22,10 +22,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import DateTimePicker from 'react-datetime-picker';
-import { SERVER } from "../../../config";
+// import Stack from '@mui/material/Stack';
 import "react-datepicker/dist/react-datepicker.css";
+import { SERVER } from "../../../config";
 const profession = localStorage.getItem("profession");
 const filter = createFilterOptions();
+const date_now = new Date();
+const year = date_now.getFullYear();
 const ValidationTextField = withStyles({
     root: {
         '& textarea:valid + fieldset': {
@@ -143,13 +146,9 @@ class NewRecommendation extends Component {
             this.submite()
         }
     }
-    handleChangeDate = date => {
-        // console.log(date,"datedatedatedatedatedate");
-        // let date_get_time = date.getTime()
-        // let date_now = new Date()
-        // if (date_get_time >= date_now.getTime()) {
-        this.setState({ end_date: date })
-        // }
+    handleChangeDate = e => {
+        console.log(e.target.value, "dateeeeeeeeeeeeeeeeee");
+        this.setState({ end_date: e.target.value })
     }
     submite() {
         let token = localStorage.getItem("token")
@@ -237,7 +236,12 @@ class NewRecommendation extends Component {
         const animatedComponents = makeAnimated();
         let option = this.props[item.option]
         return <div key={index}
-            className={!item.valid && this.state.submited && !this.state.form[3].valid && !this.state.form[4].valid ? "input-validation input-validation-valid" : "input-validation"}>
+            className={!item.valid
+                && this.state.submited
+                && !this.state.form[3].valid
+                && !this.state.form[4].valid
+                ? "input-validation input-validation-valid"
+                : "input-validation"}>
             {(item.key === "accountant") ?
                 <Select
                     isDisabled={this.state.for_me}
@@ -245,7 +249,11 @@ class NewRecommendation extends Component {
                     value={item.value}
                     components={animatedComponents}
                     options={this.props.limit_data[item.option]}
-                    className={!item.valid && (this.state.submited || item.active) && !this.state.form[this.state.form.length - 2].valid ? "error-select" : ""}
+                    className={!item.valid
+                        && (this.state.submited || item.active)
+                        && !this.state.form[this.state.form.length - 2].valid
+                        ? "error-select"
+                        : ""}
                     onChange={(list) => {
                         let select_all_index = null;
                         if (list) {
@@ -257,7 +265,9 @@ class NewRecommendation extends Component {
                             }
                         }
                         let array = !list || list.length === 0 ? [] : list
-                        let select_list = (array.length > 0 && select_all_index !== null) ? [...this.props.limit_data[item.option]] : array;
+                        let select_list = (array.length > 0 && select_all_index !== null)
+                            ? [...this.props.limit_data[item.option]]
+                            : array;
                         item.value = select_list;
                         item.active = false
                         item.valid = item.value && item.value.length > 0
@@ -276,7 +286,7 @@ class NewRecommendation extends Component {
                     /></div>}
                     id="combo-box-demo"
                     disabled={this.state.form[4].value.length > 0 && item.key === "manager" && profession === "manager"}
-                    options={option}
+                    options={item.option === "organization" ? option.filter(item => item.is_deleted_by_manager === false) : option}
                     onChange={(e, value) => {
                         item.active = false
                         item.value = value ? value.url : ""
@@ -302,7 +312,8 @@ class NewRecommendation extends Component {
                             return filtered;
                         } else {
                             const filtered = options.filter((item) => (
-                                (item.user.last_name.toUpperCase().includes(params.inputValue.toUpperCase()) || item.user.first_name.toUpperCase().includes(params.inputValue.toUpperCase()))
+                                (item.user.last_name.toUpperCase().includes(params.inputValue.toUpperCase())
+                                    || item.user.first_name.toUpperCase().includes(params.inputValue.toUpperCase()))
                             ));
                             return filtered;
                         }
@@ -314,18 +325,25 @@ class NewRecommendation extends Component {
                     }}
                     renderInput={params => (
                         <TextField {...params} error={!item.valid && this.state.submited === true && !this.state.form[4].valid}
-                            id={!item.valid && this.state.submited === true && !this.state.form[4].valid ? "validation-outlined-input" : "outlined-helperText"}
+                            id={!item.valid && this.state.submited === true && !this.state.form[4].valid
+                                ? "validation-outlined-input"
+                                : "outlined-helperText"}
                             label={this.props.word[item.key]}
                             variant="outlined" fullWidth
                             freeSolo
                             onKeyDown={(e) => { this.keyPress(e) }} />
                     )}
                 />}
-            {(!item.valid && this.state.submited) ? <div className='validation valid-center'>{this.props.word[item.errorMessage]}</div> : null}
+            {(!item.valid && this.state.submited)
+                ? <div className='validation valid-center'>{this.props.word[item.errorMessage]}</div>
+                : null}
         </div>
     }
     _rederTextArea(item, index) {
-        return <div className={!item.valid && this.state.submited ? "input-validation input-validation-valid" : "input-validation"} key={index} >
+        return <div className={!item.valid && this.state.submited
+            ? "input-validation input-validation-valid"
+            : "input-validation"}
+            key={index} >
             <ValidationTextField
                 onKeyDown={(e) => { this.keyPress(e) }}
                 name={item.key} value={item.value}
@@ -346,9 +364,13 @@ class NewRecommendation extends Component {
                 multiline={true}
                 variant="outlined"
                 error={!item.valid && this.state.submited}
-                id={!item.valid && this.state.submited === true ? "validation-outlined-input" : "outlined-helperText"}
+                id={!item.valid && this.state.submited === true
+                    ? "validation-outlined-input"
+                    : "outlined-helperText"}
             />
-            {(!item.valid && this.state.submited) ? <div className='validation valid-center'>{this.props.word[item.errorMessage]}</div> : null}
+            {(!item.valid && this.state.submited)
+                ? <div className='validation valid-center'>{this.props.word[item.errorMessage]}</div>
+                : null}
         </div>
     }
     _delete_photos(item) {
@@ -421,19 +443,38 @@ class NewRecommendation extends Component {
                                 }
                                 return null
                             })}
+                            {console.log(this.state.end_date, "this.state.end_date")}
+                            {/* <div className="end-date-add">
+                                Վերջնաժամկետ */}
+                            {/* <DateTimePicker
+                                    format="dd/MM/y HH:MM:ss"
+                                    minDate={new Date()}
+                                    maxDate={new Date(9999, 12, 31)}
+                                    onChange={this.handleChangeDate}
+                                    value={this.state.end_date ? new Date(this.state.end_date) : null}
+                                /> */}
+                            {console.log(moment(new Date()).format("YYYY-MM-DDTHH:mm"), "moment(new Date()).format(YYYY-MM-DDTHH:mmZ)")}
+                            <div className='input-validation'>
+                                <TextField
+                                    id="datetime-local"
+                                    label="Վերջնաժամկետ"
+                                    type="datetime-local"
+                                    onChange={this.handleChangeDate}
+                                    variant="outlined"
+                                    InputProps={{ inputProps: { min: moment(new Date()).format("YYYY-MM-DDTHH:mm") } }}
+                                    sx={{ width: 250 }}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                />
+                            </div>
                             <CheckboxFilter title="Տեսանելի բոլորի համար"
                                 my_task={this.state.visible_for_client}
                                 onChange={() => {
                                     this.setState({ visible_for_client: !this.state.visible_for_client })
                                 }}
                             />
-                            <div className="end-date-add">
-                                Վերջնաժամկետ
-                                <DateTimePicker
-                                    onChange={this.handleChangeDate}
-                                    value={this.state.end_date}
-                                />
-                            </div>
+                            {/* </div> */}
                             <div className='img-icon-cont'>
                                 <div className='img-cont'>
                                     {this.state.images.map((item, index) => {
@@ -472,11 +513,9 @@ class NewRecommendation extends Component {
                                     onChangeValue={() => this.submite()}
                                 />
                             </div>
-
                         </Col>
                     </Row>
                 </div>
-
             </div>
         );
     }
@@ -485,7 +524,7 @@ export default connect(
     (state) => ({
         word: state.word, show: state.showReducer,
         login: state.loginReducer,
-        organization: state.organization.results ? state.organization.results.filter(item => item.is_deleted_by_manager === false) : [],
+        organization: state.organization.results ? state.organization.results : [],
         stuff: state.stuff.results,
         manager: state.manager.array_manager.results,
         limit_data: state.limit_data,
