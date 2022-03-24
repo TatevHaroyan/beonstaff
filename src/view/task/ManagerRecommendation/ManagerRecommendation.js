@@ -9,13 +9,32 @@ import Path from "../../../assets/img/Path 286.svg";
 import MyImgRound from "../../../components/MyImgRound";
 import Plus from "../../../components/Plus";
 import { connect } from 'react-redux';
-import { addStuff, editStatus, taskSms, getMyTasks, getTaskById, timer, changeTimerById, EditTask, getTaskSms, todaysTaskSum } from "../../../api";
+import {
+    addStuff,
+    editStatus,
+    taskSms,
+    getMyTasks,
+    getTaskById,
+    timer,
+    changeTimerById,
+    EditTask,
+    getTaskSms,
+    todaysTaskSum
+} from "../../../api";
 import NewRecommendation from "../NewRecommendations/NewRecommendations";
 import DateTimePicker from 'react-datetime-picker';
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
 import 'moment/locale/hy-am';
-import { tasksAction, employeeAction, task_data, delete_task_data, change_status, new_task_sms, set_day_reports } from "../../../action/index";
+import {
+    tasksAction,
+    employeeAction,
+    task_data,
+    delete_task_data,
+    change_status,
+    new_task_sms,
+    set_day_reports
+} from "../../../action/index";
 import Loader from 'react-loader-spinner';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import MessageList from "../../../components/Message/MessageList";
@@ -199,7 +218,9 @@ class ManagerRecommendations extends Component {
         let end_date = new Date().toLocaleString("en-US", { timeZone: "Asia/Yerevan" })
         let timer_data = {
             task: data.url,
-            start: this.changeStatus(data.status) === "process" ? moment(start_date).format("YYYY-MM-DD HH:mm:ss") : data.start_task_date,
+            start: this.changeStatus(data.status) === "process"
+                ? moment(start_date).format("YYYY-MM-DD HH:mm:ss")
+                : data.start_task_date,
             end: null
             // this.changeStatus(data.status) === "end" ? moment(end_date).format("YYYY-MM-DD HH:mm:ss") : data.end_task_date
         }
@@ -468,13 +489,21 @@ class ManagerRecommendations extends Component {
         let data = this.props.task;
         let { filePreviewUrl, file } = this.state;
         let $filePreview = null;
-        let timer_title = data.task_timer && data.task_timer.length > 0 && data.task_timer[this.props.task.task_timer.length - 1].end == null ? word.stop : word.start
+        let timer_title = data.task_timer
+            && data.task_timer.length > 0
+            && data.task_timer[this.props.task.task_timer.length - 1].end == null
+            ? word.stop
+            : word.start
         // this.timerFunction()
         if (filePreviewUrl !== "") {
             try {
                 $filePreview = (<div className='my-sms'>
-                    <i className="far fa-times-circle" onClick={() => { this.setState({ file: "", filePreviewUrl: "" }) }}></i>
-                    {file.type.includes('image/') ? <div className='my-sms-img' style={{ backgroundImage: "url(" + filePreviewUrl + ")" }}></div> : null}
+                    <i className="far fa-times-circle"
+                        onClick={() => { this.setState({ file: "", filePreviewUrl: "" }) }}></i>
+                    {file.type.includes('image/')
+                        ? <div className='my-sms-img'
+                            style={{ backgroundImage: "url(" + filePreviewUrl + ")" }}></div>
+                        : null}
                     <span className='my-sms-img-name'>{file.name}</span>
                 </div>);
             } catch (error) {
@@ -484,47 +513,63 @@ class ManagerRecommendations extends Component {
         if (data.url) {
             return (
                 <div className='recommendation-page'>
-                    {this.state.add_new_file ? <div className="transparent-loader">
-                        <Loader
-                            type="Oval"
-                            color="#07608d"
-                            height={15}
-                            width={15}
-                        />
-                    </div> : null}
-                    {this.state.edit || this.state.copy || this.state.visibleFile || this.state.visibleAddFile || this.state.showTaskModal ?
-                        <div className="popup"
+                    {this.state.add_new_file
+                        ? <div className="transparent-loader">
+                            <Loader
+                                type="Oval"
+                                color="#07608d"
+                                height={15}
+                                width={15}
+                            />
+                        </div> : null}
+                    {this.state.edit
+                        || this.state.copy
+                        || this.state.visibleFile
+                        || this.state.visibleAddFile
+                        || this.state.showTaskModal
+                        ? <div className="popup"
                             onClick={() => this.setState({
                                 edit: false, copy: false, visibleFile: false,
                                 visibleAddFile: false, showTaskModal: false
                             })}></div>
                         : null}
-                    {this.state.show && data.status !== "end" ? <div className='popup'
-                        onClick={() => this.setState({ show: false })}></div> : null}
-                    {this.state.showPicker && data.status !== "end" ? <div className='transparent'
-                        onClick={() => this.setState({ showPicker: false })}></div> : null}
-                    {this.state.showTaskModal ? <NewRecommendation subTask="subTask" close={() => {
-                        this.setState({ showTaskModal: false })
-                        this.getTaskById()
-                    }
-                    } /> : null}
+                    {this.state.show && data.status !== "end"
+                        ? <div className='popup'
+                            onClick={() => this.setState({ show: false })}></div>
+                        : null}
+                    {this.state.showPicker && data.status !== "end"
+                        ? <div className='transparent'
+                            onClick={() => this.setState({ showPicker: false })}></div>
+                        : null}
+                    {this.state.showTaskModal
+                        ? <NewRecommendation subTask="subTask" close={() => {
+                            this.setState({ showTaskModal: false })
+                            this.getTaskById()
+                        }
+                        } />
+                        : null}
                     <Row >
                         <Col xs={12} sm={8}>
-                            <a onClick={() => this.props.history.goBack()} className="link-Backward-arrow">
+                            <a onClick={() => this.props.history.goBack()}
+                                className="link-Backward-arrow">
                                 <span className="icon-Backward-arrow" ></span>
                             </a>
-                            {localStorage.getItem("profession") === "manager" ?
-                                <div className="employee-name-button">
+                            {localStorage.getItem("profession") === "manager"
+                                ? <div className="employee-name-button">
                                     <div className='employee-name' onClick={() => this.setState({ show: true })}>
-                                        {!this.state.accountant.image && !data.accountant_image ?
-                                            <Plus /> :
-                                            <MyImgRound image={this.state.accountant.user ? this.state.accountant.image : data.accountant_image} />}
-                                        {!this.state.accountant.user && !data.accountant_first_name ?
-                                            <span>{word.add_new_employee}</span> :
-                                            <span>{this.state.accountant.user ?
-                                                this.state.accountant.user.first_name :
-                                                data.accountant_first_name} <br />
-                                                {this.state.accountant.user ? this.state.accountant.user.last_name : data.accountant_last_name}</span>}
+                                        {!this.state.accountant.image && !data.accountant_image
+                                            ? <Plus />
+                                            : <MyImgRound image={this.state.accountant.user
+                                                ? this.state.accountant.image
+                                                : data.accountant_image} />}
+                                        {!this.state.accountant.user && !data.accountant_first_name
+                                            ? <span>{word.add_new_employee}</span>
+                                            : <span>{this.state.accountant.user
+                                                ? this.state.accountant.user.first_name
+                                                : data.accountant_first_name} <br />
+                                                {this.state.accountant.user
+                                                    ? this.state.accountant.user.last_name
+                                                    : data.accountant_last_name}</span>}
                                     </div>
                                     <div className="timePicker-cont-change">
                                         <div className="timePicker-cont"
@@ -545,29 +590,41 @@ class ManagerRecommendations extends Component {
                                                 <i className="fas fa-copy"
                                                     onClick={() => { this.setState({ copy: true }) }}></i>
                                             </div>
-                                            {this.props.manager.url && (data.creator === this.props.manager.user.url) ? <div className="tool-tip-cont">
-                                                <div className="tool-tip">Խմբագրել</div>
-                                                <span onClick={() => { this.setState({ edit: true }) }}
-                                                    className='icon-Compose'></span>
-                                            </div> : null}
+                                            {this.props.manager.url && (data.creator === this.props.manager.user.url)
+                                                ? <div className="tool-tip-cont">
+                                                    <div className="tool-tip">Խմբագրել</div>
+                                                    <span onClick={() => { this.setState({ edit: true }) }}
+                                                        className='icon-Compose'></span>
+                                                </div>
+                                                : null}
                                         </div>
                                     </div>
                                 </div> :
                                 <div className="copy-accountant-tasks">
-                                    {this.props.manager.url && (data.creator === this.props.manager.user.url) ? <div className="tool-tip-cont">
-                                        <div className="tool-tip">Խմբագրել</div>
-                                        <span onClick={() => { this.setState({ edit: true }) }} className='icon-Compose'></span>
-                                    </div> : null}
+                                    {this.props.manager.url && (data.creator === this.props.manager.user.url)
+                                        ? <div className="tool-tip-cont">
+                                            <div className="tool-tip">Խմբագրել</div>
+                                            <span onClick={() => { this.setState({ edit: true }) }}
+                                                className='icon-Compose'></span>
+                                        </div>
+                                        : null}
                                     <div className="tool-tip-cont">
                                         <div className="tool-tip">Պատճենել</div>
-                                        <i className="fas fa-copy" onClick={() => { this.setState({ copy: true }) }}></i>
+                                        <i className="fas fa-copy"
+                                            onClick={() => { this.setState({ copy: true }) }}></i>
                                     </div>
                                 </div>}
                             {/* <span onClick={() => { this.setState({ edit: true }) }} className='icon-Compose'></span> */}
-                            {(localStorage.getItem("profession") === "manager") ||
-                                ((localStorage.getItem("profession") === "accountant" && data.status === "end") ||
-                                    (localStorage.getItem("profession") === "accountant" && data.accountant !== `${SERVER}accountant/${localStorage.getItem("id")}/`)) ?
-                                null : <BlueButton disabled={this.state.disabled} title={data.status === "approved" ? word.start : word.complet}
+                            {(localStorage.getItem("profession") === "manager")
+                                || ((localStorage.getItem("profession") === "accountant"
+                                    && data.status === "end")
+                                    || (localStorage.getItem("profession") === "accountant"
+                                        && data.accountant !== `${SERVER}accountant/${localStorage.getItem("id")}/`))
+                                ? null
+                                : <BlueButton disabled={this.state.disabled}
+                                    title={data.status === "approved"
+                                        ? word.start
+                                        : word.complet}
                                     onChangeValue={() => this.changeStatusPut(this.state.accountant.url, data)}
                                 />}
                             <div className="plus-cont" onClick={() => {
@@ -580,102 +637,156 @@ class ManagerRecommendations extends Component {
                                     save={(item) => this.save(item)}
                                     show={() => this.setState({ show: false })} />
                                 : null}
-                            {(((this.state.accountant.user || this.state.showPicker) && data.status !== "end") || data.status === "new") ?
-                                <BlueButton title={this.state.change_task ? <Loader
-                                    type="Oval"
-                                    color="#fff"
-                                    height={15}
-                                    width={15}
-                                /> : word.confirmed} disabled={this.state.change_task} onChangeValue={() => this.addStuff(this.state.accountant.url, data)} /> : null}
-                            {localStorage.getItem("profession") === "manager" && data.status === "end" ?
-                                <BlueButton title={word.change_status}
+                            {(((this.state.accountant.user
+                                || this.state.showPicker) && data.status !== "end")
+                                || data.status === "new") ?
+                                <BlueButton title={this.state.change_task
+                                    ? <Loader
+                                        type="Oval"
+                                        color="#fff"
+                                        height={15}
+                                        width={15}
+                                    />
+                                    : word.confirmed}
+                                    disabled={this.state.change_task}
+                                    onChangeValue={() => this.addStuff(this.state.accountant.url, data)} />
+                                : null}
+                            {localStorage.getItem("profession") === "manager" && data.status === "end"
+                                ? <BlueButton title={word.change_status}
                                     onChangeValue={() => this.changeStatusPut(this.state.accountant.url, data)}
-                                /> : null}
-                            {localStorage.getItem("profession") === "manager" && data.accountant === null && data.status !== "end" && data.manager
-                                && data.manager_id === parseInt(localStorage.getItem("id")) ?
-                                <BlueButton disabled={this.state.disabled} title={data.status === "approved" ? word.start : word.complet}
+                                />
+                                : null}
+                            {localStorage.getItem("profession") === "manager"
+                                && data.accountant === null
+                                && data.status !== "end"
+                                && data.manager
+                                && data.manager_id === parseInt(localStorage.getItem("id"))
+                                ? <BlueButton disabled={this.state.disabled} title={data.status === "approved"
+                                    ? word.start
+                                    : word.complet}
                                     onChangeValue={() => this.changeStatusPut(this.state.accountant.url, data)}
-                                /> : null}
-                            {this.state.visibleFile ? <TaskFiles
-                                getTaskById={() => this.getTaskById()}
-                                show_loading={() => this.setState({ add_new_file: true })}
-                                close={() => this.setState({ visibleFile: !this.state.visibleFile, add_new_file: false })}
-                                show_add_files={() => this.setState({ visibleAddFile: true, visibleFile: false })} /> : null}
+                                />
+                                : null}
+                            {this.state.visibleFile
+                                ? <TaskFiles
+                                    getTaskById={() => this.getTaskById()}
+                                    show_loading={() => this.setState({ add_new_file: true })}
+                                    close={() => this.setState({
+                                        visibleFile: !this.state.visibleFile,
+                                        add_new_file: false
+                                    })}
+                                    show_add_files={() => this.setState({
+                                        visibleAddFile: true,
+                                        visibleFile: false
+                                    })} />
+                                : null}
                             {/* {this.state.visibleAddFile ? <TaskAddFiles show_loading={() => this.setState({ add_new_file: true })}
                                 close={() => this.setState({ visibleAddFile: !this.state.visibleAddFile, visibleFile: true, add_new_file: false })} /> : null} */}
-                            {this.state.edit ? <ChangeRecommendation
-                                close={() => {
-                                    this.setState({ edit: false })
-                                    this.getTaskById("approved")
-                                }} /> : null}
-                            {this.state.copy ? <ChangeRecommendation
-                                copy={this.state.copy}
-                                close={() => {
-                                    this.setState({ copy: false })
-                                    // this.getAccountantTasks("approved")
-                                }} /> : null}
+                            {this.state.edit
+                                ? <ChangeRecommendation
+                                    close={() => {
+                                        this.setState({ edit: false })
+                                        this.getTaskById("approved")
+                                    }} />
+                                : null}
+                            {this.state.copy
+                                ? <ChangeRecommendation
+                                    copy={this.state.copy}
+                                    close={() => {
+                                        this.setState({ copy: false })
+                                        // this.getAccountantTasks("approved")
+                                    }} />
+                                : null}
                             {/* _start_timer */}
-                            {data.status === "process" && (localStorage.getItem("profession") === "accountant" ||
-                                (localStorage.getItem("profession") === "manager" && !data.accountant && data.manager && data.manager_id == parseInt(localStorage.getItem("id")))) ? <div>
-                                <LittleButton title={this.state.timer_loading ? <Loader
-                                    type="Oval"
-                                    color="#fff"
-                                    height={15}
-                                    width={15}
-                                /> : timer_title}
-                                    onChangeValue={() => data.task_timer && data.task_timer.length > 0 &&
-                                        data.task_timer[this.props.task.task_timer.length - 1].end == null ? this.timer_end() : this._start_timer()} />
-                                {/* <LittleButton title={word.start} onChangeValue={() => this._start_timer()} /> */}
-                            </div> : null}
+                            {data.status === "process"
+                                && (localStorage.getItem("profession") === "accountant"
+                                    || (localStorage.getItem("profession") === "manager"
+                                        && !data.accountant
+                                        && data.manager
+                                        && data.manager_id == parseInt(localStorage.getItem("id"))))
+                                ? <div><LittleButton title={this.state.timer_loading
+                                    ? <Loader
+                                        type="Oval"
+                                        color="#fff"
+                                        height={15}
+                                        width={15}
+                                    />
+                                    : timer_title}
+                                    onChangeValue={() => data.task_timer
+                                        && data.task_timer.length > 0
+                                        && data.task_timer[this.props.task.task_timer.length - 1].end == null
+                                        ? this.timer_end()
+                                        : this._start_timer()} />
+                                    {/* <LittleButton title={word.start} onChangeValue={() => this._start_timer()} /> */}
+                                </div> : null}
 
                             <div className="timer">
                                 <span>Ժամանակ {this.state.s}</span>
-                                <span>{data.child_tasks.length > 0 ? `Ենթաառաջադրանքների ժամանակը ${this.state.time}` : null}</span>
+                                <span>{data.child_tasks.length > 0
+                                    ? `Ենթաառաջադրանքների ժամանակը ${this.state.time}`
+                                    : null}</span>
                                 {/* {this._timerList()} */}
                             </div>
-                            <a href={`/main_employee/organization/${data.company_id}`} className='company-name'
+                            <a href={`/main_employee/organization/${data.company_id}`}
+                                className='company-name'
                             >{data.company_name}</a>
                             <div className="task-heading-file">
                                 <h1>{data.name}</h1>
                             </div>
                             <p>{data.text}</p>
-                            {localStorage.getItem("profession") === "manager" ? null
+                            {localStorage.getItem("profession") === "manager"
+                                ? null
                                 : <div>
-                                    {data.end_date ? <p className="end-date">{word.end_date}՝</p> : null}
-                                    <p className="end-date">{data.end_date ? moment(data.end_date).format('LLL') : ""}</p></div>}
-                            {localStorage.getItem("profession") === "manager" && (data.status === "process" || data.status === "end")
-                                ? <CheckboxFilter title="Ստուգված է" my_task={this.state.checked ? this.state.checked : data.checked}
+                                    {data.end_date
+                                        ? <p className="end-date">{word.end_date}՝</p>
+                                        : null}
+                                    <p className="end-date">{data.end_date
+                                        ? moment(data.end_date).format('LLL')
+                                        : ""}</p></div>}
+                            {localStorage.getItem("profession") === "manager"
+                                && (data.status === "process"
+                                    || data.status === "end")
+                                ? <CheckboxFilter title="Ստուգված է" my_task={this.state.checked
+                                    ? this.state.checked
+                                    : data.checked}
                                     onChange={() => {
                                         this.checked()
-                                    }} /> : null}
-                            <CheckboxFilter title="Տեսանելի է բոլորի համար" my_task={data.visible_for_client}
+                                    }} />
+                                : null}
+                            <CheckboxFilter
+                                title="Տեսանելի է բոլորի համար"
+                                my_task={data.visible_for_client}
                             />
-                            {data.status === "end" ? <div className="title-rate">
-                                <div className="title">Մենեջեր</div>
-                                <CustomizedRatings
-                                    disabled={localStorage.getItem("profession") === "manager" ? false : true}
-                                    status={data.status}
-                                    defaultValue={this.get_task_rate() ? this.get_task_rate() : null}
-                                    task={data.url}
-                                    manager={this.props.manager.url}
-                                    taskManager={data.manager}
-                                    id={data.id}
-                                    getTask={() => this.getTaskById()}
-                                />
-                            </div> : null}
-                            {data.status === "end" ? <div className="title-rate">
-                                <div className="title">Հաճախորդ</div>
-                                <CustomizedRatings
-                                    disabled={true}
-                                    status={data.status}
-                                    defaultValue={this.get_task_rate_client() ? this.get_task_rate_client() : null}
-                                    task={data.url}
-                                    manager={this.props.manager.url}
-                                    taskManager={data.manager}
-                                    id={data.id}
-                                    getTask={() => this.getTaskById()}
-                                />
-                            </div> : null}
+                            {data.status === "end"
+                                ? <div className="title-rate">
+                                    <div className="title">Մենեջեր</div>
+                                    <CustomizedRatings
+                                        disabled={localStorage.getItem("profession") === "manager" ? false : true}
+                                        status={data.status}
+                                        defaultValue={this.get_task_rate() ? this.get_task_rate() : null}
+                                        task={data.url}
+                                        manager={this.props.manager.url}
+                                        taskManager={data.manager}
+                                        id={data.id}
+                                        getTask={() => this.getTaskById()}
+                                    />
+                                </div>
+                                : null}
+                            {data.status === "end"
+                                ? <div className="title-rate">
+                                    <div className="title">Հաճախորդ</div>
+                                    <CustomizedRatings
+                                        disabled={true}
+                                        status={data.status}
+                                        defaultValue={this.get_task_rate_client() ? this.get_task_rate_client() : null}
+                                        task={data.url}
+                                        manager={this.props.manager.url}
+                                        taskManager={data.manager}
+                                        id={data.id}
+                                        getTask={() => this.getTaskById()}
+                                    />
+                                </div>
+                                : null}
                             {data.status !== "new" ? <div className="task-timer">
                                 <Button
                                     onClick={() => this.setState({ open: !this.state.open })}
@@ -694,10 +805,25 @@ class ManagerRecommendations extends Component {
                                                 </tr>
                                                 {data.task_timer.map((item, index) => {
                                                     return <tr className='task-timer-item' key={index}>
-                                                        <td className='timer-start-end'>{item.start ? <div>
-                                                            <span className="task-timer-item-date">{moment(item.start).tz('Asia/Yerevan').format('L')}</span><span>{moment(item.start).tz('Asia/Yerevan').format('LTS')}</span></div> : ""}</td>
-                                                        <td className='timer-start-end'>{item.end ? <div>
-                                                            <span className="task-timer-item-date">{moment(item.start).tz('Asia/Yerevan').format('L')}</span><span>{moment(item.end).tz('Asia/Yerevan').format('LTS')}</span></div> : ""}</td>
+                                                        <td className='timer-start-end'>{item.start
+                                                            ? <div>
+                                                                <span className="task-timer-item-date">
+                                                                    {moment(item.start).tz('Asia/Yerevan').format('L')}
+                                                                </span>
+                                                                <span>
+                                                                    {moment(item.start).tz('Asia/Yerevan').format('LTS')}
+                                                                </span>
+                                                            </div>
+                                                            : ""}
+                                                        </td>
+                                                        <td className='timer-start-end'>{item.end
+                                                            ? <div><span className="task-timer-item-date">
+                                                                {moment(item.start).tz('Asia/Yerevan').format('L')}
+                                                            </span>
+                                                                <span>{moment(item.end).tz('Asia/Yerevan').format('LTS')}
+                                                                </span>
+                                                            </div>
+                                                            : ""}</td>
                                                     </tr>
                                                 })}
                                             </tbody>
@@ -707,9 +833,19 @@ class ManagerRecommendations extends Component {
                             </div> : null}
                             <div className="">Ստեղծող- <span className="creator-name">{data.creator_name}</span></div>
                             <div className="task-date-cont">
-                                <span className='moment'>Ստղ. {data.created_date ? moment(data.created_date).tz('Asia/Yerevan').format('LLL') : null}</span>
-                                {data.status !== "new" ? <span className='moment'>Սկզ. {data.start_task_date ? moment(data.start_task_date).tz('Asia/Yerevan').format('LLL') : null}</span> : null}
-                                {data.status === "end" ? <span className='moment'>Ավտ. {data.end_task_date ? moment(data.end_task_date).tz('Asia/Yerevan').format('LLL') : null}</span> : null}
+                                <span className='moment'>Ստղ. {data.created_date
+                                    ? moment(data.created_date).tz('Asia/Yerevan').format('LLL')
+                                    : null}</span>
+                                {data.status !== "new"
+                                    ? <span className='moment'>Սկզ. {data.start_task_date
+                                        ? moment(data.start_task_date).tz('Asia/Yerevan').format('LLL')
+                                        : null}</span>
+                                    : null}
+                                {data.status === "end"
+                                    ? <span className='moment'>Ավտ. {data.end_task_date
+                                        ? moment(data.end_task_date).tz('Asia/Yerevan').format('LLL')
+                                        : null}</span>
+                                    : null}
                             </div>
                             <div className='line-blue'></div>
                             <span className="message-heading">{word.message}</span>
@@ -719,8 +855,10 @@ class ManagerRecommendations extends Component {
                                     <div className="icon-button"
                                         onClick={() => this.setState({ visibleMessage: !this.state.visibleMessage })}>
                                         <div className="add-file">
-                                            <i className="fas fa-envelope"/>
-                                            {!this.state.visibleMessage && (data.new_sms_count !== 0) ? <div className="tasks-around">{data.new_sms_count}</div> : null}
+                                            <i className="fas fa-envelope" />
+                                            {!this.state.visibleMessage && (data.new_sms_count !== 0)
+                                                ? <div className="tasks-around">{data.new_sms_count}</div>
+                                                : null}
                                         </div>
                                     </div>
                                 </div>
@@ -733,120 +871,141 @@ class ManagerRecommendations extends Component {
                                         <div className="tool-tip">Ֆայլերի ցանկ</div>
                                         <div className="add-file">
                                             <i className="fas fa-file"></i>
-                                            {data.new_file_count !== 0 ? <div className="tasks-around">{data.new_file_count}</div> : null}
+                                            {data.new_file_count !== 0
+                                                ? <div className="tasks-around">{data.new_file_count}</div>
+                                                : null}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="message-list-inputs">
-                                {this.state.visibleMessage ? <MessageList /> : null}
-                                {this.state.visibleMessage ? <div className="send-message"> <div className='input-image' >
-                                    <div>{$filePreview}</div>
-                                    <div className="send-file">
-                                        <textarea className='area' type="text"
-                                            readOnly={this.state.send_message}
-                                            onKeyDown={(e) => { this.keyPress(e) }}
-                                            name="text"
-                                            autoFocus={true}
-                                            placeholder={word.enter_message}
-                                            value={this.state.text} onChange={(e) => {
-                                                let value = e.target.value
-                                                this.setState({ text: value })
-                                            }}></textarea>
-                                        <div className='message-icons'>
-                                            <label className="checkbox-cont">
-                                                <div className="title">բոլորի համար</div>
-                                                <div className="cont">
-                                                    <input
-                                                        checked={this.state.for_all}
-                                                        onChange={
-                                                            () => this.setState({ for_all: !this.state.for_all })
-                                                        } type="checkbox" />
-                                                    <span className="checkmark"></span>
+                                {this.state.visibleMessage
+                                    ? <MessageList />
+                                    : null}
+                                {this.state.visibleMessage
+                                    ? <div className="send-message">
+                                        <div className='input-image' >
+                                            <div>{$filePreview}</div>
+                                            <div className="send-file">
+                                                <textarea className='area' type="text"
+                                                    readOnly={this.state.send_message}
+                                                    onKeyDown={(e) => { this.keyPress(e) }}
+                                                    name="text"
+                                                    autoFocus={true}
+                                                    placeholder={word.enter_message}
+                                                    value={this.state.text} onChange={(e) => {
+                                                        let value = e.target.value
+                                                        this.setState({ text: value })
+                                                    }}></textarea>
+                                                <div className='message-icons'>
+                                                    <label className="checkbox-cont">
+                                                        <div className="title">բոլորի համար</div>
+                                                        <div className="cont">
+                                                            <input
+                                                                checked={this.state.for_all}
+                                                                onChange={
+                                                                    () => this.setState({ for_all: !this.state.for_all })
+                                                                } type="checkbox" />
+                                                            <span className="checkmark"></span>
+                                                        </div>
+                                                    </label>
+                                                    <label>
+                                                        <i className="fas fa-image"></i>
+                                                        {/* <i className="fas fa-paperclip"></i> */}
+                                                        <input type="file" className='input-icon' onChange={(e) => {
+                                                            let reader = new FileReader();
+                                                            let file = e.target.files[0]
+                                                            if (file.size === 0) {
+                                                                alert("Ֆայլը դատարկ է")
+                                                            }
+                                                            reader.onloadend = () => {
+                                                                this.setState({
+                                                                    file,
+                                                                    filePreviewUrl: reader.result
+                                                                });
+                                                            }
+                                                            reader.readAsDataURL(file)
+                                                        }} />
+                                                    </label>
+                                                    <i onClick={() => {
+                                                        if (!this.state.send_message) {
+                                                            this.taskSms()
+                                                        }
+                                                    }} className="fa fa-paper-plane" aria-hidden="true"></i>
                                                 </div>
-                                            </label>
-                                            <label>
-                                                <i className="fas fa-image"></i>
-                                                {/* <i className="fas fa-paperclip"></i> */}
-                                                <input type="file" className='input-icon' onChange={(e) => {
-                                                    let reader = new FileReader();
-                                                    let file = e.target.files[0]
-                                                    if (file.size === 0) {
-                                                        alert("Ֆայլը դատարկ է")
-                                                    }
-                                                    reader.onloadend = () => {
-                                                        this.setState({
-                                                            file,
-                                                            filePreviewUrl: reader.result
-                                                        });
-                                                    }
-                                                    reader.readAsDataURL(file)
-                                                }} />
-                                            </label>
-                                            <i onClick={() => {
-                                                if (!this.state.send_message) {
-                                                    this.taskSms()
-                                                }
-                                            }} className="fa fa-paper-plane" aria-hidden="true"></i>
-                                        </div>
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    : null}
+                            </div>
+                            {data.parent_task_details
+                                ? <div><div className='line-blue'></div>
+                                    <span className="message-heading">Գլխավոր առաջադրանքներ</span>
+                                    <div className="child-tasks">
+                                        <RecommendationsItem
+                                            toLink={`/main_employee/tasks/${data.parent_task_details.id}`}
+                                            item={data.parent_task_details}
+                                            modalShow={() => this.setState({
+                                                deleteVisible: !this.state.deleteVisible,
+                                                delete_id: data.parent_task_details.id
+                                            })}
+                                            getTaskData={() => this.setFilter()}
+                                            {...this.props}
+                                            color={this.styleByStatus(data.parent_task_details.status)}
+                                        />
                                     </div>
                                 </div>
-                                </div> : null}
-                            </div>
-                            {data.parent_task_details ? <div>
-                                <div className='line-blue'></div>
-                                <span className="message-heading">Գլխավոր առաջադրանքներ</span>
-                                <div className="child-tasks">
-                                    <RecommendationsItem
-                                        toLink={`/main_employee/tasks/${data.parent_task_details.id}`}
-                                        item={data.parent_task_details}
-                                        modalShow={() => this.setState({ deleteVisible: !this.state.deleteVisible, delete_id: data.parent_task_details.id })}
-                                        getTaskData={() => this.setFilter()}
-                                        {...this.props}
-                                        color={this.styleByStatus(data.parent_task_details.status)}
-                                    />
+                                : null}
+                            {data.child_tasks.length > 0
+                                ? <div>
+                                    <div className='line-blue'></div>
+                                    <span className="message-heading">Ենթաառաջադրանքներ</span>
+                                    <div className="child-tasks">
+                                        {data.child_tasks ? data.child_tasks.map((item, index) => {
+                                            return <RecommendationsItem key={index}
+                                                child_tasks={true}
+                                                toLink={`/main_employee/tasks/${item.id}`}
+                                                item={item}
+                                                modalShow={() => this.setState({
+                                                    deleteVisible: !this.state.deleteVisible,
+                                                    delete_id: item.id
+                                                })}
+                                                getTaskData={() => this.setFilter()}
+                                                {...this.props}
+                                                color={this.styleByStatus(item.status)}
+                                            />
+                                        })
+                                            : null}
+                                    </div>
                                 </div>
-                            </div> : null}
-                            {data.child_tasks.length > 0 ? <div>
-                                <div className='line-blue'></div>
-                                <span className="message-heading">Ենթաառաջադրանքներ</span>
-                                <div className="child-tasks">
-                                    {data.child_tasks ? data.child_tasks.map((item, index) => {
-                                        return <RecommendationsItem key={index}
-                                            child_tasks={true}
-                                            toLink={`/main_employee/tasks/${item.id}`}
-                                            item={item}
-                                            modalShow={() => this.setState({ deleteVisible: !this.state.deleteVisible, delete_id: item.id })}
-                                            getTaskData={() => this.setFilter()}
-                                            {...this.props}
-                                            color={this.styleByStatus(item.status)}
-                                        />
-                                    }) : null}
+                                : null}
+                            {data.parent_child_tasks && data.parent_child_tasks.length > 1
+                                ? <div>
+                                    <div className='line-blue'></div>
+                                    <span className="message-heading">Գլխավոր առաջադրանքի այլ ենթաառաջադրանքները</span>
+                                    <div className="child-tasks">
+                                        {data.parent_child_tasks.map((item, index) => {
+                                            if (item.id === data.id) return
+                                            return <RecommendationsItem key={index}
+                                                toLink={`/main_employee/tasks/${item.id}`}
+                                                item={item}
+                                                modalShow={() => this.setState({ deleteVisible: !this.state.deleteVisible, delete_id: item.id })}
+                                                getTaskData={() => this.setFilter()}
+                                                {...this.props}
+                                                color={this.styleByStatus(item.status)}
+                                            />
+                                        })}
+                                    </div>
                                 </div>
-                            </div> : null}
-                            {data.parent_child_tasks && data.parent_child_tasks.length > 1 ? <div>
-                                <div className='line-blue'></div>
-                                <span className="message-heading">Գլխավոր առաջադրանքի այլ ենթաառաջադրանքները</span>
-                                <div className="child-tasks">
-                                    {data.parent_child_tasks.map((item, index) => {
-                                        if (item.id === data.id) return
-                                        return <RecommendationsItem key={index}
-                                            toLink={`/main_employee/tasks/${item.id}`}
-                                            item={item}
-                                            modalShow={() => this.setState({ deleteVisible: !this.state.deleteVisible, delete_id: item.id })}
-                                            getTaskData={() => this.setFilter()}
-                                            {...this.props}
-                                            color={this.styleByStatus(item.status)}
-                                        />
-                                    })}
-                                </div>
-                            </div> : null}
+                                : null}
                         </Col >
                         <Col xs={12} sm={4}>
                             <div className='recommendations-line'>
                                 <div className='green-line'>
-                                    <div className='inside-green' style={{ height: this.setHeigthByStatus(data.status) }}></div>
+                                    <div className='inside-green'
+                                        style={{ height: this.setHeigthByStatus(data.status) }}>
+                                    </div>
                                     <div className='task-rounds task-rounds1'>
                                         <div className='tasks-date'>
                                             <span>
@@ -856,7 +1015,10 @@ class ManagerRecommendations extends Component {
                                         </div>
                                         <div className='rounds'>
                                             <div className='point'></div>
-                                            {data.status === "new" ? <div className='icon-point'><span className='icon-Yes'></span></div> : null}
+                                            {data.status === "new"
+                                                ? <div className='icon-point'>
+                                                    <span className='icon-Yes'></span></div>
+                                                : null}
                                         </div>
                                     </div>
                                     <div className='task-rounds task-rounds2'>
@@ -868,7 +1030,11 @@ class ManagerRecommendations extends Component {
                                         </div>
                                         <div className='rounds'>
                                             <div className='point'></div>
-                                            {data.status === "process" ? <div className='icon-point'><span className='icon-Yes'></span></div> : null}
+                                            {data.status === "process"
+                                                ? <div className='icon-point'>
+                                                    <span className='icon-Yes'></span>
+                                                </div>
+                                                : null}
                                         </div>
                                     </div>
                                     <div className='task-rounds task-rounds3'>
@@ -881,7 +1047,11 @@ class ManagerRecommendations extends Component {
                                         </div>
                                         <div className='rounds'>
                                             <div className='point'></div>
-                                            {data.status === "end" ? <div className='icon-point'><span className='icon-Yes'></span></div> : null}
+                                            {data.status === "end"
+                                                ? <div className='icon-point'>
+                                                    <span className='icon-Yes'></span>
+                                                </div>
+                                                : null}
                                         </div>
                                     </div>
 

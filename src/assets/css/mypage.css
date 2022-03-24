@@ -706,7 +706,7 @@ flex: 1;
 .recommendations-list{
     color: #07608d;
 }
-.new-recommendation {
+.new-recommendation, .multi-select-modal {
     position: fixed;
     z-index: 2;
     top: 50%;
@@ -718,7 +718,10 @@ flex: 1;
    height: calc( 100vh - 180px);
    overflow: auto;
 }
-
+.multi-select-modal{
+    z-index: 10000000;
+    height: fit-content !important;
+}
 .new-recommendation [class^="icon-"], [class*=" icon-"]{
     color: #07608d;
 }
@@ -1190,7 +1193,12 @@ overflow: hidden;
     }
 }
 @media only screen and (max-width: 465px){
-   
+    .multi-select-modal{
+        width: 100%;
+    }
+    .task-multi-title{
+        font-size: 12px;
+    }
     .icon-Attachment{
         font-size: 16px !important;
     }

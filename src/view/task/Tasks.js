@@ -3,7 +3,8 @@ import RecommendationsItem from "../../components/RecommendationsItem";
 import { Col, Row } from "react-bootstrap";
 import Button from 'react-bootstrap/Button'
 import Collapse from 'react-bootstrap/Collapse';
-
+import MultiSelect from "@kenshooui/react-multi-select";
+import "@kenshooui/react-multi-select/dist/style.css"
 // import DatePicker from "react-modern-calendar-datepicker";
 // import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import DatePicker from "react-datepicker";
@@ -11,6 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import MyButton from "../../components/Button/Button";
 import NewRecommendation from "./NewRecommendations/NewRecommendations";
 import NewTaskMuchOrgs from "./NewRecommendations/NewTaskMuchOrgs";
+import ModalForMultiSelect from "./ModalForMultiSelect";
 import Loader from 'react-loader-spinner';
 import { orgAction, stuffAction, get_stuff_limit, get_org_limit, employeeAction } from "../../action";
 import { getTaskByFilters, deleteArchive, getMe, getMeById } from "../../api";
@@ -164,7 +166,7 @@ class Tasks extends Component {
         for (let i = 0; i < array.length; i++) {
             for (let j = 0; j < selected.length; j++) {
                 if (parseInt(selected[j], 10) === array[i].value) {
-                    new_selected_list.push(array[i])
+                    new_selected_list.push({ label: array[i].label, id: array[i].value })
                 }
             }
         }
@@ -174,13 +176,21 @@ class Tasks extends Component {
         switch (this.params.status) {
             case "new":
                 return {
-                    end_date: this.params.created_date_end ? this.params.created_date_end : `${end_date.getFullYear()}-${end_date.getMonth() + 1}-${end_date.getDate()}`,
-                    start_date: this.params.created_date ? this.params.created_date : `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
+                    end_date: this.params.created_date_end
+                        ? this.params.created_date_end
+                        : `${end_date.getFullYear()}-${end_date.getMonth() + 1}-${end_date.getDate()}`,
+                    start_date: this.params.created_date
+                        ? this.params.created_date
+                        : `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
                 };
             case "approved":
                 return {
-                    end_date: this.params.created_date_end ? this.params.created_date_end : `${end_date.getFullYear()}-${end_date.getMonth() + 1}-${end_date.getDate()}`,
-                    start_date: this.params.created_date ? this.params.created_date : `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
+                    end_date: this.params.created_date_end
+                        ? this.params.created_date_end
+                        : `${end_date.getFullYear()}-${end_date.getMonth() + 1}-${end_date.getDate()}`,
+                    start_date: this.params.created_date
+                        ? this.params.created_date
+                        : `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
                 };
             case "process":
                 return {
@@ -340,27 +350,31 @@ class Tasks extends Component {
 
     }
     onChangeSelectCompany(list) {
-        this.setState({ selected_company: list, loading: true, })
+        console.log(list, "listtttttttttttttttt");
         let company_list = [];
+        let selected_list = [];
         if (list) {
             for (let index = 0; index < list.length; index++) {
                 const element = list[index];
-                company_list.push(element.value)
+                company_list.push(element.id);
+                selected_list.push(element);
             }
         }
+        this.setState({ selected_company: selected_list, loading: true })
         let company = list ? company_list.join(",") : "";
         this.setFilter({ company })
     }
     onChangeSelectEmployee(list) {
-        this.setState({ selected_accountant: list })
+        let selected_list = [];
         let accountant_list = []
         if (list) {
             for (let index = 0; index < list.length; index++) {
                 const element = list[index];
-                accountant_list.push(element.value)
+                accountant_list.push(element.id)
             }
         }
         let accountant = list ? accountant_list.join(",") : "";
+        this.setState({ selected_accountant: list })
         this.setFilter({ accountant })
     }
     onChangeSelectManager(element) {
@@ -455,6 +469,22 @@ class Tasks extends Component {
         console.log("in rendeeeer");
         return (
             <div className='tasks'>
+                {this.state.showMultiCopany || this.state.showMultiStaff ? <ModalForMultiSelect
+                    loading={this.state.showMultiCopany ? limit_data.loader_orgs : limit_data.loader_stuff}
+                    body={<MultiSelect
+                        items={this.state.showMultiCopany
+                            ? (limit_data.orgs.length > 0 ? limit_data.orgs.map((item) => ({ label: item.label, id: item.value })) : [])
+                            : (limit_data.stuff.length > 0 ? limit_data.stuff.map((item) => ({ label: item.label, id: item.value })) : [])}
+                        selectedItems={this.state.showMultiCopany
+                            ? (this.state.selected_company ? this.state.selected_company : [])
+                            : (this.state.selected_accountant ? this.state.selected_accountant : [])
+                        }
+                        onChange={(list) => this.state.showMultiCopany ? this.onChangeSelectCompany(list) : this.onChangeSelectEmployee(list)}
+                    />} /> : null}
+                {this.state.showMultiCopany || this.state.showMultiStaff
+                    ? <div className="popup" onClick={() => this.setState({ showMultiCopany: false, showMultiStaff: false })}>
+                    </div>
+                    : null}
                 {this.state.deleteVisible
                     ? <div className="popup" onClick={() => this.setState({ deleteVisible: false })}>
                     </div>
@@ -592,8 +622,15 @@ class Tasks extends Component {
                         />
                     </span>
                     <div className='middle-line'></div>
+                    {console.log(limit_data, "limit_data")}
                     <div className='tasks-data-hidden'>
-                        <Select
+                        {console.log(this.state.selected_company, "this.state.selected_company")}
+                        <div className='task-multi-title' onClick={() => this.setState({ showMultiCopany: true })}>
+                            {this.state.selected_company && this.state.selected_company[0]
+                                ? `${this.state.selected_company[0].label} և ևս ${this.state.selected_company.length - 1}`
+                                : "Ընտրել կազմակերպություն"}
+                        </div>
+                        {/* <Select
                             styles={customStyles}
                             isLoading={limit_data.loader_orgs}
                             value={this.state.selected_company}
@@ -606,12 +643,16 @@ class Tasks extends Component {
                             }}
                             placeholder={word.organizations}
                             isMulti
-                        />
+                        /> */}
                     </div>
                     {profession !== "accountant" && !this.state.my_task ? <div className='middle-line'></div> : null}
                     {profession !== "accountant" && !this.state.my_task ?
                         <div className='tasks-data-hidden'>
-                            <Select
+                            <div className='task-multi-title' onClick={() => this.setState({ showMultiStaff: true })}>
+                                {this.state.selected_accountant && this.state.selected_accountant[0]
+                                    ? `${this.state.selected_accountant[0].label} և ևս ${this.state.selected_accountant.length - 1}` : "Ընտրել աշխատակից"}
+                            </div>
+                            {/* <Select
                                 isLoading={limit_data.loader_stuff}
                                 styles={customStyles}
                                 value={this.state.selected_accountant}
@@ -624,8 +665,9 @@ class Tasks extends Component {
                                 }}
                                 placeholder={word.employees}
                                 isMulti
-                            />
+                            /> */}
                         </div> : null}
+                    <div className='middle-line'></div>
                     {profession !== "accountant" && !this.state.my_task ?
                         <div className='tasks-data-hidden'>
                             <Select
