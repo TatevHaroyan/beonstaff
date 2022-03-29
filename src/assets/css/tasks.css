@@ -308,6 +308,10 @@
     overflow: hidden;
     text-overflow: ellipsis; */
  }
+ .loader-filter{
+    display: flex;
+    padding-left: 3px;
+ }
  .task-multi-title{
    color: hsl(0,0%,50%);
    margin-left: 5px;
@@ -316,9 +320,13 @@
    width: 94%;
    overflow: hidden;
    cursor: pointer;
+   /* display: flex;
+   flex: 1; */
  }
  .tasks-data-hidden{
     position: relative;
+    /* display: flex;
+    flex: 1; */
  }
  /* .tasks-data .tasks-data-hidden:last-child{
     flex: 1;

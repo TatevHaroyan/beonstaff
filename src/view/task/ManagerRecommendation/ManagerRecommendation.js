@@ -93,7 +93,8 @@ class ManagerRecommendations extends Component {
             this.getTaskById()
             this.sum_parent_timer()
         }
-        if (prevProps.task.id !== this.props.task.id) {
+        if ((prevProps.task.id !== this.props.task.id)
+            || (prevProps.task.status !== this.props.task.status)) {
             this.timerFunction()
         }
     }
@@ -198,6 +199,7 @@ class ManagerRecommendations extends Component {
                     }
                     )
             )
+            .catch((error) => this.setState({ disabled: false, timer_loading: false }))
     }
     get_day_reports() {
         todaysTaskSum()
@@ -214,34 +216,46 @@ class ManagerRecommendations extends Component {
         this.setState({ disabled: true })
         let token = localStorage.getItem("token")
         let id = data.id
-        let start_date = new Date().toLocaleString("en-US", { timeZone: "Asia/Yerevan" })
-        let end_date = new Date().toLocaleString("en-US", { timeZone: "Asia/Yerevan" })
+        // let start_date = new Date().toLocaleString("en-US", { timeZone: "Asia/Yerevan" })
+        // let end_date = new Date().toLocaleString("en-US", { timeZone: "Asia/Yerevan" })
         let timer_data = {
             task: data.url,
-            start: this.changeStatus(data.status) === "process"
-                ? moment(start_date).format("YYYY-MM-DD HH:mm:ss")
-                : data.start_task_date,
-            end: null
+            // start: this.changeStatus(data.status) === "process"
+            //     ? moment(start_date).format("YYYY-MM-DD HH:mm:ss")
+            //     : data.start_task_date,
+            // end: null
             // this.changeStatus(data.status) === "end" ? moment(end_date).format("YYYY-MM-DD HH:mm:ss") : data.end_task_date
         }
         this.props.change_status();
-        let start_or_end = data.status === "process" ? "end-task" : "start-task"
+        let start_or_end = data.status === "process" ? "end-task" : "start-task";
         editStatus(token, id, start_or_end)
             .then(
                 () => {
                     if (this.changeStatus(data.status) !== "end") {
                         timer(token, timer_data)
-                            .then(() => {
+                            .then(() =>
                                 getTaskById(token, id)
                                     .then((res) => {
                                         this.get_day_reports();
-                                        this.props.task_data(res);
-                                        this.setState({ disabled: false });
+                                        this.props.task_data(res)
+                                        this.setState({ disabled: false, timer_loading: false })
                                         this.props.change_status();
                                     }
                                     )
-                            }
                             )
+                        // timer(token, timer_data)
+                        //     .then(() => {
+                        //         getTaskById(token, id)
+                        //             .then((res) => {
+                        //                 console.log(res, 'ressssssssssssssss');
+                        //                 this.get_day_reports();
+                        //                 this.props.task_data(res);
+                        //                 this.setState({ disabled: false });
+                        //                 this.props.change_status();
+                        //             }
+                        //             )
+                        //     }
+                        //     )
                     }
                     else {
                         this.timer_end({ status: "end" })
@@ -442,6 +456,7 @@ class ManagerRecommendations extends Component {
             })
     }
     timerFunction() {
+        console.log("timerFunctionnnnnnnnnnnn");
         let data = this.props.task;
         let task_timer = data.task_timer;
         let timer_value = null;

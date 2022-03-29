@@ -1,6 +1,8 @@
 // const SERVER = "http://192.168.1.128:8000/api/"
 import * as queryString from "../utils/query-string";
 import { SERVER } from "../config";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // const SERVER = "https://admin.beon.am/api/" //server petq e mna
 const needLogin = () => {    //petq e
     localStorage.clear();
@@ -8,6 +10,9 @@ const needLogin = () => {    //petq e
         window.location = "/"
     }
 }
+const error_notify = () => toast.error("Գործընթացը ձախողվել է, կնդրում ենք նորից կրկնել", {
+    position: toast.POSITION.TOP_CENTER
+});
 const errorMessage = (message) => {
     this.message = message;
 }
@@ -1002,7 +1007,7 @@ const timer = (token, data) => {
             if (res.status === 200 || res.status === 201)
                 return res.json()
             else {
-                throw new errorMessage("error")
+                throw error_notify()
             }
         })
         .then((data) => {

@@ -624,11 +624,16 @@ class Tasks extends Component {
                     <div className='middle-line'></div>
                     {console.log(limit_data, "limit_data")}
                     <div className='tasks-data-hidden'>
-                        {console.log(this.state.selected_company, "this.state.selected_company")}
-                        <div className='task-multi-title' onClick={() => this.setState({ showMultiCopany: true })}>
-                            {this.state.selected_company && this.state.selected_company[0]
-                                ? `${this.state.selected_company[0].label} և ևս ${this.state.selected_company.length - 1}`
-                                : "Ընտրել կազմակերպություն"}
+                        <div className='loader-filter'>
+                            {limit_data.loader_orgs
+                                ? <Loader type="Oval" color="#949494" height={10} width={10} />
+                                : ""}
+                            {console.log(this.state.selected_company, "this.state.selected_company")}
+                            <div className='task-multi-title' onClick={() => this.setState({ showMultiCopany: true })}>
+                                {!limit_data.loader_orgs && this.state.selected_company && this.state.selected_company[0]
+                                    ? `${this.state.selected_company[0].label} և ևս ${this.state.selected_company.length - 1}`
+                                    : ("Ընտրել կազմակերպություն")}
+                            </div>
                         </div>
                         {/* <Select
                             styles={customStyles}
@@ -649,8 +654,14 @@ class Tasks extends Component {
                     {profession !== "accountant" && !this.state.my_task ?
                         <div className='tasks-data-hidden'>
                             <div className='task-multi-title' onClick={() => this.setState({ showMultiStaff: true })}>
-                                {this.state.selected_accountant && this.state.selected_accountant[0]
-                                    ? `${this.state.selected_accountant[0].label} և ևս ${this.state.selected_accountant.length - 1}` : "Ընտրել աշխատակից"}
+                                <div className='loader-filter'>
+                                    {limit_data.loader_stuff
+                                        ? <Loader type="Oval" color="#949494" height={10} width={10} />
+                                        : null}
+                                    {this.state.selected_accountant && this.state.selected_accountant[0]
+                                        ? `${this.state.selected_accountant[0].label} և ևս ${this.state.selected_accountant.length - 1}`
+                                        : ("Ընտրել աշխատակից")}
+                                </div>
                             </div>
                             {/* <Select
                                 isLoading={limit_data.loader_stuff}
@@ -667,7 +678,7 @@ class Tasks extends Component {
                                 isMulti
                             /> */}
                         </div> : null}
-                    <div className='middle-line'></div>
+                    {profession !== "accountant" && !this.state.my_task ? <div className='middle-line'></div> : null}
                     {profession !== "accountant" && !this.state.my_task ?
                         <div className='tasks-data-hidden'>
                             <Select
