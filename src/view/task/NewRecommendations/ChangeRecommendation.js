@@ -72,11 +72,18 @@ class ChangeRecommendation extends Component {
                 // this.props.task ? this._getValue(this.props.task, localStorage.getItem("profession") === "manager" ? 'accountant' : "manager") : "",
                 {
                     key: localStorage.getItem("profession") === "manager" ? 'accountant' : "manager",
-                    value: this.props.task ? this._getValue(this.props.task, localStorage.getItem("profession") === "manager" ? 'accountant' : "manager") : "",
+                    value: this.props.task
+                        ? this._getValue(this.props.task,
+                            localStorage.getItem("profession") === "manager"
+                                ? 'accountant'
+                                : "manager")
+                        : "",
                     option: localStorage.getItem("profession") === "manager" ? "stuff" : "manager",
                     errorMessage: "select_error",
                     type: "dropDown",
-                    label: this.props.task ? `${this._getValue(this.props.task, "accountant_first_name")}, ${this._getValue(this.props.task, "accountant_last_name")}` : "",
+                    label: this.props.task
+                        ? `${this._getValue(this.props.task,
+                            "accountant_first_name")}, ${this._getValue(this.props.task, "accountant_last_name")}` : "",
                     valid: true,
                 },
 
@@ -220,13 +227,20 @@ class ChangeRecommendation extends Component {
             return array[ind]
         }
     }
-    success_notify
+    // success_notify
     _renderDropDown(item, index) {
-        let option = this.props[item.option].filter((el) => el.user.is_active)
-        return <div key={index} className={!item.valid && this.state.submited ? "input-validation input-validation-valid" : "input-validation"}>
+        let option = this.props[item.option] ? (item.option !== "organization"
+            ? this.props[item.option].filter((el) => el.user.is_active)
+            : this.props[item.option].filter(item => item.is_deleted_by_manager === false)) : []
+        return <div key={index} className={!item.valid && this.state.submited
+            ? "input-validation input-validation-valid"
+            : "input-validation"
+        }>
             <Autocomplete
                 id="combo-box-demo"
-                defaultValue={(item.key === "manager" || item.key === "accountant") ? this.getSelected(this.props[item.option]) : this.getSelected(this.props[item.option], item.label)}
+                defaultValue={(item.key === "manager" || item.key === "accountant")
+                    ? this.getSelected(this.props[item.option])
+                    : this.getSelected(this.props[item.option], item.label)}
                 options={option}
                 loading={option.length > 0 ? false : true}
                 loadingText={<div className="auto-complete-loader"><Loader
@@ -253,7 +267,7 @@ class ChangeRecommendation extends Component {
                 )}
             />
             {(!item.valid && this.state.submited) ? <div className='validation valid-center'>{this.props.word[item.errorMessage]}</div> : null}
-        </div>
+        </div >
     }
     _rederTextArea(item, index) {
         return <div className={!item.valid && this.state.submited ? "input-validation input-validation-valid" : "input-validation"} key={index} >
@@ -370,7 +384,8 @@ export default connect(
     (state) => ({
         word: state.word, show: state.showReducer,
         login: state.loginReducer,
-        organization: state.organization.results ? state.organization.results.filter(item => item.is_deleted_by_manager === false) : [],
+        organization: state.organization.results,
+        // ? state.organization.results.filter(item => item.is_deleted_by_manager === false) : [],
         stuff: state.stuff.results,
         manager: state.manager.array_manager.results,
         limit_data: state.limit_data,

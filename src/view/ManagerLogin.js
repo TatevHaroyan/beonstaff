@@ -6,6 +6,8 @@ import { login_post, getMe } from "../api/index";
 import { GET_PORFESSION } from "../action/type";
 import Button from '../components/Button/Button';
 import { toast } from 'react-toastify';
+import eye from "../assets/img/eye.svg";
+import eyeClouse from "../assets/img/eye-clouse.svg";
 import 'react-toastify/dist/ReactToastify.css'
 class ManagerLogin extends Component {
     constructor(props) {
@@ -86,7 +88,11 @@ class ManagerLogin extends Component {
     }
     _loginRender(item, index) {
         return <div key={index} className="login-input-valid">
-            <input className="login-input" type={item.type} placeholder={this.props.word[item.key]} name={item.key} onKeyDown={(e) => this.keyPress(e)}
+            <input className="login-input"
+                type={item.type}
+                placeholder={this.props.word[item.key]}
+                name={item.key}
+                onKeyDown={(e) => this.keyPress(e)}
                 autoComplete="off"
                 value={item.value} onChange={(e) => {
                     item.value = e.target.value
@@ -110,6 +116,10 @@ class ManagerLogin extends Component {
                     this.setState({ form: this.state.form })
                 }}
             />
+            {item.key === "password" ? <img src={item.type !== "text" ? eye : eyeClouse} onClick={() => {
+                item.type = item.type !== "text" ? "text" : "password";
+                this.setState({ form: this.state.form })
+            }} /> : null}
             {(!item.valid && this.state.submited) ? <div className='validation-accountant'>{this.props.word[item.errorMessage]}</div> : null}
         </div>
     }
@@ -126,10 +136,10 @@ class ManagerLogin extends Component {
 
                             {/* <div className='validation'>{this.state.error}</div> */}
                             {/* <div className='manager-login-input'> */}
-                                <label className="cont"><span className="checkmark-text">{this.props.word.login_accountant}</span>
-                                    <input onChange={() => this.setState({ prof: !this.state.prof })} type="checkbox" onKeyDown={(e) => this.keyPress(e)} />
-                                    <span className="checkmark"></span>
-                                </label>
+                            <label className="cont"><span className="checkmark-text">{this.props.word.login_accountant}</span>
+                                <input onChange={() => this.setState({ prof: !this.state.prof })} type="checkbox" onKeyDown={(e) => this.keyPress(e)} />
+                                <span className="checkmark"></span>
+                            </label>
 
                             {/* </div> */}
                             <Button

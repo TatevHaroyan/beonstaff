@@ -14,17 +14,22 @@ class AddEployeeList extends Component {
     render() {
         return (
             <div className='add-employee-list' >
-                <input type="text" value={this.props.search} onChange={(e) => {
-                    let value = e.target.value
-                    this.props.find(value)
-                }} />
+                <input type="text" value={this.props.search}
+                    onChange={(e) => {
+                        let value = e.target.value
+                        this.props.find(value)
+                    }} />
                 <div className='employee-name-cont'>
                     {this.props.stuff ? this.props.stuff.map((item, index) => {
-                        return <div key={index} className={item.url === this.props.accountant_url ? 'employee-name backgroundSame' : "employee-name "} onClick={() => {
-                            this.props.save(item)
+                        return <div key={index}
+                            className={item.url === this.props.accountant_url
+                                ? 'employee-name backgroundSame'
+                                : "employee-name "}
+                            onClick={() => {
+                                this.props.save(item)
                                 this.props.show()
-                        }}>
-                            <MyImgRound image={item.image} />
+                            }}>
+                            <MyImgRound image={item.image ? item.image : null} />
                             <span>{item.user.first_name} {item.user.last_name}</span>
                         </div>
                     }) : null}
@@ -37,7 +42,7 @@ class AddEployeeList extends Component {
 
 export default connect(
     (state) => ({
-        word: state.word, search:state.search, stuff: state.stuff.results.filter(item => {
+        word: state.word, search: state.search, stuff: state.stuff.results.filter(item => {
             let lowerCaseFirstName = item.user.first_name.toLowerCase()
             let lowerCaseLirstName = item.user.last_name.toLowerCase()
             return (

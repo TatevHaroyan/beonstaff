@@ -3,7 +3,7 @@ import {
     SEARCH, GET_EMPLOYEE_DATA, GET_MANAGER, GET_ORG_LIMIT, GET_STUFF_LIMIT, GET_REPEATED_TASKS, DELETE_SEARCH, LOADING, ACTIVEPAGE,
     LOADING_ORG, ACTIVEPAGE_ORG, DELETE_EMPLOYEE_DATA, GET_SEE_NOTIFICATION, GET_NOTIFICATION, TASK_DATA, ACTIVE_PAGE_ORG,
     DELETE_TASK_DATA, CHANGE_STATUS, TAXATION_SYSTEM, TYPEACTIVITY, GET_CARD, GET_COMPANY_FILE, COMPANY_SERVICE, LOADER_FILTER,
-    LOADER_COMPANY_FILE, GET_TASKS_TEMPLATE, NEW_TASK_SMS, GET_TASK_SMS, CLEAN_TASKSMS, SET_DAY_REPORTS
+    LOADER_COMPANY_FILE, GET_TASKS_TEMPLATE, NEW_TASK_SMS, GET_TASK_SMS, CLEAN_TASKSMS, SET_DAY_REPORTS, EDIT_TASK
 } from "./type";
 const clean_tasksms = () => ({ type: CLEAN_TASKSMS });
 const new_task_sms = (data) => ({ type: NEW_TASK_SMS, payload: data });
@@ -137,10 +137,14 @@ const get_org_list = (data) => ({
     type: GET_ORG_LIST,
     payload: data
 })
+const edit_task = (data) => {
+    console.log(data, "IS_CHECKEDdddddddddddddddddddddd");
+    return { type: EDIT_TASK, payload: data }
+}
 export {
     employeeAction, tasksAction, stuffAction, orgAction, archiveAction, searchAction, employeeDataAction, employeeManagerAction,
     get_stuff_limit, get_org_limit, get_repeated_tasks, delete_search, loading, activePage, loadingOrg, activePageOrg, delete_emaployee_data,
     getSeeNotification, getNotificationAction, task_data, active_page_org, delete_task_data, change_status, CardAction, TypeactivityAction,
     TaxationSystemAction, get_org_list, get_company_file, company_service, loader_filter, loader_company_file, get_task_template,
-    new_task_sms, task_sms, clean_tasksms, set_day_reports
+    new_task_sms, task_sms, clean_tasksms, set_day_reports, edit_task
 }

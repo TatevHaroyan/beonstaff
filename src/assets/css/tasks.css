@@ -67,6 +67,9 @@
 
 .icons-copy-edit{
    display: flex;
+   align-items: center;
+   margin-left: 15px;
+   margin-top: 9px;
 }
  .repeated-task-cont{
     width: 100%;

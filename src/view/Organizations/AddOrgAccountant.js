@@ -97,20 +97,23 @@ class AddOrgAccountant extends Component {
                         let lowerCaseFirstName = item.user.first_name.toLowerCase();
                         let lowerCaseLirstName = item.user.last_name.toLowerCase();
                         return (
-                            (lowerCaseFirstName.includes(search.toLowerCase()) ||
-                                lowerCaseLirstName.includes(search.toLowerCase())) && !this.findUrl(item.url)
+                            lowerCaseFirstName.includes(search.toLowerCase()) ||
+                            lowerCaseLirstName.includes(search.toLowerCase())
                         );
                     })
                         .map((item, index) => {
                             console.log(item, "itemmmmmm");
-                            return <div key={index} className="employee-name"
+                            return <div key={index}
+                                className={!this.findUrl(item.url)
+                                    ? "employee-name"
+                                    : "employee-name-sected employee-name"}
                                 onClick={() => {
                                     !this.findUrl(item.url)
                                         ? this.addAccountant(item.url)
                                         : this.deleteAccountant(item.url);
                                 }}>
                                 <MyImgRound image={item.image} />
-                                <span>{item.user.first_name} {item.user.last_name}</span>
+                                <div>{item.user.first_name}<br /> {item.user.last_name}</div>
                             </div>
                         })}
                 </div>

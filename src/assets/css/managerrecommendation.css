@@ -16,7 +16,7 @@
     flex: 1;
     margin-left: 20px;
     justify-content: space-between;
-    margin-left: 95px;
+    margin-left: 55px;
 }
 .my-user-org-page .employee-name{
     margin:0;
@@ -28,8 +28,8 @@
     height: 50px;
     margin-top:30px;
 }
-.employee-name span{
-    flex: 1;
+.employee-name div{
+    word-wrap: break-word;
 }
 /* .title-rate{
     display: flex;
@@ -168,8 +168,11 @@
     /* align-items: center; */
     margin: 0px 0 24px 38px;
    cursor: pointer;
-   width: fit-content;
+   width: 100%;
    white-space: nowrap;
+}
+.employee-name-sected{
+    background-color:#94949426;
 }
 .employee-name-button .employee-name{
     margin: 0;
@@ -219,7 +222,7 @@
    top:620px;
 }
 @media only screen and (max-width: 1200px){
-    .manager-main .recommendation-page .col-sm-4{
+    .manager-main .recommendation-page .col-sm-3{
         display: none !important;
     }
     .manager-main .recommendation-page .col-sm-8{

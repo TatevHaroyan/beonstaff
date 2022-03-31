@@ -118,10 +118,10 @@ class Add extends Component {
                     // item.valid = item.value.length > 0
                     switch (item.key) {
                         case "user.first_name":
-                            item.valid = (item.value.length === 0 || (item.value.length !== 0 && item.value.length < 4)) ? false : true
+                            item.valid = (item.value.length === 0 || (item.value.length !== 0 && item.value.length < 3)) ? false : true
                             break;
                         case "user.last_name":
-                            item.valid = (item.value.length === 0 || (item.value.length !== 0 && item.value.length < 4)) ? false : true
+                            item.valid = (item.value.length === 0 || (item.value.length !== 0 && item.value.length < 3)) ? false : true
                             break;
                         case "phone":
                             let re = /^[0-9]/;

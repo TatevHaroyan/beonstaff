@@ -100,13 +100,13 @@
     height: 70vh;
 } 
 .my-img-round{
-    width: 36px;
+    width: 36px !important;
     height: 36px;
     border-radius: 50%;
-    border: 2px solid #FFFFFF;
     background-image: url("../img/user.png");
     background-position: center;
     background-size: cover;
+    /* background-color: #043f5d; */
 }
 .input-section {
     text-align: center;
@@ -1148,7 +1148,7 @@ overflow: hidden;
     }
     .my-page .col-sm-6{
         flex: 0 0 50% !important;
-    max-width: 50% !important;
+        max-width: 50% !important;
     }
 }
 @media only screen and (max-width: 570px){
@@ -1165,7 +1165,7 @@ overflow: hidden;
        margin: 0 !important;
     }
     .line-blue{
-        margin: 0px 0;
+        margin: 5px 0;
     }
     .new-recommendation .button-line{
         justify-content: center;
@@ -1175,11 +1175,7 @@ overflow: hidden;
         width: 90% !important;
        padding: 15px 0  !important;
        height: 50px !important;
-    }
-    .new-recommendation .img:last-child{
-        display: none !important;
-    }
-    
+    }   
 }
 @media only screen and (max-width: 575px){
     .data-section .org-item:nth-child(3) {
@@ -1205,9 +1201,9 @@ overflow: hidden;
     .recommendations-item-text .fa-envelope{
         font-size: 20px;
     }
-    .new-recommendation .img:nth-child(2){
+    /* .new-recommendation .img:nth-child(2){
         display: none !important;
-    }
+    } */
     .my-page .my-page-button{
         height: 45px !important;
     }

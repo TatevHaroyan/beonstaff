@@ -141,6 +141,16 @@
   position: relative;
   align-items: flex-end;
 }
+.login-input-valid img {
+  font-size: 10px;
+  white-space: nowrap;
+  position: absolute;
+  top: 34px;
+  right: 24px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
 .manager-img{
   background-image: url("../img/managerlogin.png");
   background-position: center;

@@ -73,8 +73,15 @@ class NotificationPage extends Component {
                 // if (localStorage.getItem("profession") !== "manager") {
                 putNotificationById(token, res.id, data)
                     .then(() => {
-                        const params = localStorage.getItem("profession") !== "manager" ? { accountants_client_eq: localStorage.getItem("id"), accountant_neq: localStorage.getItem("id") } :
-                            { managers_client_eq: localStorage.getItem("id"), manager_neq: localStorage.getItem("id") }
+                        const params = localStorage.getItem("profession") !== "manager"
+                            ? {
+                                accountants_client_eq: localStorage.getItem("id"),
+                                accountant_neq: localStorage.getItem("id")
+                            }
+                            : {
+                                managers_client_eq: localStorage.getItem("id"),
+                                manager_neq: localStorage.getItem("id")
+                            }
                         getNotification(params)
                             .then((response) => {
                                 this.props.getNotification(response)
@@ -115,15 +122,15 @@ class NotificationPage extends Component {
                     this.setState({
                         file: "",
                         filePreviewUrl: "",
-                        send_message: false
+                        send_message: false,
+                        comment: ""
                     })
                 })
         }
     }
     keyPress(e) {
         if (e.key === "Enter") {
-            this.sendCopmment()
-            this.setState({ comment: "" })
+            this.sendCopmment();
         }
     }
     notificationGetTime() {
@@ -140,8 +147,12 @@ class NotificationPage extends Component {
         if (filePreviewUrl !== "") {
             try {
                 $filePreview = (<div className='my-sms'>
-                    <i className="far fa-times-circle" onClick={() => { this.setState({ file: "", filePreviewUrl: "" }) }}></i>
-                    {file.type.includes('image/') ? <div className='my-sms-img' style={{ backgroundImage: "url(" + filePreviewUrl + ")" }}></div> : null}
+                    <i className="far fa-times-circle"
+                        onClick={() => { this.setState({ file: "", filePreviewUrl: "" }) }}></i>
+                    {file.type.includes('image/')
+                        ? <div className='my-sms-img'
+                            style={{ backgroundImage: "url(" + filePreviewUrl + ")" }}></div>
+                        : null}
                     <span className='my-sms-img-name'>{file.name}</span>
                 </div>);
             } catch (error) {

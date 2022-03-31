@@ -154,7 +154,7 @@
     align-items: center;
 }
 .manager-login  .blue-button{
-    margin:65px 92px 0  0; 
+    margin: 65px 130px 0  0; 
 }
 .blue-button {
     /* padding: 24px 75px; */
@@ -168,9 +168,13 @@
         width: 266px;
         font-size: 16px;
     }
+    .manager-login-input .blue-button{
+        margin: 65px 119px 0  0; 
+
+    }
 }
-@media only screen and (max-width: 1024px){
+/* @media only screen and (max-width: 1024px){
 .manager-login-input .blue-button {
     margin: 20px 0 0 0 !important;
 }
-}
+} */

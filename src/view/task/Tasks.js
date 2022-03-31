@@ -472,6 +472,7 @@ class Tasks extends Component {
                 {this.state.showMultiCopany || this.state.showMultiStaff ? <ModalForMultiSelect
                     loading={this.state.showMultiCopany ? limit_data.loader_orgs : limit_data.loader_stuff}
                     body={<MultiSelect
+
                         items={this.state.showMultiCopany
                             ? (limit_data.orgs.length > 0 ? limit_data.orgs.map((item) => ({ label: item.label, id: item.value })) : [])
                             : (limit_data.stuff.length > 0 ? limit_data.stuff.map((item) => ({ label: item.label, id: item.value })) : [])}
@@ -728,7 +729,9 @@ class Tasks extends Component {
                 }} /> : null}
                 <div className='tasks-cont'>
                     <Row className=" flex-row">
-                        {localStorage.getItem("id") ? this.loading(this.state.taskByStatus) : <div className="please-repeat" onClick={() => this.getMe()}>Խնդրում եմ նորից կրկնել</div>}
+                        {localStorage.getItem("id")
+                            ? this.loading(this.state.taskByStatus)
+                            : <div className="please-repeat" onClick={() => this.getMe()}>Խնդրում եմ նորից կրկնել</div>}
                     </Row>
                 </div>
                 {this.state.loading === false && this.state.count > 10 ? <Pagination

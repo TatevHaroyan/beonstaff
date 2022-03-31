@@ -456,6 +456,7 @@ class NewRecommendation extends Component {
                             {console.log(moment(new Date()).format("YYYY-MM-DDTHH:mm"), "moment(new Date()).format(YYYY-MM-DDTHH:mmZ)")}
                             <div className='input-validation'>
                                 <TextField
+                                    // disabled
                                     id="datetime-local"
                                     label="Վերջնաժամկետ"
                                     type="datetime-local"

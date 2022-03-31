@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import { TextField } from '@material-ui/core';
+import Button from 'react-bootstrap/Button';
+import Collapse from 'react-bootstrap/Collapse';
+import { connect } from 'react-redux';
+import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment';
+import 'moment/locale/hy-am';
+import AddEployeeList from "./AddEployeeList";
 import BlueButton from "../../../components/BlueButton/BlueButton";
 import LittleButton from "../../../components/BlueButton/LittleButton";
-import Button from 'react-bootstrap/Button';
-import Collapse from 'react-bootstrap/Collapse'
-import AddEployeeList from "./AddEployeeList";
 import Path from "../../../assets/img/Path 286.svg";
 import MyImgRound from "../../../components/MyImgRound";
 import Plus from "../../../components/Plus";
-import { connect } from 'react-redux';
 import {
     addStuff,
     editStatus,
@@ -22,10 +26,7 @@ import {
     todaysTaskSum
 } from "../../../api";
 import NewRecommendation from "../NewRecommendations/NewRecommendations";
-import DateTimePicker from 'react-datetime-picker';
-import "react-datepicker/dist/react-datepicker.css";
-import moment from 'moment';
-import 'moment/locale/hy-am';
+// import DateTimePicker from 'react-datetime-picker';
 import {
     tasksAction,
     employeeAction,
@@ -33,7 +34,8 @@ import {
     delete_task_data,
     change_status,
     new_task_sms,
-    set_day_reports
+    set_day_reports,
+    edit_task
 } from "../../../action/index";
 import Loader from 'react-loader-spinner';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
@@ -98,21 +100,22 @@ class ManagerRecommendations extends Component {
             this.timerFunction()
         }
     }
-    handleChangeEndDate = (date) => {
-        let new_date = new Date(date);
-        console.log(new_date.getFullYear(), "new_date.getFullYear()");
-        console.log(year + 2, "year + 2");
-        if (new_date.getFullYear() < year + 2) {
-            this.setState({ showPicker: true })
-            let data = {
-                ...this.props.task,
-                end_date: date
-            }
-            this.props.task_data(data)
-        } else {
-            alert("Չի թույլատրվում")
-            return
+    handleChangeEndDate = (e) => {
+        console.log(e.target.value, "datedatedatedate");
+        // let new_date = new Date(date);
+        // console.log(new_date.getFullYear(), "new_date.getFullYear()");
+        // console.log(year + 2, "year + 2");
+        // if (new_date.getFullYear() < year + 2) {
+        this.setState({ showPicker: true })
+        let data = {
+            ...this.props.task,
+            end_date: e.target.value
         }
+        this.props.task_data(data)
+        // } else {
+        //     alert("Չի թույլատրվում")
+        //     return
+        // }
 
     }
     componentDidMount() {
@@ -346,6 +349,7 @@ class ManagerRecommendations extends Component {
     //     this.setState({ task_file_list, url: "" })
     // }
     taskSms() {
+        console.log("sssssssssssssssssssssssssss");
         let data = this.props.task
         let text = this.state.text;
         let file = this.state.file;
@@ -433,6 +437,7 @@ class ManagerRecommendations extends Component {
         return s
     }
     keyPress(e) {
+        console.log("in keyPress");
         if (e.key === "Enter") {
             this.taskSms()
         }
@@ -441,19 +446,16 @@ class ManagerRecommendations extends Component {
         this.props.delete_task_data()
     }
     checked() {
-        let array = this.props.task.task_file
-        this.setState({ checked: !this.props.task.checked })
         let formData = new FormData();
-        formData.append("checked", !this.props.task.checked)
-        // for (let index = 0; index < array.length; index++) {
-        //     const element = array[index];
-        //     formData.append("file", element.url)
-        //     formData.append("task", this.props.task.url)
-        // }
-        EditTask(localStorage.getItem("token"), formData, this.props.task.id)
-            .then(() => {
-                this.getTaskById()
-            })
+        formData.append("checked", !this.props.task.checked);
+        EditTask(localStorage.getItem("token"), formData, this.props.task.id);
+        this.props.edit_task({ checked: !this.props.task.checked });
+    }
+    visibleForClient() {
+        let formData = new FormData();
+        formData.append("visible_for_client", !this.props.task.visible_for_client);
+        EditTask(localStorage.getItem("token"), formData, this.props.task.id);
+        this.props.edit_task({ visible_for_client: !this.props.task.visible_for_client });
     }
     timerFunction() {
         console.log("timerFunctionnnnnnnnnnnn");
@@ -563,7 +565,7 @@ class ManagerRecommendations extends Component {
                         }
                         } />
                         : null}
-                    <Row >
+                    <Row className='justify-content-between'>
                         <Col xs={12} sm={8}>
                             <a onClick={() => this.props.history.goBack()}
                                 className="link-Backward-arrow">
@@ -590,14 +592,28 @@ class ManagerRecommendations extends Component {
                                         <div className="timePicker-cont"
                                         //  onClick={() => this.setState({ showPicker: true })}
                                         >
-                                            <p className="end-date">{word.end_date}</p>
+                                            {console.log(data.end_date, "data.end_date")}
+                                            <TextField
+                                                id="datetime-local"
+                                                label="Վերջնաժամկետ"
+                                                type="datetime-local"
+                                                onChange={data.status !== "end" ? this.handleChangeEndDate : console.log()}
+                                                // variant="outlined"
+                                                value={data.end_date ? data.end_date : null}
+                                                InputProps={{ inputProps: { min: moment(new Date()).format("YYYY-MM-DDTHH:mm") } }}
+                                                sx={{ width: 250 }}
+                                                InputLabelProps={{
+                                                    shrink: true,
+                                                }}
+                                            />
+                                            {/* <p className="end-date">{word.end_date}</p>
                                             <DateTimePicker
                                                 minDate={new Date()}
                                                 maxDate={new Date(9999, 12, 31)}
                                                 onChange={data.status !== "end" ? this.handleChangeEndDate : console.log()
                                                 }
                                                 value={data.end_date ? new Date(data.end_date) : null}
-                                            />
+                                            /> */}
                                         </div>
                                         <div className="icons-copy-edit">
                                             <div className="tool-tip-cont">
@@ -758,12 +774,11 @@ class ManagerRecommendations extends Component {
                                     <p className="end-date">{data.end_date
                                         ? moment(data.end_date).format('LLL')
                                         : ""}</p></div>}
+                            {console.log(data.checked, "ddddddddddddddddddddddaaaaaaaaaaattttttttaaaaaaa.checked")}
                             {localStorage.getItem("profession") === "manager"
                                 && (data.status === "process"
                                     || data.status === "end")
-                                ? <CheckboxFilter title="Ստուգված է" my_task={this.state.checked
-                                    ? this.state.checked
-                                    : data.checked}
+                                ? <CheckboxFilter title="Ստուգված է" my_task={data.checked}
                                     onChange={() => {
                                         this.checked()
                                     }} />
@@ -771,6 +786,7 @@ class ManagerRecommendations extends Component {
                             <CheckboxFilter
                                 title="Տեսանելի է բոլորի համար"
                                 my_task={data.visible_for_client}
+                                onChange={() => { this.visibleForClient() }}
                             />
                             {data.status === "end"
                                 ? <div className="title-rate">
@@ -1015,7 +1031,7 @@ class ManagerRecommendations extends Component {
                                 </div>
                                 : null}
                         </Col >
-                        <Col xs={12} sm={4}>
+                        <Col xs={12} sm={3}>
                             <div className='recommendations-line'>
                                 <div className='green-line'>
                                     <div className='inside-green'
@@ -1099,6 +1115,7 @@ export default connect(
         delete_task_data: () => dispatch(delete_task_data()),
         change_status: () => dispatch(change_status()),
         new_task_sms: (data) => dispatch(new_task_sms(data)),
-        day_reports: (data) => dispatch(set_day_reports(data))
+        day_reports: (data) => dispatch(set_day_reports(data)),
+        edit_task: (data) => dispatch(edit_task(data))
     })
 )(ManagerRecommendations);
