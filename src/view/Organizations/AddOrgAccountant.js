@@ -94,11 +94,12 @@ class AddOrgAccountant extends Component {
                 }} />
                 <div className='employee-name-cont'>
                     {stuff.filter(item => {
+                        let trim_search = search.trim();
                         let lowerCaseFirstName = item.user.first_name.toLowerCase();
                         let lowerCaseLirstName = item.user.last_name.toLowerCase();
                         return (
-                            lowerCaseFirstName.includes(search.toLowerCase()) ||
-                            lowerCaseLirstName.includes(search.toLowerCase())
+                            lowerCaseFirstName.includes(trim_search.toLowerCase()) ||
+                            lowerCaseLirstName.includes(trim_search.toLowerCase())
                         );
                     })
                         .map((item, index) => {

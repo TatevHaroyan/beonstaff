@@ -20,6 +20,7 @@ class Timer extends Component {
             .then((res) => {
                 if (res.error) {
                 } else {
+                    console.log(res, "resresresresresresresres");
                     this.props.day_reports({ ...res })
                     // this.setState({ ...this.state, ...res })
                 }

@@ -691,7 +691,7 @@ class ManagerRecommendations extends Component {
                                 && data.accountant === null
                                 && data.status !== "end"
                                 && data.manager
-                                && data.manager_id === parseInt(localStorage.getItem("id"))
+                                && data.manager_user_id === parseInt(localStorage.getItem("user_id"))
                                 ? <BlueButton disabled={this.state.disabled} title={data.status === "approved"
                                     ? word.start
                                     : word.complet}
