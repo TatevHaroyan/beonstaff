@@ -290,6 +290,22 @@ class NewRepeatedtask extends Component {
                     getOptionLabel={option => {
                         return `${option.user.first_name} ${option.user.last_name}`
                     }}
+                    filterOptions={(options, params) => {
+                        // if (params.inputValue.length >= 2) {
+                        // if (item.key !== "manager") {
+                        //     const filtered = options.filter((item) => {
+                        //         console.log(item, "itemitemitem");
+                        //         return (item.name.toUpperCase().includes(params.inputValue.toUpperCase()));
+                        //     });
+                        //     return filtered;
+                        // } else {
+                            const filtered = options.filter((item) => (
+                                (item.user.last_name.toUpperCase().includes(params.inputValue.toUpperCase())
+                                    || item.user.first_name.toUpperCase().includes(params.inputValue.toUpperCase()))
+                            ));
+                            return filtered;
+                        // }
+                    }}
                     renderInput={params => (
                         <TextField {...params} label={this.props.word[item.key]}
                             error={!item.valid && this.state.submited}

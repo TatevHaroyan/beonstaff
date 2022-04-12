@@ -305,7 +305,7 @@ class NewRepeatedTaskMuchOrgs extends Component {
                     onChange={(list) => {
                         item.active = false
                         item.value = list
-                        item.valid = item.value.length > 0
+                        item.valid = item.value && item.value.length > 0
                         this.setState({ form: this.state.form })
                         // this.onChangeSelectCompany(list) naxord
                     }}

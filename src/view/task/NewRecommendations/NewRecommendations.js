@@ -18,7 +18,7 @@ import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'; 
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import DateTimePicker from 'react-datetime-picker';
@@ -317,11 +317,6 @@ class NewRecommendation extends Component {
                             ));
                             return filtered;
                         }
-
-                        // } else {
-                        //     return options
-                        // }
-
                     }}
                     renderInput={params => (
                         <TextField {...params} error={!item.valid && this.state.submited === true && !this.state.form[4].valid}
@@ -480,7 +475,8 @@ class NewRecommendation extends Component {
                                 <div className='img-cont'>
                                     {this.state.images.map((item, index) => {
                                         return <div className='img' key={index}>
-                                            <span className={(item.type === "image/jpeg") || (item.type === "image/png") ? 'icon-Photos' : "icon-files-empty"} /><span className='images-name'>{item.name}</span>
+                                            <span className={(item.type === "image/jpeg") || (item.type === "image/png") ? 'icon-Photos' : "icon-files-empty"} />
+                                            <span className='images-name'>{item.name}</span>
                                             <i className="fas fa-times" onClick={() => this._delete_photos(item)}></i>
                                         </div>
                                     })}
