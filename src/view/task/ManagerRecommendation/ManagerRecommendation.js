@@ -101,7 +101,6 @@ class ManagerRecommendations extends Component {
         }
     }
     handleChangeEndDate = (e) => {
-        console.log(e.target.value, "datedatedatedate");
         // let new_date = new Date(date);
         // console.log(new_date.getFullYear(), "new_date.getFullYear()");
         // console.log(year + 2, "year + 2");
@@ -199,17 +198,19 @@ class ManagerRecommendations extends Component {
                         this.get_day_reports();
                         this.props.task_data(res)
                         this.setState({ disabled: false, timer_loading: false })
-                    }
-                    )
+                    })
             )
             .catch((error) => this.setState({ disabled: false, timer_loading: false }))
     }
+
     get_day_reports() {
         todaysTaskSum()
             .then((res) => {
                 if (res.error) {
                 } else {
-                    this.props.day_reports({ ...res })
+                    const { all_duration, ...rest } = res
+                    this.props.day_reports({ ...rest, all_duration: `0${all_duration}` })
+                    // this.props.day_reports({ ...res })
                     // this.setState({ ...this.state, ...res })
                 }
             })
@@ -349,7 +350,6 @@ class ManagerRecommendations extends Component {
     //     this.setState({ task_file_list, url: "" })
     // }
     taskSms() {
-        console.log("sssssssssssssssssssssssssss");
         let data = this.props.task
         let text = this.state.text;
         let file = this.state.file;
@@ -458,7 +458,6 @@ class ManagerRecommendations extends Component {
         this.props.edit_task({ visible_for_client: !this.props.task.visible_for_client });
     }
     timerFunction() {
-        console.log("timerFunctionnnnnnnnnnnn");
         let data = this.props.task;
         let task_timer = data.task_timer;
         let timer_value = null;
@@ -592,7 +591,6 @@ class ManagerRecommendations extends Component {
                                         <div className="timePicker-cont"
                                         //  onClick={() => this.setState({ showPicker: true })}
                                         >
-                                            {console.log(data.end_date, "data.end_date")}
                                             <TextField
                                                 id="datetime-local"
                                                 label="Վերջնաժամկետ"
@@ -687,8 +685,6 @@ class ManagerRecommendations extends Component {
                                     onChangeValue={() => this.changeStatusPut(this.state.accountant.url, data)}
                                 />
                                 : null}
-                            {console.log(data.accountant_user_id === parseInt(localStorage.getItem("user_id")),
-                                "data.accountant_user_id === parseInt(localStorage.getItem")}
                             {localStorage.getItem("profession") === "manager"
                                 // && (data.accountant === null || data.accountant_user_id === parseInt(localStorage.getItem("user_id")))
                                 && data.status !== "end"
@@ -778,7 +774,6 @@ class ManagerRecommendations extends Component {
                                     <p className="end-date">{data.end_date
                                         ? moment(data.end_date).format('LLL')
                                         : ""}</p></div>}
-                            {console.log(data.checked, "ddddddddddddddddddddddaaaaaaaaaaattttttttaaaaaaa.checked")}
                             {localStorage.getItem("profession") === "manager"
                                 && (data.status === "process"
                                     || data.status === "end")

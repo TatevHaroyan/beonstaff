@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { seenSms, getTaskSms } from "../../api";
 import Message from '../Message/Message';
-import { task_data, task_sms, clean_tasksms } from "../../action";
+import { task_data, task_sms, clean_tasksms, edit_task } from "../../action";
 import { connect } from "react-redux";
 class MessageList extends Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class MessageList extends Component {
       seenSms(token, this.props.task.id)
         .then(() => {
           this.getTaskSms(0)
+          this.props.edit_task({ new_sms_count: 0 })
         })
     } else {
       this.getTaskSms(0)
@@ -64,6 +65,7 @@ export default connect(
   (dispatch) => ({
     task_data: (data) => dispatch(task_data(data)),
     task_sms: (data) => dispatch(task_sms(data)),
-    clean_tasksms: () => dispatch(clean_tasksms())
+    clean_tasksms: () => dispatch(clean_tasksms()),
+    edit_task: (data) => dispatch(edit_task(data))
   })
 )(MessageList);

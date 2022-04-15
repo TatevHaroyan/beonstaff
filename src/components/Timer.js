@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { set_day_reports } from "../action";
 import { todaysTaskSum } from "../api";
-
+import moment from 'moment';
+import { ThreeSixtySharp } from '@material-ui/icons';
+// let timer_value;
 class Timer extends Component {
     constructor(props) {
         super(props);
@@ -15,44 +17,56 @@ class Timer extends Component {
         }, 1000)
         return () => clearInterval(timer_value)
     }
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevProps.dayReports.has_ongoing_task !== this.props.dayReports.has_ongoing_task && this.props.dayReports.has_ongoing_task) {
+    //         timer_value = setInterval(() => {
+    //             this._timerList()
+    //         }, 1000)
+    //     } else {
+    //         clearInterval(timer_value)
+    //     }
+    // }
     get_day_reports() {
         todaysTaskSum()
             .then((res) => {
                 if (res.error) {
                 } else {
-                    console.log(res, "resresresresresresresres");
-                    this.props.day_reports({ ...res })
+                    const { all_duration, ...rest } = res
+                    this.props.day_reports({ ...rest, all_duration: `0${all_duration}`, get_date: new Date() })
                     // this.setState({ ...this.state, ...res })
                 }
             })
     }
+    convertHToS(timeInHour) {
+        var timeParts = timeInHour.split(":");
+        return Number(timeParts[0]) * 3600 + Number(timeParts[1]) * 60 + Number(timeParts[2]);
+    }
+    secondsToHms(d) {
+        d = Number(d);
+        var h = Math.floor(d / 3600);
+        var m = Math.floor(d % 3600 / 60);
+        var s = Math.floor(d % 3600 % 60);
+        var hDisplay = h > 0 ? (h < 10 ? `0${h}` : h) : "00";
+        var mDisplay = m > 0 ? (m < 10 ? `0${m}` : m) : "00";
+        var sDisplay = s > 0 ? (s < 10 ? `0${s}` : s) : "00";
+        return `${hDisplay}:${mDisplay}:${sDisplay}`;
+    }
     _timerList() {
         let duretion = this.props.dayReports.all_duration;
         let count = this.props.dayReports.ongoing_task_count;
-        let duretion_list = duretion.split(":");
-        let h = parseInt(duretion_list[0]);
-        let m = parseInt(duretion_list[1]);
-        let s = parseInt(duretion_list[2]);
-        if (s < 59) {
-            s += count;
-        } else {
-            s = 0;
-            if (m < 59) {
-                m += 1
-            } else {
-                m = 0;
-                h += 1;
-            }
-        }
-        h = (h.toString().length === 1) ? `0${h}` : h;
-        m = (m.toString().length === 1) ? `0${m}` : m;
-        s = (s.toString().length === 1) ? `0${s}` : s;
-        this.props.day_reports({ all_duration: `${h}:${m}:${s}` })
+        let get_date = this.props.dayReports.get_date;
+        let date = new Date();
+        let ms = moment(date).diff(moment(get_date));
+        let d = moment.duration(ms);
+        let s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
+        let sum_s = this.convertHToS(s) * count + this.convertHToS(duretion);
+        this.setState({ all_duration: this.secondsToHms(sum_s) })
     }
     render() {
         return (
             <div className=''>
-                {this.props.dayReports.all_duration ? this.props.dayReports.all_duration : null}
+                {this.state.all_duration}
+                {/* {this.props.dayReports.all_duration ? this.props.dayReports.all_duration : null} */}
             </div>
         );
     }
