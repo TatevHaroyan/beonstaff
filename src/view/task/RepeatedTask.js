@@ -83,7 +83,7 @@ class RepeatedTask extends Component {
         }
     }
     render() {
-        const { word, tasksData } = this.props
+        const { word, tasksData } = this.props;
         return (
             <div className='tasks'>
                 {this.state.show || this.state.showMulti || this.state.deleteVisible ? <div className='popup' onClick={() => { this.setState({ show: false, showMulti: false }) }}></div> : null}

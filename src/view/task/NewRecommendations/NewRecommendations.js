@@ -18,7 +18,7 @@ import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import DateTimePicker from 'react-datetime-picker';
@@ -55,7 +55,7 @@ class NewRecommendation extends Component {
             for_me: false,
             template_id: 0,
             visible_for_client: true,
-            // end_date: new Date(),
+            end_date: null,
             form: [
                 {
                     key: 'name',
@@ -147,7 +147,6 @@ class NewRecommendation extends Component {
         }
     }
     handleChangeDate = e => {
-        console.log(e.target.value, "dateeeeeeeeeeeeeeeeee");
         this.setState({ end_date: e.target.value })
     }
     submite() {
@@ -438,7 +437,6 @@ class NewRecommendation extends Component {
                                 }
                                 return null
                             })}
-                            {console.log(this.state.end_date, "this.state.end_date")}
                             {/* <div className="end-date-add">
                                 Վերջնաժամկետ */}
                             {/* <DateTimePicker
@@ -448,7 +446,6 @@ class NewRecommendation extends Component {
                                     onChange={this.handleChangeDate}
                                     value={this.state.end_date ? new Date(this.state.end_date) : null}
                                 /> */}
-                            {console.log(moment(new Date()).format("YYYY-MM-DDTHH:mm"), "moment(new Date()).format(YYYY-MM-DDTHH:mmZ)")}
                             <div className='input-validation'>
                                 <TextField
                                     // disabled

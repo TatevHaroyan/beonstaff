@@ -112,14 +112,13 @@ class Organizations extends Component {
                 {this.state.show ? <AddEmployeeOrg create={word.add_new_org} /> : null}
                 {profession === "accountant" ? <div className="page-heading">Ինձ կցված կազմակերպությունները</div> : null}
                 <SearchBar value={this.state.value} onChange={(value) => {
-                    this.setFilter({ name: value })
+                    this.setFilter({ name: value, offset: "" })
                 }} />
                 <Select
                     closeMenuOnSelect={true}
                     components={animatedComponents}
                     options={this._return_multiselect_list()}
                     onChange={(data) => {
-                        console.log(data, "dataaaaaaaaaaa");
                         if (data.value === "") {
                             this.setFilter()
                         } else {
@@ -144,7 +143,7 @@ class Organizations extends Component {
                         : this.loading()}
                 </div>
                 {this.props.organization.count > 10 && !this.props.organization.loader ? <Pagination
-                    activePage={organization.activePage}
+                    activePage={this.state.filter.offset ? organization.activePage : 1}
                     itemsCountPerPage={10}
                     totalItemsCount={organization.count}
                     pageRangeDisplayed={5}

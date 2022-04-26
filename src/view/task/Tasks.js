@@ -350,7 +350,6 @@ class Tasks extends Component {
 
     }
     onChangeSelectCompany(list) {
-        console.log(list, "listtttttttttttttttt");
         let company_list = [];
         let selected_list = [];
         if (list) {
@@ -466,7 +465,6 @@ class Tasks extends Component {
     render() {
         const animatedComponents = makeAnimated();
         const { word, limit_data, employee, manager, manager_loader } = this.props;
-        console.log("in rendeeeer");
         return (
             <div className='tasks'>
                 {this.state.showMultiCopany || this.state.showMultiStaff ? <ModalForMultiSelect
@@ -631,13 +629,11 @@ class Tasks extends Component {
                         />
                     </span>
                     <div className='middle-line'></div>
-                    {console.log(limit_data, "limit_data")}
                     <div className='tasks-data-hidden'>
                         <div className='loader-filter'>
                             {limit_data.loader_orgs
                                 ? <Loader type="Oval" color="#949494" height={10} width={10} />
                                 : ""}
-                            {console.log(this.state.selected_company, "this.state.selected_company")}
                             <div className='task-multi-title' onClick={() => this.setState({ showMultiCopany: true })}>
                                 {!limit_data.loader_orgs && this.state.selected_company && this.state.selected_company[0]
                                     ? `${this.state.selected_company[0].label} և ևս ${this.state.selected_company.length - 1}`

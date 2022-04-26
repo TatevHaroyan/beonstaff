@@ -92,8 +92,9 @@ class ManagerRecommendations extends Component {
     };
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.id !== this.props.match.params.id) {
-            this.getTaskById()
-            this.sum_parent_timer()
+            this.getTaskById();
+            this.sum_parent_timer();
+            this.setState({ visibleMessage: false })
         }
         if ((prevProps.task.id !== this.props.task.id)
             || (prevProps.task.status !== this.props.task.status)) {
@@ -209,7 +210,7 @@ class ManagerRecommendations extends Component {
                 if (res.error) {
                 } else {
                     const { all_duration, ...rest } = res
-                    this.props.day_reports({ ...rest, all_duration: `0${all_duration}` })
+                    this.props.day_reports({ ...rest, all_duration: `0${all_duration}`, get_date: new Date() })
                     // this.props.day_reports({ ...res })
                     // this.setState({ ...this.state, ...res })
                 }

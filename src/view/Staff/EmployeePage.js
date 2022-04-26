@@ -110,7 +110,7 @@ class EmployeePage extends Component {
                                                     orgname={item.name} name={item.director_full_name}
                                                     HVHH={item.HVHH}
                                                     logo={item.logo}
-                                                    accountant_list={item.accountant}
+                                                // accountant_list={item.accountant}
                                                 />
                                             </div>
                                         })}
