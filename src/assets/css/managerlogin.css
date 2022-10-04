@@ -1,49 +1,60 @@
-.manager-login{
+.manager-login {
   width: 100vw;
 }
-.form-button-cont{
-/* width: 505px; */
+
+.form-button-cont {
+  /* width: 505px; */
 }
-.manager-login-input{
+
+.manager-login-input {
   height: 100vh;
- display: flex;
- flex-direction: column;
- align-items: flex-end; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   justify-content: center;
 }
-.login-input{
+
+.login-input {
   border: 0;
   height: 50px;
   /* border-bottom: 2px solid #F4F4F4; */
   width: 489px;
   outline: none !important;
   margin-right: 16px;
-  background: linear-gradient(0.25turn,#07608d, #63c0ba);
+  background: linear-gradient(0.25turn, #07608d, #63c0ba);
   margin-top: 20px;
   color: white;
   padding-left: 5px;
 }
-.validation-accountant{
+
+.validation-accountant {
   width: 489px;
 }
+
 .login-input::placeholder {
   color: rgb(161, 161, 161) !important;
-  opacity: 1; /* Firefox */
+  opacity: 1;
+  /* Firefox */
 }
 
-.login-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+.login-input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: white;
 }
 
-.login-input::-ms-input-placeholder { /* Microsoft Edge */
+.login-input::-ms-input-placeholder {
+  /* Microsoft Edge */
   color: white;
 }
-.new-recommendation .cont{
-  margin-top:0px;
+
+.new-recommendation .cont {
+  margin-top: 0px;
 }
-.new-recommendation label input{
+
+.new-recommendation label input {
   display: none;
 }
+
 .cont {
   display: block;
   padding-left: 35px;
@@ -54,7 +65,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  margin-top:20px;
+  margin-top: 20px;
   font-size: 16px;
   font-weight: 500;
   color: #07608d;
@@ -76,33 +87,37 @@
   left: 0;
   height: 25px;
   width: 25px;
-  background: linear-gradient(0.25turn,#07608d, #63c0ba);
+  background: linear-gradient(0.25turn, #07608d, #63c0ba);
   /* background-color: #eee; */
   margin-right: 20px;
 }
-.label{
-    margin-left: 30px;
-    font-size: 14px;
-    font-weight: regular;
+
+.label {
+  margin-left: 30px;
+  font-size: 14px;
+  font-weight: regular;
 }
+
 /* On mouse-over, add a grey background color */
-.checkbox{
-    display: none;
+.checkbox {
+  display: none;
 }
-.cont{
-    position: relative;
-    margin-right: 16px;
-    width: 489px;
-    display: flex;
+
+.cont {
+  position: relative;
+  margin-right: 16px;
+  width: 489px;
+  display: flex;
 }
-.cont:hover input ~ .checkmark {
+
+.cont:hover input~.checkmark {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.cont input:checked ~ .checkmark {
+.cont input:checked~.checkmark {
   background-color: #07608d;
-  
+
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -113,7 +128,7 @@
 }
 
 /* Show the checkmark when checked */
-.cont input:checked ~ .checkmark:after {
+.cont input:checked~.checkmark:after {
   display: block;
 }
 
@@ -129,11 +144,13 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-.manager-login-input input::placeholder{
+
+.manager-login-input input::placeholder {
   color: #07608d;
   font-size: 14px;
 }
-.login-input-valid{
+
+.login-input-valid {
   align-items: center;
   width: 100%;
   display: flex;
@@ -141,6 +158,7 @@
   position: relative;
   align-items: flex-end;
 }
+
 .login-input-valid img {
   font-size: 10px;
   white-space: nowrap;
@@ -151,7 +169,8 @@
   height: 25px;
   cursor: pointer;
 }
-.manager-img{
+
+.manager-img {
   background-image: url("../img/managerlogin.png");
   background-position: center;
   background-size: contain;
@@ -160,13 +179,16 @@
   width: 60%;
   /* border: 47px solid #07608d; */
 }
-.login-input-cont{
+
+.login-input-cont {
   width: 40%;
 }
-.manager-login .container{
+
+.manager-login .container {
   width: 100%;
 }
-.validation{
+
+.validation {
   visibility: hidden;
   color: red;
   font-size: 12px;
@@ -177,6 +199,7 @@
   bottom: -19px;
   /* margin-left: 10px; */
 }
+
 .valid-center {
   margin: auto;
   visibility: hidden;
@@ -186,78 +209,103 @@
   /* margin: 10px 0 0 0; */
   font-weight: bold;
 }
-.dropdown-item{
+
+.dropdown-item {
   text-align: center !important;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-@media only screen and (max-width:1280px){
-.manager-login-input input,.cont, .validation-accountant{
-  width: 370px;
+
+@media only screen and (max-width:1280px) {
+
+  .manager-login-input input,
+  .cont,
+  .validation-accountant {
+    width: 370px;
+  }
 }
-}
-@media only screen and (max-width:1024px){
-.manager-img{
-  height: 528px;
-  width: 100%;
-  transform: scaleY(-1);
-}
-.login-input-cont{
-  width: 100%;
-  transform: scaleY(-1);
-}
-.manager-login {
-  /* display: flex;
+
+@media only screen and (max-width:1024px) {
+  .manager-img {
+    height: 528px;
+    width: 100%;
+    transform: scaleY(-1);
+  }
+
+  .login-input-cont {
+    width: 100%;
+    transform: scaleY(-1);
+  }
+
+  .manager-login {
+    /* display: flex;
   flex-direction: column-reverse !important; */
-  display: block;
-  transform: scaleY(-1);
+    display: block;
+    transform: scaleY(-1);
+  }
+
+  .manager-login-input {
+    justify-content: center;
+    align-items: center !important;
+    height: fit-content !important;
+  }
+
+  .login-input-valid {
+    align-items: center
+  }
+
+  .login-input,
+  .cont {
+    margin-right: 0;
+  }
+
+  .manager-login-input input {
+    font-size: 14px;
+  }
 }
-.manager-login-input{
-  justify-content: center;
-  align-items: center !important;
-  height: fit-content !important;
-}
-.login-input-valid{
-  align-items: center
-}
-.login-input, .cont{
-  margin-right: 0;
-}
-.manager-login-input input {
-  font-size: 14px;
-}
-}
-@media only screen and (max-width: 540px){
-  .manager-login-input input, .manager-login-input .cont, .validation-accountant, .validation-accountant{
+
+@media only screen and (max-width: 540px) {
+
+  .manager-login-input input,
+  .manager-login-input .cont,
+  .validation-accountant,
+  .validation-accountant {
     width: 343px;
     margin-top: 20px;
   }
-  .manager-img{
-    height: 325px !important;        
-}
-}
-@media only screen and (max-width:425px){
-  .login-input{
-    height: 45px;
+
+  .manager-img {
+    height: 325px !important;
   }
-  .manager-login{
-    align-items: center;
-    width: 100vw;
-  }
-  .login-input-valid{
-    align-items: center;
-  }
-  .manager-img{
-    width: 100vw;
-  }
-  .login-input-cont{
-    width: 100vw;
-  }
-}
-@media only screen and (max-width:375px){
-  .manager-login-input input, .cont, .validation-accountant{
-    margin-right: 0;
-    width: 95% !important;
 }
 
+@media only screen and (max-width:425px) {
+
+  .manager-login-input input,
+  .cont,
+  .validation-accountant {
+    margin-right: 0;
+    width: 95% !important;
+  }
+
+  .login-input {
+    height: 45px;
+  }
+
+  .manager-login {
+    align-items: center;
+    width: 100vw;
+  }
+
+  .login-input-valid {
+    align-items: center;
+  }
+
+  .manager-img {
+    width: 100vw;
+  }
+
+  .login-input-cont {
+    width: 100vw;
+  }
 }

@@ -1,161 +1,194 @@
-.tasks-buttons{
-    display: flex; 
-    width: 100%;
- }
- .users .tasks-buttons{
-    margin-top: 10px;
- }
- .expired{
-    opacity: 0.5;
- }
- .icon-new-file{
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
- }
- .file-button{
-    width: 100%;
-    display: flex;
-    justify-content: center;
- }
- .icon{
-    width: 16px;
-    height: 16px;
- }
- .MuiBox-root-2{
-    margin-bottom: 5px !important;
- }
- .tasks-buttons .middle-button{
-    word-break: break-word;
- }
- .tasks-data .tasks-data-hidden:last-child{
+.tasks-buttons {
+   display: flex;
+   width: 100%;
+}
+
+.users .tasks-buttons {
+   margin-top: 10px;
+}
+
+.expired {
+   opacity: 0.5;
+}
+
+.icon-new-file {
+   width: 50px;
+   height: 50px;
+   cursor: pointer;
+}
+
+.file-button {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+
+.icon {
+   width: 16px;
+   height: 16px;
+}
+
+.MuiBox-root-2 {
+   margin-bottom: 5px !important;
+}
+
+.tasks-buttons .middle-button {
+   word-break: break-word;
+}
+
+.tasks-data .tasks-data-hidden:last-child {
    flex: 1;
- }
- .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline {
+}
+
+.MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline {
    border-color: #dc3545 !important;
 }
- .input-validation .css-yk16xz-control{
+
+.input-validation .css-yk16xz-control {
    border: 1px solid #63c0ba !important;
    min-height: 56px;
- }
- .input-validation  .css-1pahdxg-control{
+}
+
+.input-validation .css-1pahdxg-control {
    border: 1px solid #63c0ba !important;
    min-height: 56px;
- }
- .input-validation  .css-1pahdxg-control:hover{
+}
+
+.input-validation .css-1pahdxg-control:hover {
    border: 1px solid #63c0ba !important;
    box-shadow: 0 0 0 1px #63c0ba !important;
    min-height: 56px;
- }
- .input-validation-valid .css-yk16xz-control{
+}
+
+.input-validation-valid .css-yk16xz-control {
    border: 1px solid #dc3545 !important;
    min-height: 56px;
- }
- .input-validation-valid  .css-1pahdxg-control{
+}
+
+.input-validation-valid .css-1pahdxg-control {
    border: 1px solid #dc3545 !important;
    min-height: 56px;
- }
- .input-validation-valid  .css-1pahdxg-control:hover{
+}
+
+.input-validation-valid .css-1pahdxg-control:hover {
    border: 1px solid #dc3545 !important;
    box-shadow: 0 0 0 1px #dc3545 !important;
    min-height: 56px;
- }
-.tasks .end-date-add{
+}
+
+.tasks .end-date-add {
    margin-top: 0;
    width: 178px;
 }
 
-.icons-copy-edit{
+.icons-copy-edit {
    display: flex;
    align-items: center;
    margin-left: 15px;
    margin-top: 9px;
 }
- .repeated-task-cont{
-    width: 100%;
-    flex-direction: column;
+
+.repeated-task-cont {
+   width: 100%;
+   flex-direction: column;
    /* text-align: center; */
    /* position: relative; */
- }
- .recommendation-page .task-date-cont{
-    margin-top: 10px;
- }
- .task-date-cont{
-    display: flex;
-    flex-direction: column;
- }
- .icon-Compose-cont{
+}
+
+.recommendation-page .task-date-cont {
+   margin-top: 10px;
+}
+
+.task-date-cont {
+   display: flex;
+   flex-direction: column;
+}
+
+.icon-Compose-cont {
    position: relative;
- }
- .icon-Compose-cont  .tool-tip-cont{
+}
+
+.icon-Compose-cont .tool-tip-cont {
    position: absolute;
    right: 0;
- }
- .icon-Compose-cont .icon-Compose,  .icon-Compose-cont .fa-copy{
+}
+
+.icon-Compose-cont .icon-Compose,
+.icon-Compose-cont .fa-copy {
    position: absolute;
    right: 0;
    top: 37px;
 }
- .css-yk16xz-control{
-    border: none !important
- }
- .css-1pahdxg-control{
+
+.css-yk16xz-control {
+   border: none !important
+}
+
+.css-1pahdxg-control {
    border: none !important;
    box-shadow: none !important;
- }
+}
 
- .css-1pahdxg-control:hover{
+.css-1pahdxg-control:hover {
    border: none !important;
 }
- .tasks-data-item-active{
-    color: #9ACD2D !important;
-    margin: 0px 5px 0 14px;
-    /* color: #949494; */
-    border: 0;
-    cursor: pointer;
-    width: calc( 100% - 20px );
-    overflow: hidden;
- }
- .css-b8ldur-Input{
+
+.tasks-data-item-active {
+   color: #9ACD2D !important;
+   margin: 0px 5px 0 14px;
+   /* color: #949494; */
+   border: 0;
+   cursor: pointer;
+   width: calc(100% - 20px);
+   overflow: hidden;
+}
+
+.css-b8ldur-Input {
    color: #949494 !important;
 }
-.message-heading{
+
+.message-heading {
    font-weight: bold;
-    font-size: 16px;
+   font-size: 16px;
 }
-.end-date{
+
+.end-date {
    font-weight: bold;
-    font-size: 16px;
+   font-size: 16px;
 }
- .options {
+
+.options {
    width: 115px;
    /* height: 100px; */
    background: white;
    position: absolute;
    right: 22px;
    top: 35px;
-   box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16) !important;
+   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16) !important;
    z-index: 1;
    padding: 10px 0;
 }
-.paginator{
+
+.paginator {
    width: 100%;
    display: flex;
    justify-content: center;
    /* position: absolute;
    bottom: 0; */
 }
-.page{
+
+.page {
    width: 50px;
    height: 50px;
    display: flex;
    justify-content: center;
    align-items: center;
    background-color: #F3F3F3;
-   box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16) !important;
+   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16) !important;
    margin: 10px 5px;
 }
-.task-button-active{
+
+.task-button-active {
    background-color: #63c0ba;
    color: white;
    flex: 1;
@@ -163,23 +196,29 @@
    outline: none !important;
    font-weight: bold;
 }
+
 .icon-Calendar {
    margin-right: 10px;
 }
-.react-datepicker__day--selected{
-   background-color:#07608d;
+
+.react-datepicker__day--selected {
+   background-color: #07608d;
 }
-.react-datepicker__day--keyboard-selected{
-   background-color:#07608d;
+
+.react-datepicker__day--keyboard-selected {
+   background-color: #07608d;
 }
-.transparent, .transparent-loader{
+
+.transparent,
+.transparent-loader {
    position: absolute;
-   top:0;
-   bottom:0;
+   top: 0;
+   bottom: 0;
    left: 0;
    right: 0;
 }
-.transparent-loader{
+
+.transparent-loader {
    background-color: #fff;
    opacity: 0.8;
    display: flex;
@@ -187,45 +226,56 @@
    align-items: center;
    z-index: 22;
 }
+
 .pull-right {
    float: right;
 }
+
 .pull-right {
-   float: right!important;
+   float: right !important;
 }
+
 .pagination {
    padding-left: 0;
    margin-top: 1rem;
    display: flex;
    justify-content: center;
 }
+
 .pagination>li {
    display: inline;
 }
-.pagination>.active>a{
+
+.pagination>.active>a {
    /* z-index: 1; */
    color: #fff;
    cursor: default;
    background-color: #07608d;
    border-color: #07608d;
 }
-.css-1wa3eu0-placeholder{
+
+.css-1wa3eu0-placeholder {
    width: 83%;
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
 }
-.addOrg .company-dropdown .css-1wa3eu0-placeholder{
-   color: #c4c4c4 ;
+
+.addOrg .company-dropdown .css-1wa3eu0-placeholder {
+   color: #c4c4c4;
 }
-.input-validation-valid .css-1wa3eu0-placeholder{
-   color: red ;
+
+.input-validation-valid .css-1wa3eu0-placeholder {
+   color: red;
 }
-.error-select .css-1wa3eu0-placeholder{
+
+.error-select .css-1wa3eu0-placeholder {
    /* border: 1px solid red; */
    color: red;
 }
-.pagination>li:first-child>a, .pagination>li:first-child>span {
+
+.pagination>li:first-child>a,
+.pagination>li:first-child>span {
    margin-left: 0;
    border-top-left-radius: .25rem;
    border-bottom-left-radius: .25rem;
@@ -239,11 +289,15 @@
    /* background-color: #fff; */
    border: 1px solid #ddd;
 }
-.pagination>li:last-child>a, .pagination>li:last-child>span {
+
+.pagination>li:last-child>a,
+.pagination>li:last-child>span {
    border-top-right-radius: .25rem;
    border-bottom-right-radius: .25rem;
 }
-.pagination>li>a, .pagination>li>span {
+
+.pagination>li>a,
+.pagination>li>span {
    position: relative;
    float: left;
    padding: .5rem .75rem;
@@ -254,28 +308,32 @@
    background-color: #fff;
    border: 1px solid #ddd;
 }
- .recommendation-page{
+
+.recommendation-page {
    min-height: 93vh;
 }
- .options-item {
+
+.options-item {
    color: #07608d;
    font-size: 12px;
    text-align: center;
    margin: 0;
-   padding:5px 0;
+   padding: 5px 0;
    cursor: pointer;
 }
- .tasks-data{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+
+.tasks-data {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
    /* height: 45px;*/
-    width: 100%;
-    box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
-    margin: 15px 0 13px 0;
-    padding: 10px 0;
- }
- .icon-Options {
+   width: 100%;
+   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+   margin: 15px 0 13px 0;
+   padding: 10px 0;
+}
+
+.icon-Options {
    /* z-index: 1 !important; */
    width: 30px;
    height: 30px;
@@ -285,38 +343,46 @@
    color: #07608d;
    text-align: right;
 }
-.react-datepicker__input-container{
+
+.react-datepicker__input-container {
    width: 100%;
 }
- .react-datepicker__input-container input{
-    border: 0;
-    color: #949494;
-    width: 100%;
- }
- .tasks-data-hidden .tasks-data-item{
-    width: calc( 100% - 20px ) !important;
- }
- .tasks-data-item{ 
-    margin: 0px 5px 0 14px;
-    color: #949494;
-    border: 0;
-    cursor: pointer;
- }
- .tasks-data-item{
-   width: 14%; 
- }
- .tasks-data .tasks-data-hidden{
-    width: calc( 24% - 14px );
-    /* white-space: nowrap;
+
+.react-datepicker__input-container input {
+   border: 0;
+   color: #949494;
+   width: 100%;
+}
+
+.tasks-data-hidden .tasks-data-item {
+   width: calc(100% - 20px) !important;
+}
+
+.tasks-data-item {
+   margin: 0px 5px 0 14px;
+   color: #949494;
+   border: 0;
+   cursor: pointer;
+}
+
+.tasks-data-item {
+   width: 14%;
+}
+
+.tasks-data .tasks-data-hidden {
+   width: calc(24% - 14px);
+   /* white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; */
- }
- .loader-filter{
-    display: flex;
-    padding-left: 3px;
- }
- .task-multi-title{
-   color: hsl(0,0%,50%);
+}
+
+.loader-filter {
+   display: flex;
+   padding-left: 3px;
+}
+
+.task-multi-title {
+   color: hsl(0, 0%, 50%);
    margin-left: 5px;
    white-space: nowrap;
    text-overflow: ellipsis;
@@ -325,113 +391,142 @@
    cursor: pointer;
    /* display: flex;
    flex: 1; */
- }
- .tasks-data-hidden{
-    position: relative;
-    /* display: flex;
+}
+
+.tasks-data-hidden {
+   position: relative;
+   /* display: flex;
     flex: 1; */
- }
- /* .tasks-data .tasks-data-hidden:last-child{
+}
+
+/* .tasks-data .tasks-data-hidden:last-child{
     flex: 1;
  } */
- .middle-line{
-    width: 2px;
-    height: 20px;
-    background-color: #B8B8B8;
- }
- .hidden .tasks-data-item{
-    margin: 10px 0;
- }
- .company-task{
-    font-size: 16px;
- }
- .hidden{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top:100%;
-    left:0;
-    background-color: white;
-    z-index: 1;
-    box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
- 
- }
- .tasks-cont .row{
+.middle-line {
+   width: 2px;
+   height: 20px;
+   background-color: #B8B8B8;
+}
+
+.hidden .tasks-data-item {
+   margin: 10px 0;
+}
+
+.company-task {
+   font-size: 16px;
+}
+
+.hidden {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   position: absolute;
+   top: 100%;
+   left: 0;
+   background-color: white;
+   z-index: 1;
+   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+
+}
+
+.tasks-cont .row {
    margin-right: 0;
    margin-left: 0;
    flex-wrap: wrap !important;
- }
- .data-user span, .user-task span {
+}
+
+.data-user span,
+.user-task span {
    margin-left: 10px;
    width: 33%;
    word-break: break-word;
    text-align: center;
 }
- .hidden  .tasks-data-item:nth-child(3){
-    border-right: 0;
+
+.hidden .tasks-data-item:nth-child(3) {
+   border-right: 0;
    /* text-align: left; */
    display: flex;
    justify-content: flex-start;
- }
- a{
-    text-decoration: none;
-    color: #07608d;
- }
- a:hover{
-    text-decoration: none;
-    color: #07608d;
- }
- .tasks-cont{
-    margin-top: 15px;
- }
- 
- @media only screen and (max-width: 1024px){
- 
- }
- @media only screen and (max-width: 768px){
-    .tasks-cont .flex-row{
-        display: flex;
-        flex-direction: column !important;
-    }
-    .tasks-cont .col-sm-6{
-        flex: 0 0 100% !important;
-        max-width: 100% !important;
-    }
-    .tasks-buttons .middle-button {
-        font-size: 14px;
-    }
-    .tasks-buttons .middle-button:first-child{
-        border-radius: 6px 0px 0px 6px;
-    }
-    .tasks-buttons .middle-button:last-child{
-        border-radius: 0px 6px 6px 0px;
-    }
-    
- }
- @media only screen and (max-width: 465px){
-   .tasks-data-item{
-      width: 19%; 
+}
+
+a {
+   text-decoration: none;
+   color: #07608d;
+}
+
+a:hover {
+   text-decoration: none;
+   color: #07608d;
+}
+
+.tasks-cont {
+   margin-top: 15px;
+}
+
+@media only screen and (max-width: 1024px) {}
+
+@media only screen and (max-width: 768px) {
+   .tasks-cont .flex-row {
+      display: flex;
+      flex-direction: column !important;
+   }
+
+   .tasks-cont .col-sm-6 {
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+   }
+
+   .tasks-buttons .middle-button {
+      font-size: 14px;
+   }
+
+   .tasks-buttons .middle-button:first-child {
+      border-radius: 6px 0px 0px 6px;
+   }
+
+   .tasks-buttons .middle-button:last-child {
+      border-radius: 0px 6px 6px 0px;
+   }
+
+}
+
+@media only screen and (max-width: 465px) {
+
+   .kn-selection_status__status___1qxE9,
+   .kn-selection_status__clear_all___3gppf {
+      font-size: 12px !important;
+   }
+
+   .tasks-data-item {
+      width: 19%;
       margin: 0px 6px 0 6px;
-    }
-    .tasks-buttons .middle-button,.css-2613qy-menu{
-       font-size: 11px !important;
-    }
-    .tasks-data-manager{
-       flex-wrap: wrap;
-    }
-    .tasks-data-manager .tasks-data-item{
-       width: 45%;
-       margin-top: 5px;
-    }
-    .tasks-data-manager .tasks-data-hidden{
+   }
+
+   .tasks-buttons .middle-button,
+   .css-2613qy-menu {
+      font-size: 11px !important;
+   }
+
+   .tasks-data-manager {
+      flex-wrap: wrap;
+   }
+
+   .tasks-data-manager .tasks-data-item {
+      width: 45%;
+      margin-top: 5px;
+   }
+
+   .tasks-data-manager .tasks-data-hidden {
       width: 48%;
-    }
-    .tasks-data-manager .middle-line:nth-child(4){
-       display: none;
-    }
-    /* .cont{
+   }
+
+   .tasks-data-manager .middle-line:nth-child(4) {
+      display: none;
+   }
+
+   /* .cont{
       width: 318px !important;
   } */
- }
+}

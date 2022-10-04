@@ -469,25 +469,37 @@ class Tasks extends Component {
             <div className='tasks'>
                 {this.state.showMultiCopany || this.state.showMultiStaff ? <ModalForMultiSelect
                     loading={this.state.showMultiCopany ? limit_data.loader_orgs : limit_data.loader_stuff}
-                    body={<MultiSelect
-                        messages={{
-                            searchPlaceholder: "Որոնել...",
-                            noItemsMessage: "Տվյալներ չկան...",
-                            noneSelectedMessage: "Ընտրված տվյալներ չկան",
-                            selectedMessage: "Ընտրված",
-                            selectAllMessage: "Ընտրել բոլորը",
-                            clearAllMessage: "Մաքրել",
-                            disabledItemsTooltip: "Դուք կարող եք ընտրել միայն 1 ֆայլ"
-                        }}
-                        items={this.state.showMultiCopany
-                            ? (limit_data.orgs.length > 0 ? limit_data.orgs.map((item) => ({ label: item.label, id: item.value })) : [])
-                            : (limit_data.stuff.length > 0 ? limit_data.stuff.map((item) => ({ label: item.label, id: item.value })) : [])}
-                        selectedItems={this.state.showMultiCopany
-                            ? (this.state.selected_company ? this.state.selected_company : [])
-                            : (this.state.selected_accountant ? this.state.selected_accountant : [])
-                        }
-                        onChange={(list) => this.state.showMultiCopany ? this.onChangeSelectCompany(list) : this.onChangeSelectEmployee(list)}
-                    />} /> : null}
+                    body={<div>
+                        <MultiSelect
+                            messages={{
+                                searchPlaceholder: "Որոնել...",
+                                noItemsMessage: "Տվյալներ չկան...",
+                                noneSelectedMessage: "Ընտրված տվյալներ չկան",
+                                selectedMessage: "Ընտրված",
+                                selectAllMessage: "Ընտրել բոլորը",
+                                clearAllMessage: "Մաքրել",
+                                disabledItemsTooltip: "Դուք կարող եք ընտրել միայն 1 ֆայլ"
+                            }}
+                            items={this.state.showMultiCopany
+                                ? (limit_data.orgs.length > 0 ? limit_data.orgs.map((item) => ({ label: item.label, id: item.value })) : [])
+                                : (limit_data.stuff.length > 0 ? limit_data.stuff.map((item) => ({ label: item.label, id: item.value })) : [])}
+                            selectedItems={this.state.showMultiCopany
+                                ? (this.state.selected_company ? this.state.selected_company : [])
+                                : (this.state.selected_accountant ? this.state.selected_accountant : [])
+                            }
+                            onChange={(list) => this.state.showMultiCopany ? this.onChangeSelectCompany(list) : this.onChangeSelectEmployee(list)}
+                        />
+                        <div className='button-line-cont'>
+                            <MyButton
+                                buttonStyle="blue-button"
+                                onChangeValue={() => {
+                                    this.setState({ showMultiStaff: false, showMultiCopany: false });
+
+                                }}
+                                title="Հաստատել"
+                            />
+                        </div>
+                    </div>} /> : null}
                 {this.state.showMultiCopany || this.state.showMultiStaff
                     ? <div className="popup" onClick={() => this.setState({ showMultiCopany: false, showMultiStaff: false })}>
                     </div>

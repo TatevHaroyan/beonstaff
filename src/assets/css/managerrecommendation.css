@@ -74,6 +74,10 @@
     margin-right: 5px;
 }
 
+.timePicker-cont .MuiFormControl-root {
+    width: 180px !important;
+}
+
 .recommendation-page p {
     font-size: 20px;
     font-family: "Segoe UI";
@@ -192,7 +196,7 @@
 
 .employee-name {
     color: #63c0ba;
-    font-size: 1rem;
+    font-size: 12px;
     font-weight: bold;
     display: flex;
     /* align-items: center; */

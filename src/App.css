@@ -3,34 +3,51 @@
   font-family: "Segoe UI";
   word-break: break-word;
 }
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
+
+.button-line-cont {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
 }
-.repeat-text{
+
+.repeat-text {
   color: #07608d;
   font-weight: bold;
   font-size: 12px;
   cursor: pointer;
 }
+
 .App-intro {
   font-size: large;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 @font-face {
   font-family: 'icomoon';
-  src:  url('assets/fonts/icomoon.eot?fk90ac');
-  src:  url('assets/fonts/icomoon.eot?fk90ac#iefix') format('embedded-opentype'),
+  src: url('assets/fonts/icomoon.eot?fk90ac');
+  src: url('assets/fonts/icomoon.eot?fk90ac#iefix') format('embedded-opentype'),
     url('assets/fonts/icomoon.ttf?fk90ac') format('truetype'),
     url('assets/fonts/icomoon.woff?fk90ac') format('woff'),
     url('assets/fonts/icomoon.svg?fk90ac#icomoon') format('svg');
@@ -38,7 +55,8 @@
   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
@@ -52,14 +70,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
- .MuiOutlinedInput-notchedOutline .Mui-focused {
+
+.MuiOutlinedInput-notchedOutline .Mui-focused {
   border-color: #63c0ba !important;
 }
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('assets/fonts/icomoo.eot?hhpnqg');
-  src:  url('assets/fonts/icomoo.eot?hhpnqg#iefix') format('embedded-opentype'),
+  src: url('assets/fonts/icomoo.eot?hhpnqg');
+  src: url('assets/fonts/icomoo.eot?hhpnqg#iefix') format('embedded-opentype'),
     url('assets/fonts/icomoo.ttf?hhpnqg') format('truetype'),
     url('assets/fonts/icomoo.woff?hhpnqg') format('woff'),
     url('assets/fonts/icomoo.svg?hhpnqg#icomoon') format('svg');
@@ -68,7 +87,8 @@
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: never;
@@ -85,8 +105,8 @@
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('assets/fonts/ico.eot?r7mncw');
-  src:  url('assets/fonts/ico.eot?r7mncw#iefix') format('embedded-opentype'),
+  src: url('assets/fonts/ico.eot?r7mncw');
+  src: url('assets/fonts/ico.eot?r7mncw#iefix') format('embedded-opentype'),
     url('assets/fonts/ico.ttf?r7mncw') format('truetype'),
     url('assets/fonts/ico.woff?r7mncw') format('woff'),
     url('assets/fonts/ico.svg?r7mncw#icomoon') format('svg');
@@ -95,7 +115,8 @@
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: never;
@@ -114,11 +135,11 @@
   content: "\e925";
 }
 
-.change-status-popup{
+.change-status-popup {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255,255,255,0.97);
+  background-color: rgba(255, 255, 255, 0.97);
   position: fixed;
   top: 0;
   right: 0;
@@ -130,64 +151,83 @@
 .icon-Attachment:before {
   content: "\e900";
 }
+
 .icon-Backward-arrow:before {
   content: "\e901";
 }
+
 .icon-Calendar:before {
   content: "\e902";
 }
+
 .icon-Component-21--1:before {
   content: "\e903";
 }
+
 .icon-Compose:before {
   content: "\e904";
 }
+
 .icon-dram:before {
   content: "\e905";
 }
+
 .icon-Facebook:before {
   content: "\e906";
 }
+
 .icon-Google-plus:before {
   content: "\e907";
 }
+
 .icon-Menu:before {
   content: "\e908";
 }
+
 .icon-Options:before {
   content: "\e909";
 }
+
 .icon-Photos:before {
   content: "\e90a";
 }
+
 .icon-film:before {
   content: "\e913";
 }
+
 .icon-Repeat-Grid-17:before {
   content: "\e90b";
   color: #707070;
 }
+
 .icon-Search:before {
   content: "\e90c";
 }
+
 .icon-Twitter:before {
   content: "\e90d";
 }
+
 .icon-Union-1:before {
   content: "\e90e";
 }
+
 .icon-Union-4:before {
   content: "\e90f";
 }
+
 .icon-Yes:before {
   content: "\e910";
 }
-img{
+
+img {
   font-size: 10px;
   white-space: nowrap;
 }
-@media (max-width: 320px){
-  .App{
+
+@media (max-width: 320px) {
+  .App {
     min-width: 320px !important;
   }
 }
