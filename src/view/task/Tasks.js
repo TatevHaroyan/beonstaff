@@ -350,7 +350,6 @@ class Tasks extends Component {
 
     }
     onChangeSelectCompany(list) {
-        console.log(list, "listtttttttttttttttt");
         let company_list = [];
         let selected_list = [];
         if (list) {
@@ -466,30 +465,41 @@ class Tasks extends Component {
     render() {
         const animatedComponents = makeAnimated();
         const { word, limit_data, employee, manager, manager_loader } = this.props;
-        console.log("in rendeeeer");
         return (
             <div className='tasks'>
                 {this.state.showMultiCopany || this.state.showMultiStaff ? <ModalForMultiSelect
                     loading={this.state.showMultiCopany ? limit_data.loader_orgs : limit_data.loader_stuff}
-                    body={<MultiSelect
-                        messages={{
-                            searchPlaceholder: "Որոնել...",
-                            noItemsMessage: "Տվյալներ չկան...",
-                            noneSelectedMessage: "Ընտրված տվյալներ չկան",
-                            selectedMessage: "Ընտրված",
-                            selectAllMessage: "Ընտրել բոլորը",
-                            clearAllMessage: "Մաքրել",
-                            disabledItemsTooltip: "Դուք կարող եք ընտրել միայն 1 ֆայլ"
-                        }}
-                        items={this.state.showMultiCopany
-                            ? (limit_data.orgs.length > 0 ? limit_data.orgs.map((item) => ({ label: item.label, id: item.value })) : [])
-                            : (limit_data.stuff.length > 0 ? limit_data.stuff.map((item) => ({ label: item.label, id: item.value })) : [])}
-                        selectedItems={this.state.showMultiCopany
-                            ? (this.state.selected_company ? this.state.selected_company : [])
-                            : (this.state.selected_accountant ? this.state.selected_accountant : [])
-                        }
-                        onChange={(list) => this.state.showMultiCopany ? this.onChangeSelectCompany(list) : this.onChangeSelectEmployee(list)}
-                    />} /> : null}
+                    body={<div>
+                        <MultiSelect
+                            messages={{
+                                searchPlaceholder: "Որոնել...",
+                                noItemsMessage: "Տվյալներ չկան...",
+                                noneSelectedMessage: "Ընտրված տվյալներ չկան",
+                                selectedMessage: "Ընտրված",
+                                selectAllMessage: "Ընտրել բոլորը",
+                                clearAllMessage: "Մաքրել",
+                                disabledItemsTooltip: "Դուք կարող եք ընտրել միայն 1 ֆայլ"
+                            }}
+                            items={this.state.showMultiCopany
+                                ? (limit_data.orgs.length > 0 ? limit_data.orgs.map((item) => ({ label: item.label, id: item.value })) : [])
+                                : (limit_data.stuff.length > 0 ? limit_data.stuff.map((item) => ({ label: item.label, id: item.value })) : [])}
+                            selectedItems={this.state.showMultiCopany
+                                ? (this.state.selected_company ? this.state.selected_company : [])
+                                : (this.state.selected_accountant ? this.state.selected_accountant : [])
+                            }
+                            onChange={(list) => this.state.showMultiCopany ? this.onChangeSelectCompany(list) : this.onChangeSelectEmployee(list)}
+                        />
+                        <div className='button-line-cont'>
+                            <MyButton
+                                buttonStyle="blue-button"
+                                onChangeValue={() => {
+                                    this.setState({ showMultiStaff: false, showMultiCopany: false });
+
+                                }}
+                                title="Հաստատել"
+                            />
+                        </div>
+                    </div>} /> : null}
                 {this.state.showMultiCopany || this.state.showMultiStaff
                     ? <div className="popup" onClick={() => this.setState({ showMultiCopany: false, showMultiStaff: false })}>
                     </div>
@@ -631,13 +641,11 @@ class Tasks extends Component {
                         />
                     </span>
                     <div className='middle-line'></div>
-                    {console.log(limit_data, "limit_data")}
                     <div className='tasks-data-hidden'>
                         <div className='loader-filter'>
                             {limit_data.loader_orgs
                                 ? <Loader type="Oval" color="#949494" height={10} width={10} />
                                 : ""}
-                            {console.log(this.state.selected_company, "this.state.selected_company")}
                             <div className='task-multi-title' onClick={() => this.setState({ showMultiCopany: true })}>
                                 {!limit_data.loader_orgs && this.state.selected_company && this.state.selected_company[0]
                                     ? `${this.state.selected_company[0].label} և ևս ${this.state.selected_company.length - 1}`

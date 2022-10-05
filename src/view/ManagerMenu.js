@@ -135,7 +135,6 @@ class ManagerMenu extends Component {
                                 onClick={() => { this.setState({ active: true }) }}
                             >
                                 <div className="new-notification">
-                                    {console.log(notification, "7777777777777notification")}
                                     <span>{item.title}</span>
                                     {notification.results && notification.results.length > 0
                                         ? <div className="tasks-around">{notification.count}</div>

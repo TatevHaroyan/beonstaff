@@ -68,7 +68,6 @@ class Reports extends Component {
         }
     };
     selected_list() {
-        console.log(this.props.stuff, "this.props.stuff");
         switch (this.state.active) {
             case "manager":
                 return <Autocomplete

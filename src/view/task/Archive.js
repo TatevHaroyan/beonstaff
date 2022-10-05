@@ -268,7 +268,7 @@ class Archive extends Component {
                     {localStorage.getItem("profession") === "manager" ? <div className='middle-line'></div> : null}
                     {localStorage.getItem("profession") === "manager" ? <div className='tasks-data-hidden'>
                         <Select
-                             isLoading={limit_data.loader_stuff}
+                            isLoading={limit_data.loader_stuff}
                             defaultValue={this.props.limit_data.stuff ? this.getSeletedList(this.props.limit_data.stuff, "stuff") : []}
                             value={this.state.selectedEmp}
                             closeMenuOnSelect={false}
@@ -292,7 +292,8 @@ class Archive extends Component {
                     <span>{word.deadline}</span>
                 </div>
                 {this.loading(this.state.taskByStatus)}
-                {this.state.taskByStatus.length > 0 ? <Pagination
+                {console.log()}
+                {this.state.count > 10 ? <Pagination
                     activePage={this.state.activePage}
                     itemsCountPerPage={10}
                     totalItemsCount={this.state.count}

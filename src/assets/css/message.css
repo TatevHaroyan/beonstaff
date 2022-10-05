@@ -1,201 +1,226 @@
 .message .timestamp {
-    display: flex;
-    justify-content: center;
-    color: #999;
-    font-weight: 600;
-    font-size: 12px;
-    margin: 10px 0px;
-    text-transform: uppercase;
-  }
-  .message{
-    word-break: break-word;
-    flex: 1;
-  }
-  .message .mine .bubble-container{
-    align-items: flex-end;
-  }
-  .message-list{
-    background-color: #F4F4F4;
-    /* width: 200px; */
-    max-height: 328px;
-    /* border: 1px dotted black; */
-    overflow-y: auto;
-    padding: 20px;
-    margin-top: 10px;
-    width: 100%;
-    display: flex;
-    flex-direction: column-reverse;
-  }
-  .message .bubble-container {
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-  
-   /* min-height: 100px; */
-  }
-  .message .bubble-container div{
-    /* width: 100%; */
-  }
-  .sms-img{
-    width: 100px;
-    height: 100px !important;
-    border-radius: 4px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-top: 10px;
-    margin-right: 10px;
-  }
-  
-  .message.mine .bubble-container {
-    align-items: flex-end;
-    /* flex-direction: row-reverse; */
-  }
-  
-  .message.start .bubble-container .bubble {
-    /* margin-top: 10px; */
-    border-top-left-radius: 20px;
-    width: fit-content;
-  }
-  
-  .message.end .bubble-container .bubble {
-    border-bottom-left-radius: 20px;
-    /* margin-bottom: 10px; */
-  }
-  
-  .message.mine.start .bubble-container .bubble {
-    margin-top: 10px;
-    border-top-right-radius: 20px;
-  }
-  
-  .message.mine.end .bubble-container .bubble {
-    border-bottom-right-radius: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .message .bubble-container .bubble {
-    background: #afafaf;
-    padding: 5px 15px;
-    border-radius: 20px;
-    /* max-width: 75%; */
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    font-size: 12px;
-    color: white;
-    margin-bottom: 5px;
-    align-self: end;
-  }
-  
-  .message.mine .bubble-container .bubble {
-    background: #63c0ba;
-    color: white;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-    align-self: flex-end;
-  }
+  display: flex;
+  justify-content: center;
+  color: #999;
+  font-weight: 600;
+  font-size: 12px;
+  margin: 10px 0px;
+  text-transform: uppercase;
+}
 
-  .conversation-list-item {
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: space-between; */
-    padding: 10px;
-    position: relative;
-  }
-  
-  .conversation-list-item:hover {
-    background: #eeeef1;
-    cursor: pointer;
-  }
-  .conversation-list-item:hover .created_date, .comment:hover .created_date {
-    visibility: visible;
-  }
-  .conversation-list-item .created_date{
-    left: 125px;
-  }
-  .my-message .created_date{
-    right: 193px !important;
-    left: calc(100% - 270px);
-  }
-  textarea:focus{
-    outline: none;
-  }
-  .created_date{
-    font-size: 12px;
-    visibility: hidden;
-    width: 137px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 11px;
-    padding: 5px 0;
-    position: absolute;
-    top: -5px;
-   
-  }
-  .conversation-photo {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-  }
-  
-  .conversation-title {
-    font-size: 12px !important;
-    font-weight: bold;
-    text-transform: capitalize;
-    margin:5px 0 5px 50px !important;
-  }
-  
-  .conversation-snippet {
-    font-size: 14px;
-    color: #888;
-    margin: 0;
-  }
- 
-  .my-message{
-        display: flex;
-        flex-direction: column;
-        /* flex-direction: row-reverse; */
-        /* justify-content: flex-start; */
-  }
-  .my-message h1{
-    text-align: right;
-    margin-right: 50px;
-  }
-  .photo-name{
-      display: flex;
-      /* flex-direction: column; */
-      align-items: center;
-  }
-  .my-message .photo-name{
-      flex-direction: row-reverse;
-  }
-  .my-message .conversation-photo{
-      margin-right: 0;
-      margin-left: 10px;
-  }
-  .my-sms {
-    display: flex;
-    flex-direction: column;
-    margin: 0 10px;
-    width: 100px;
-    position: relative;
-    padding-top: 10px;
+.message {
+  word-break: break-word;
+  flex: 1;
 }
-  .my-sms-img {
-    width: 100%;
-    height: 100px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 4px;
+
+.message .mine .bubble-container {
+  align-items: flex-end;
 }
+
+.message-list {
+  background-color: #F4F4F4;
+  /* width: 200px; */
+  max-height: 328px;
+  /* border: 1px dotted black; */
+  overflow-y: auto;
+  padding: 20px;
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.message .bubble-container {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+
+  /* min-height: 100px; */
+}
+
+.message .bubble-container div {
+  /* width: 100%; */
+}
+
+.sms-url {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.sms-img {
+  width: 100px;
+  height: 100px !important;
+  border-radius: 4px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.message.mine .bubble-container {
+  align-items: flex-end;
+  /* flex-direction: row-reverse; */
+}
+
+.message.start .bubble-container .bubble {
+  /* margin-top: 10px; */
+  border-top-left-radius: 20px;
+  width: fit-content;
+}
+
+.message.end .bubble-container .bubble {
+  border-bottom-left-radius: 20px;
+  /* margin-bottom: 10px; */
+}
+
+.message.mine.start .bubble-container .bubble {
+  margin-top: 10px;
+  border-top-right-radius: 20px;
+}
+
+.message.mine.end .bubble-container .bubble {
+  border-bottom-right-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.message .bubble-container .bubble {
+  background: #afafaf;
+  padding: 5px 15px;
+  border-radius: 20px;
+  /* max-width: 75%; */
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  font-size: 12px;
+  color: white;
+  margin-bottom: 5px;
+  align-self: end;
+}
+
+.message.mine .bubble-container .bubble {
+  background: #63c0ba;
+  color: white;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  align-self: flex-end;
+}
+
+.conversation-list-item {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  padding: 10px;
+  position: relative;
+}
+
+.conversation-list-item:hover {
+  background: #eeeef1;
+  cursor: pointer;
+}
+
+.conversation-list-item:hover .created_date,
+.comment:hover .created_date {
+  visibility: visible;
+}
+
+.conversation-list-item .created_date {
+  left: 125px;
+}
+
+.my-message .created_date {
+  right: 193px !important;
+  left: calc(100% - 270px);
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.created_date {
+  font-size: 12px;
+  visibility: hidden;
+  width: 137px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 11px;
+  padding: 5px 0;
+  position: absolute;
+  top: -5px;
+
+}
+
+.conversation-photo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.conversation-title {
+  font-size: 12px !important;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin: 5px 0 5px 50px !important;
+}
+
+.conversation-snippet {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+.my-message {
+  display: flex;
+  flex-direction: column;
+  /* flex-direction: row-reverse; */
+  /* justify-content: flex-start; */
+}
+
+.my-message h1 {
+  text-align: right;
+  margin-right: 50px;
+}
+
+.photo-name {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+}
+
+.my-message .photo-name {
+  flex-direction: row-reverse;
+}
+
+.my-message .conversation-photo {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+.my-sms {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+  width: 100px;
+  position: relative;
+  padding-top: 10px;
+}
+
+.my-sms-img {
+  width: 100%;
+  height: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4px;
+}
+
 .fa-times-circle {
   position: absolute;
   top: 13px;
@@ -203,6 +228,7 @@
   color: #afafaf;
   cursor: pointer;
 }
+
 .my-sms-img-name {
   width: 100%;
   text-overflow: ellipsis;
@@ -210,100 +236,120 @@
   font-size: 12px;
   text-align: center;
 }
+
 /* .send-file  */
-.send-file{
+.send-file {
   display: flex;
   /* align-items: center; */
 }
-.message-list-inputs{
+
+.message-list-inputs {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-.message-icons{
+
+.message-icons {
   display: flex;
 }
-.send-file label{
+
+.send-file label {
   margin: 0;
 }
-.send-file label input{
+
+.send-file label input {
   display: none;
 }
-.send-file i{
+
+.send-file i {
   /* width: 20px;
   height: 20px; */
   font-size: 20px;
   margin: 0 10px;
   cursor: pointer;
 }
+
 .recommendation-page .input-image {
   width: 100%;
   background-color: #F4F4F4;
   margin-bottom: 10px;
 }
-.input-image input{
+
+.input-image input {
   border: none;
   background-color: #F4F4F4;
   width: 100%;
   height: 32px;
 }
-.input-image .cont{
+
+.input-image .cont {
   margin-top: 0px;
   font-size: 12px;
   padding-left: 25px;
   width: 54px;
 }
-.checkbox-cont .title{
+
+.checkbox-cont .title {
   font-size: 10px;
   margin-top: 10px;
 }
-.input-image .checkbox-cont{
+
+.input-image .checkbox-cont {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   height: fit-content !important;
 }
-.input-image .checkmark{
+
+.input-image .checkmark {
   left: 28px;
 }
+
 .input-image .checkmark {
   height: 20px !important;
   width: 20px !important;
 }
+
 .input-image .cont .checkmark:after {
   left: 7px;
   top: 4px;
 }
-.send-message label{
+
+.send-message label {
   margin-bottom: 0px;
 }
-.send-message label input{
+
+.send-message label input {
   display: none;
 }
-.send-message{
+
+.send-message {
   display: flex;
   width: 100%;
 }
-  @media only screen and (max-width: 768px){
-    .conversation-title{
-      font-size: 12px !important;
-    }
+
+@media only screen and (max-width: 768px) {
+  .conversation-title {
+    font-size: 12px !important;
   }
-  @media only screen and (max-width: 585px){
-    .my-message h1 {
-      display: flex;
-      justify-content: flex-end;
-      margin-right: 50px !important;
+}
+
+@media only screen and (max-width: 585px) {
+  .my-message h1 {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 50px !important;
   }
-  .conversation-list-item h1{
+
+  .conversation-list-item h1 {
     display: flex;
     /* justify-content: flex-start; */
     margin-left: 50px !important;
   }
-  }
-  @media only screen and (max-width: 375px){
-    .recommendation-page .conversation-list-item h1{
-      font-size: 12px !important;
-    }
-  }
+}
 
+@media only screen and (max-width: 375px) {
+  .recommendation-page .conversation-list-item h1 {
+    font-size: 12px !important;
+  }
+}

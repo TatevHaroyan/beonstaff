@@ -84,7 +84,6 @@ class AddOrgAccountant extends Component {
         return same
     }
     render() {
-        console.log("in render");
         const { word, search, stuff } = this.props;
         return (
             <div className='add-employee-list' >
@@ -103,7 +102,6 @@ class AddOrgAccountant extends Component {
                         );
                     })
                         .map((item, index) => {
-                            console.log(item, "itemmmmmm");
                             return <div key={index}
                                 className={!this.findUrl(item.url)
                                     ? "employee-name"

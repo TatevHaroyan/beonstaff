@@ -48,7 +48,8 @@ class MessageList extends Component {
     return (
       <div className="message-list" onScroll={(e) => this.handleScroll(e)}>
         {this.props.tasksSms.map((item, index) => {
-          isMine = ((localStorage.getItem("profession") === "manager" && item.manager) || (localStorage.getItem("profession") === "accountant" && item.accountant)) ? true : false
+          isMine = ((localStorage.getItem("profession") === "manager" && item.manager)
+            || (localStorage.getItem("profession") === "accountant" && item.accountant)) ? true : false
           return <Message key={index} data={item} isMine={isMine} />
         })}
         {this.props.tasksSms.length % 10 === 0 && this.state.see_more_sms ?

@@ -291,7 +291,7 @@ class NotificationPage extends Component {
                                                         ? <div className='sms-img'
                                                             onClick={() => this.raiseInvoiceClicked(item.file_url)}
                                                             style={{ backgroundImage: "url(" + item.file_url + ")" }}></div>
-                                                        : <div onClick={() => this.raiseInvoiceClicked(item.file_url)}>
+                                                        : <div className="sms-url" onClick={() => this.raiseInvoiceClicked(item.file_url)}>
                                                             {item.file_name !== "undefined" ? item.file_name : ""}</div>}
                                                 </div>
                                             </div>

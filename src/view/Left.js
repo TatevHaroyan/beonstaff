@@ -153,7 +153,6 @@ class Left extends Component {
                             return <NavLink key={index} activeClassName="active" to={item.url}>
                                 <div className='left-item'
                                     onClick={() => { this.setState({ active: item.url }) }} >
-                                    {console.log(notification, "notification")}
                                     <div className="new-notification">
                                         <span>{item.title}</span> {notification.results && notification.results.length > 0
                                             ? <div className="tasks-around">{notification.count}</div>

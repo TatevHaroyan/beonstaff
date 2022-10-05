@@ -17,8 +17,9 @@ export default (state = {}, action) => {
             state = {
                 ...state,
                 results: action.payload.results ? action.payload.results : state.results,
-                count: action.payload.count ? action.payload.count : state.count,
+                count: action.payload.count,
                 loader: false,
+                activePage: action.payload.count ? state.activePage : 1,
                 deleted_company_count: action.payload.deleted_company_count ? action.payload.deleted_company_count : state.deleted_company_count
             }
             return state

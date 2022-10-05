@@ -38,7 +38,7 @@ class ChangeStuffData extends Component {
                     errorMessage: "name_error",
                     type: "text",
                     label: "",
-                    valid: this._getValue(props.information, 'profession').length > 0
+                    valid: this._getValue(props.information, 'profession') && this._getValue(props.information, 'profession').length > 0
                 },
                 {
                     key: 'phone',
@@ -65,8 +65,6 @@ class ChangeStuffData extends Component {
         this.setState({ submited: true })
         let profession_list = this.props.information.url.split("/");
         let profession = profession_list[profession_list.length - 3];
-        console.log(profession_list, "profession_list");
-        console.log(profession, 'profession');
         let token = localStorage.getItem("token");
         let id = this.props.information.id;
         let formData = new FormData();
@@ -74,7 +72,6 @@ class ChangeStuffData extends Component {
         if (image) formData.append("image", image, image.name)
         for (let index = 0; index < this.state.form.length; index++) {
             const element = this.state.form[index];
-            console.log(element, "element");
             if ((!element.valid || element.value.length === 0) && element.key !== "profession") {
                 return
             }
@@ -111,8 +108,6 @@ class ChangeStuffData extends Component {
         return item.valid
     }
     _renderInput(item, index) {
-        console.log(item, "itemmmmmm");
-        console.log(!item.valid && this.state.submited, "!item.valid && this.state.submited");
         // console.log(item.value.length ? item.value : "");
         return <Form.Group className='justify-content-center' controlid="exampleForm.ControlInput1" key={index}>
             <Form.Control type={item.type} onKeyDown={(e) => this.keyPress(e)}
@@ -152,7 +147,6 @@ class ChangeStuffData extends Component {
         return result === data ? null : result;
     }
     render() {
-        console.log(this.state.submited, "this.state.submited");
         let { imagePreviewUrl } = this.state;
         let $imagePreview = null;
         const { word, } = this.props

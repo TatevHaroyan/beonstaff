@@ -138,7 +138,6 @@ const get_org_list = (data) => ({
     payload: data
 })
 const edit_task = (data) => {
-    console.log(data, "IS_CHECKEDdddddddddddddddddddddd");
     return { type: EDIT_TASK, payload: data }
 }
 export {
