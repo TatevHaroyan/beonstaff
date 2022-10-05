@@ -701,6 +701,7 @@ flex: 1;
 .task-image{
     width: 30px;
     height: 30px;
+    object-fit: cover;
     border-radius: 50%;
 }
 .recommendations-list{

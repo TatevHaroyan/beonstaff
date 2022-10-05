@@ -96,7 +96,7 @@
     display: flex;
 }
 .little-button{
-    width: 100px;
+    width: fit-content;
     height: 50px;
     background-color: #07608d;
     color: white;
