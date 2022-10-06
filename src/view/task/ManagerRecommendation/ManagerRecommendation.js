@@ -732,7 +732,7 @@ class ManagerRecommendations extends Component {
                             {data.status === "process"
                                 && (localStorage.getItem("profession") === "accountant"
                                     || (localStorage.getItem("profession") === "manager"
-                                        // && !data.accountant
+                                && !data.accountant
                                         && data.manager
                                         && (data.manager_id == parseInt(localStorage.getItem("id")))
                                         || data.accountant_user_id === parseInt(localStorage.getItem("user_id"))))
