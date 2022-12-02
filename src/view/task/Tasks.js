@@ -465,6 +465,8 @@ class Tasks extends Component {
     render() {
         const animatedComponents = makeAnimated();
         const { word, limit_data, employee, manager, manager_loader } = this.props;
+        console.log(manager, 'manager');
+
         return (
             <div className='tasks'>
                 {this.state.showMultiCopany || this.state.showMultiStaff ? <ModalForMultiSelect

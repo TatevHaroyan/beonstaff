@@ -1,32 +1,38 @@
 import React, { Component } from 'react';
+import makeAnimated from 'react-select/animated';
 import { Row, Col } from 'react-bootstrap';
-import BlueButton from "../../../components/BlueButton/BlueButton";
-import CheckboxFilter from "../../../components/CheckboxFilter";
+import Loader from 'react-loader-spinner';
+import { toast } from 'react-toastify';
+import { connect } from 'react-redux';
+import Select from 'react-select';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import { TextField } from '@material-ui/core';
-import Autocomplete, { createFilterOptions } from '@material-ui/lab/Autocomplete';
-import moment from 'moment';
-import 'moment/locale/hy-am';
 import {
     withStyles,
 } from '@material-ui/core/styles';
-import {
-    newTask, employeeManagerAction, getTaskTemplate,
-    getStuff, getOrg, newTaskByAccountant
-} from "../../../api";
-import { employeeAction, orgAction, stuffAction, get_task_template } from "../../../action";
-import { connect } from 'react-redux';
-import Loader from 'react-loader-spinner';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
-import DateTimePicker from 'react-datetime-picker';
-// import Stack from '@mui/material/Stack';
 import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment';
+import 'moment/locale/hy-am';
+import {
+    employeeAction,
+    orgAction,
+    stuffAction,
+    get_task_template
+} from "../../../action";
+import {
+    employeeManagerAction,
+    getTaskTemplate,
+    getStuff,
+    getOrg,
+    newTaskByAccountant
+} from "../../../api";
+import BlueButton from "../../../components/BlueButton/BlueButton";
+import CheckboxFilter from "../../../components/CheckboxFilter";
 import { SERVER } from "../../../config";
+
 const profession = localStorage.getItem("profession");
-const filter = createFilterOptions();
 const date_now = new Date();
 const year = date_now.getFullYear();
 const ValidationTextField = withStyles({
@@ -234,6 +240,7 @@ class NewRecommendation extends Component {
     _renderDropDown(item, index) {
         const animatedComponents = makeAnimated();
         let option = this.props[item.option]
+        console.log(item, option, item.option, 'idasmdasmdasmm');
         return <div key={index}
             className={!item.valid
                 && this.state.submited
@@ -274,7 +281,8 @@ class NewRecommendation extends Component {
                     }}
                     placeholder={this.props.word[item.key]}
                     isMulti
-                /> :
+                />
+                :
                 <Autocomplete
                     loading={option.length > 0 ? false : true}
                     loadingText={<div className="auto-complete-loader"><Loader
@@ -286,37 +294,37 @@ class NewRecommendation extends Component {
                     id="combo-box-demo"
                     disabled={this.state.form[4].value.length > 0 && item.key === "manager" && profession === "manager"}
                     options={item.option === "organization" ? option.filter(item => item.is_deleted_by_manager === false) : option}
-                    onChange={(e, value) => {
-                        item.active = false
-                        item.value = value ? value.url : ""
-                        item.valid = item.value.length > 0
-                        if (item.key === "manager" && value && profession === "manager") {
-                            this.setState({ form: this.state.form, for_me: true })
-                        } else if (item.key === "manager" && !value) {
-                            this.setState({ form: this.state.form, for_me: false })
-                        }
-                        else {
-                            this.setState({ form: this.state.form })
-                        }
-                    }}
+                    // onChange={(e, value) => {
+                    //     item.active = false
+                    //     item.value = value ? value.url : ""
+                    //     item.valid = item.value.length > 0
+                    //     if (item.key === "manager" && value && profession === "manager") {
+                    //         this.setState({ form: this.state.form, for_me: true })
+                    //     } else if (item.key === "manager" && !value) {
+                    //         this.setState({ form: this.state.form, for_me: false })
+                    //     }
+                    //     else {
+                    //         this.setState({ form: this.state.form })
+                    //     }
+                    // }}
                     getOptionLabel={option => {
                         return item.key === "manager" ? `${option.user.first_name} ${option.user.last_name}` : option.name
                     }}
-                    filterOptions={(options, params) => {
-                        // if (params.inputValue.length >= 2) {
-                        if (item.key !== "manager") {
-                            const filtered = options.filter((item) => {
-                                return (item.name.toUpperCase().includes(params.inputValue.toUpperCase()));
-                            });
-                            return filtered;
-                        } else {
-                            const filtered = options.filter((item) => (
-                                (item.user.last_name.toUpperCase().includes(params.inputValue.toUpperCase())
-                                    || item.user.first_name.toUpperCase().includes(params.inputValue.toUpperCase()))
-                            ));
-                            return filtered;
-                        }
-                    }}
+                    // filterOptions={(options, params) => {
+                    //     // if (params.inputValue.length >= 2) {
+                    //     if (item.key !== "manager") {
+                    //         const filtered = options.filter((item) => {
+                    //             return (item.name.toUpperCase().includes(params.inputValue.toUpperCase()));
+                    //         });
+                    //         return filtered;
+                    //     } else {
+                    //         const filtered = options.filter((item) => (
+                    //             (item.user.last_name.toUpperCase().includes(params.inputValue.toUpperCase())
+                    //                 || item.user.first_name.toUpperCase().includes(params.inputValue.toUpperCase()))
+                    //         ));
+                    //         return filtered;
+                    //     }
+                    // }}
                     renderInput={params => (
                         <TextField {...params} error={!item.valid && this.state.submited === true && !this.state.form[4].valid}
                             id={!item.valid && this.state.submited === true && !this.state.form[4].valid
@@ -325,7 +333,8 @@ class NewRecommendation extends Component {
                             label={this.props.word[item.key]}
                             variant="outlined" fullWidth
                             freeSolo
-                            onKeyDown={(e) => { this.keyPress(e) }} />
+                            onKeyDown={(e) => { this.keyPress(e); }}
+                        />
                     )}
                 />}
             {(!item.valid && this.state.submited)
@@ -429,6 +438,7 @@ class NewRecommendation extends Component {
                                 />
                             </div>
                             {this.state.form.map((item, index) => {
+                                console.log(item, 'irtmmmmasddasasd');
                                 if (item.type === "textarea") {
                                     return this._rederTextArea(item, index)
                                 }

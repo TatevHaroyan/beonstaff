@@ -890,6 +890,7 @@ const AddAccountantCompany = (id, token, data) => {
 const getOrg = (params, limit) => {
     let token = localStorage.getItem("token");
     let query = queryString.stringify(params);
+    console.log(params, query, 'query');
     // limit=${limit ? limit : ""}
     return fetch(SERVER + `manager-company/?${query}`, {
         method: "GET",
@@ -910,6 +911,7 @@ const getOrg = (params, limit) => {
         .then((data) => {
             return data
         })
+    // return new Promise((resolve) => resolve([]));
 }
 // const getOrgbyName = (token, name) => {
 //     return fetch(SERVER + `manager-company/?name=${name}`, {

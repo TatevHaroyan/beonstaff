@@ -86,40 +86,43 @@ class MainManager extends Component {
         list = [...res.results]
         // this.props.getOrg(list)
         // this.props.getLimitOrg(list)
-        getOrg({ limit: 50, offset: 50 })
+        console.log(res, 'reasdasd');
+        getOrg({ limit: res.count, offset: 50 })
           .then((response) => {
             list = [...list, ...response.results]
-            getOrg({ limit: 50, offset: 100 })
-              .then((next_res) => {
-                list = [...list, ...next_res.results]
-                getOrg({ limit: 50, offset: 150 })
-                  .then((next_response) => {
-                    list = [...list, ...next_response.results]
-                    getOrg({ limit: 50, offset: 200 })
-                      .then((next) => {
-                        list = [...list, ...next.results]
-                        getOrg({ limit: 50, offset: 250 })
-                          .then((res_next) => {
-                            list = [...list, ...res_next.results]
-                            getOrg({ limit: 50, offset: 300 })
-                              .then((response_next) => {
-                                list = [...list, ...response_next.results]
-                                getOrg({ limit: 50, offset: 350 })
-                                  .then((response_next_list) => {
-                                    list = [...list, ...response_next_list.results]
-                                    getOrg({ limit: 50, offset: 400 })
-                                      .then((resssss) => {
-                                        list = [...list, ...resssss.results]
-                                        this.props.getOrg(list)
-                                        this.props.getLimitOrg(list)
-                                      })
-                                  })
-                              })
+            this.props.getOrg(list);
+            this.props.getLimitOrg(list)
+            // getOrg({ limit: 50, offset: 100 })
+            //   .then((next_res) => {
+            //     list = [...list, ...next_res.results]
+            //     getOrg({ limit: 50, offset: 150 })
+            //       .then((next_response) => {
+            //         list = [...list, ...next_response.results]
+            //         getOrg({ limit: 50, offset: 200 })
+            //           .then((next) => {
+            //             list = [...list, ...next.results]
+            //             getOrg({ limit: 50, offset: 250 })
+            //               .then((res_next) => {
+            //                 list = [...list, ...res_next.results]
+            //                 getOrg({ limit: 50, offset: 300 })
+            //                   .then((response_next) => {
+            //                     list = [...list, ...response_next.results]
+            //                     getOrg({ limit: 50, offset: 350 })
+            //                       .then((response_next_list) => {
+            //                         list = [...list, ...response_next_list.results]
+            //                         getOrg({ limit: 9999, offset: 400 })
+            //                           .then((resssss) => {
+            //                             list = [...list, ...resssss.results]
+            //                             this.props.getOrg(list)
+            //                             this.props.getLimitOrg(list)
+            //                           })
+            //                       })
+            //                   })
 
-                          })
-                      })
-                  })
-              })
+            //               })
+            //           })
+            //       })
+            //   })
           })
 
       })
