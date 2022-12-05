@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Route } from "react-router-dom";
+import { toast } from 'react-toastify';
+import { connect } from 'react-redux';
+import 'moment/locale/hy-am';
+import 'react-toastify/dist/ReactToastify.css';
 import { NAVBAR_SHOW, LAODER_ORG, LOADER_STUFF } from "../action/type";
-import { employeeAction, stuffAction, orgAction, tasksAction, employeeManagerAction, getNotificationAction, get_org_limit, get_stuff_limit } from "../action/index";
-import { getMeById, getStuff, getOrg, getManager, getNotification, getNewTaskCount } from "../api";
+import {
+  employeeAction,
+  stuffAction,
+  orgAction,
+  tasksAction,
+  employeeManagerAction,
+  getNotificationAction,
+  get_org_limit,
+  get_stuff_limit
+} from "../action/index";
+import {
+  getMeById,
+  getStuff,
+  getOrg,
+  getManager,
+  getNotification,
+  getNewTaskCount
+} from "../api";
+import shemLogo from "../assets/img/shemm-white.png";
 import Settings from "./Mydata/Settings/Settings";
 import MyImgRound from "../components/MyImgRound";
-import Timer from "../components/Timer";
-import shemLogo from "../assets/img/shemm-white.png";
-import moment from 'moment';
-import 'moment/locale/hy-am';
-import '../assets/css/manager.css';
 import ManagerContant from "./ManagerContant";
+import Timer from "../components/Timer";
 import ManagerMenu from "./ManagerMenu";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import '../assets/css/manager.css';
+
 var notifcation_value;
 class MainManager extends Component {
   constructor(props) {

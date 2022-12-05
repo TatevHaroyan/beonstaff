@@ -294,37 +294,37 @@ class NewRecommendation extends Component {
                     id="combo-box-demo"
                     disabled={this.state.form[4].value.length > 0 && item.key === "manager" && profession === "manager"}
                     options={item.option === "organization" ? option.filter(item => item.is_deleted_by_manager === false) : option}
-                    // onChange={(e, value) => {
-                    //     item.active = false
-                    //     item.value = value ? value.url : ""
-                    //     item.valid = item.value.length > 0
-                    //     if (item.key === "manager" && value && profession === "manager") {
-                    //         this.setState({ form: this.state.form, for_me: true })
-                    //     } else if (item.key === "manager" && !value) {
-                    //         this.setState({ form: this.state.form, for_me: false })
-                    //     }
-                    //     else {
-                    //         this.setState({ form: this.state.form })
-                    //     }
-                    // }}
+                    onChange={(e, value) => {
+                        item.active = false;
+                        item.value = value ? value.url : "";
+                        item.valid = item.value.length > 0;
+                        if (item.key === "manager" && value && profession === "manager") {
+                            this.setState({ form: this.state.form, for_me: true });
+                        } else if (item.key === "manager" && !value) {
+                            this.setState({ form: this.state.form, for_me: false });
+                        }
+                        else {
+                            this.setState({ form: this.state.form });
+                        }
+                    }}
                     getOptionLabel={option => {
                         return item.key === "manager" ? `${option.user.first_name} ${option.user.last_name}` : option.name
                     }}
-                    // filterOptions={(options, params) => {
-                    //     // if (params.inputValue.length >= 2) {
-                    //     if (item.key !== "manager") {
-                    //         const filtered = options.filter((item) => {
-                    //             return (item.name.toUpperCase().includes(params.inputValue.toUpperCase()));
-                    //         });
-                    //         return filtered;
-                    //     } else {
-                    //         const filtered = options.filter((item) => (
-                    //             (item.user.last_name.toUpperCase().includes(params.inputValue.toUpperCase())
-                    //                 || item.user.first_name.toUpperCase().includes(params.inputValue.toUpperCase()))
-                    //         ));
-                    //         return filtered;
-                    //     }
-                    // }}
+                    filterOptions={(options, params) => {
+                        // if (params.inputValue.length >= 2) {
+                        if (item.key !== "manager") {
+                            const filtered = options.filter((item) => {
+                                return (item.name.toUpperCase().includes(params.inputValue.toUpperCase()));
+                            });
+                            return filtered;
+                        } else {
+                            const filtered = options.filter((item) => (
+                                (item.user.last_name.toUpperCase().includes(params.inputValue.toUpperCase())
+                                    || item.user.first_name.toUpperCase().includes(params.inputValue.toUpperCase()))
+                            ));
+                            return filtered;
+                        }
+                    }}
                     renderInput={params => (
                         <TextField {...params} error={!item.valid && this.state.submited === true && !this.state.form[4].valid}
                             id={!item.valid && this.state.submited === true && !this.state.form[4].valid

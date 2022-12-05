@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-// import Manager from "./components/Manager/Manager";
-import MainManager from "./view/MainManager";
-import ManagerLogin from "./view/ManagerLogin";
-import { ToastContainer } from 'react-toastify';
-import { connect } from "react-redux";
-import Loader from 'react-loader-spinner';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { ToastContainer } from 'react-toastify';
+import ManagerLogin from "./view/ManagerLogin";
+import MainManager from "./view/MainManager";
+import Loader from 'react-loader-spinner';
+import { connect } from "react-redux";
 import './App.css';
+
 class App extends Component {
   render() {
     return (
