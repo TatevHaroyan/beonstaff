@@ -7,30 +7,34 @@ import MainManager from "./view/MainManager";
 import Loader from 'react-loader-spinner';
 import { connect } from "react-redux";
 import './App.css';
+import Notification from './firebaseNotifications/Notification';
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div className='App'>
-          {this.props.changeStatus ?
-            <div className="change-status-popup">
-              <Loader
-                type="Oval"
-                color="#07608d"
-                height={30}
-                width={30}
-              />
-            </div>
-            : null}
-          <ToastContainer autoClose={1000} />
-          <Switch>
-            <Route path="/main_employee" component={MainManager} />
-            {!localStorage.getItem("token") ? <Route path="/employee" component={ManagerLogin} /> : null}
-            {localStorage.getItem("token") ? <Redirect from='/*' to='/main_employee' /> : <Redirect from='/*' to='/employee' />}
-          </Switch>
-        </div>
-      </Router>
+      <div>
+        <Notification />
+        <Router>
+          <div className='App'>
+            {this.props.changeStatus ?
+              <div className="change-status-popup">
+                <Loader
+                  type="Oval"
+                  color="#07608d"
+                  height={30}
+                  width={30}
+                />
+              </div>
+              : null}
+            <ToastContainer autoClose={1000} />
+            <Switch>
+              <Route path="/main_employee" component={MainManager} />
+              {!localStorage.getItem("token") ? <Route path="/employee" component={ManagerLogin} /> : null}
+              {localStorage.getItem("token") ? <Redirect from='/*' to='/main_employee' /> : <Redirect from='/*' to='/employee' />}
+            </Switch>
+          </div>
+        </Router>
+      </div>
     );
   }
 }
